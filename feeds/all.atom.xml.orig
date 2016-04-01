@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Data Scientist John</title><link href="http://richardwei2008.github.io/" rel="alternate"></link><link href="http://richardwei2008.github.io/feeds/all.atom.xml" rel="self"></link><id>http://richardwei2008.github.io/</id><updated>2016-04-01T00:00:00+08:00</updated><entry><title>Hello Data Scientist</title><link href="http://richardwei2008.github.io/hello-data-scientist.html" rel="alternate"></link><updated>2016-04-01T00:00:00+08:00</updated><author><name>Richard</name></author><id>tag:richardwei2008.github.io,2016-04-01:hello-data-scientist.html</id><summary type="html">&lt;h1&gt;Hello Data Scientist&lt;/h1&gt;
+=======
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Data Scientist's Love</title><link href="http://richardwei2008.github.io/" rel="alternate"></link><link href="http://richardwei2008.github.io/feeds/all.atom.xml" rel="self"></link><id>http://richardwei2008.github.io/</id><updated>2016-04-01T00:00:00+08:00</updated><entry><title>Hello Data Scientist</title><link href="http://richardwei2008.github.io/hello-data-scientist.html" rel="alternate"></link><updated>2016-04-01T00:00:00+08:00</updated><author><name>Richard</name></author><id>tag:richardwei2008.github.io,2016-04-01:hello-data-scientist.html</id><summary type="html">&lt;h1&gt;Hello Data Scientist&lt;/h1&gt;
+>>>>>>> 76365bb83354cded15c5e80cfee1fd28ebceeb70
+&lt;p&gt;1st April, 2016&lt;/p&gt;</summary></entry></feed>
