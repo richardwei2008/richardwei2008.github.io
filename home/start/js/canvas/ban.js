@@ -1,3 +1,7 @@
+/**
+ * page 1 canvas animation
+ */
+
 $(function(){
   var canvas = document.querySelector('canvas'),
       ctx = canvas.getContext('2d')
@@ -19,7 +23,7 @@ $(function(){
   }
   var dots = {
     nb: numberOfDots,
-    distance: 50,
+    distance: distance,
     d_radius: 150,
     array: []
   };

@@ -1275,6 +1275,11 @@ h1 {
 	transform: translateY(200%)
 }
 
+.page4 .m-contact-wrap .m-driver-overlay {
+	position: relative;
+	height: 40%;
+}
+
 .page4 .m-contact-wrap .m-driver:after {
 	content: '';
 	width: 100%;
@@ -1289,17 +1294,17 @@ h1 {
 }
 
 .page4 .m-contact-wrap .m-driver .inner {
-	width: 482px;
+	width: 100%;
 	height: 286px;
-	position: absolute;
-	top: 38px;
-	left: 74px
+	position: relative;
+	/*top: 38px;*/
+	/*left: 74px*/
 }
 
 .page4 .m-contact-wrap .m-driver .inner ul {
 	height: 66px;
 	font-size: 0;
-	margin-top: 110px;
+	/*margin-top: 110px;*/
 	text-align: center
 }
 
@@ -2257,6 +2262,18 @@ h1 {
 		/*top: 28px;*/
 		/*left: 77px*/
 	}
+
+	.page2 .m-phone,.page3 .m-phone {
+		width: 160px;
+		height: 284px;
+		position: absolute;
+		left: 100px;
+		top: 50%;
+		margin-top: -142px;
+		-webkit-transform: translateY(160%);
+		transform: translateY(160%);
+		opacity: .2
+	}
 }
 
 
@@ -2345,9 +2362,9 @@ h1 {
 		margin: 0.5rem auto
 	}
 	.page1 .inner .button,.page2 .button {
-		width: 50%;
+		width: 60%;
 		height: 24px;
-		border: 2px solid rgba(255,255,255,.8);
+		border: 1px solid rgba(255,255,255,.8);
 		border-radius: 50px;
 		display: block;
 		margin: 0 auto;
@@ -2360,6 +2377,352 @@ h1 {
 		position: relative;
 		-webkit-transition: all .6s linear;
 		transition: all .6s linear
+	}
+
+	.page2 .m-phone,.page3 .m-phone {
+		width: 120px;
+		height: 213px;
+		position: absolute;
+		left: 50px;
+		top: 50%;
+		margin-top: -142px;
+		-webkit-transform: translateY(160%);
+		transform: translateY(160%);
+		opacity: .2
+	}
+
+	.page2 .m-phone.shadow,.page3 .m-phone.shadow {
+		background: url(../img/index_p2_main.png) 50% no-repeat;
+		background-size: cover;
+		z-index: 1
+	}
+
+	.page2 .m-phone.blog,.page3 .m-phone.works {
+		background-color: #383937;
+		z-index: 5
+	}
+
+	.page2 .m-phone.blog a,.page3 .m-phone.works a {
+		color: #919290;
+		display: block
+	}
+
+	.page2 .m-phone.blog header,.page3 .m-phone.works header {
+		height: 21px;
+		line-height: 21px;
+		background-color: #010200;
+		color: #c8c9c7;
+		text-align: center;
+		font-size: 9px;
+		position: relative
+	}
+	.m-phone header:before,.m-phone header:after {
+		display: inline-block;
+		width: 12px;
+		height: 12px;
+		background: url(../img/smohan_icons@120.png) -90px -60px no-repeat;
+		content: '';
+		position: absolute;
+		top: 4px
+	}
+	.m-phone header:before {
+		background-position: -90px -71px;
+		left: 2px
+	}
+	.m-phone header:after {
+		background-position: -90px -59px;
+		right: 2px
+	}
+	.page2 .m-phone.blog .post-cover,.page3 .m-phone.works .post-cover {
+		margin: 5px;
+		height: 92px;
+		overflow: hidden;
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+		border: 1px solid #383937
+	}
+	.page2 .post-item {
+		margin: 2px 0;
+		font-size: 9px;
+	}
+
+	.page2 .about-wrap {
+		width: 100%;
+		text-align: center;
+		height: 100%;
+		margin-top: -50px;
+		position: absolute;
+		right: 0;
+		top: 50%;
+	}
+
+	.page2 .about-wrap .m-about {
+		width: 40%;
+		margin: 0 3%;
+		color: #686967;
+		margin-top: -160px;
+		-webkit-transform: translateY(180px);
+		transform: translateY(180px)
+	}
+
+	.page2 .about-wrap .m-about h1 {
+		font-size: 24px;
+		color: #383937
+	}
+
+	.page2 .about-wrap .m-about p {
+		margin-top: 20px;
+		line-height: 22px;
+		font-size: 9px;
+	}
+
+	.page2 .about-wrap .m-time {
+		margin-top: 80px
+	}
+
+	.page2 .m-time .m-time-run {
+		position: relative
+	}
+
+	.page2 .m-time .m-time-run .line {
+		height: 1px;
+		width: 0;
+		background-color: #484947;
+		position: absolute;
+		top: 22px
+	}
+
+	.page2 .m-time .m-time-run .line.left {
+		left: 0
+	}
+
+	.page2 .m-time .m-time-run .line.right {
+		right: 0
+	}
+
+	.page2 .m-time .m-time-run .line.left:after,.page2 .m-time .m-time-run .line.right:after {
+		font-size: 11px;
+		content: '累计运行';
+		position: relative;
+		top: -20px;
+		color: #787977;
+		opacity: 0
+	}
+
+	.page2 .m-time .m-time-run .line.right:after {
+		font-size: 11px;
+		content: '到现在'
+	}
+
+	.page2 .m-time .m-time-run span {
+		display: inline-block;
+		vertical-align: middle;
+		width: 20px;
+		height: 22px;
+		margin: 0 1px;
+		background-color: #585957;
+		position: relative;
+		border-radius: 3px;
+		overflow: hidden;
+		font-size: 8px;
+		line-height: 22px;
+		color: #f1f2f0
+	}
+
+	.page2 .m-time .m-time-run span:before {
+		content: '';
+		width: 100%;
+		height: 11px;
+		background-color: #686967;
+		position: absolute;
+		top: 0;
+		left: 0;
+		border-bottom: 1px solid #383937;
+		z-index: 0;
+		border-top-left-radius: 3px;
+		border-top-right-radius: 3px
+	}
+
+	.page2 .m-time .m-time-run span i {
+		position: absolute;
+		width: 15px;
+		height: 100%;
+		z-index: 1;
+		top: 0;
+		left: 2px;
+		text-indent: -9999rem;
+		background: url(../img/times@15.png) 0 0 no-repeat;
+		/*background-size: 50% 100%;*/
+		-webkit-transition: all 1s linear;
+		transition: all 1s linear
+	}
+
+	.page2 .m-time .m-time-run span i.init {
+		background-position: 0 0;
+		background-size: 50% 50%;
+	}
+
+	.page2 .m-time .m-time-run span:last-child:before {
+		border: 0
+	}
+
+	.page2 .m-time .m-time-run span:last-child:after {
+		content: '';
+		width: 100%;
+		height: 50%;
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		background-color: rgba(0,0,0,.2);
+		z-index: 3;
+		border-bottom-left-radius: 3px;
+		border-bottom-right-radius: 3px;
+		border-top: 1px solid #383937
+	}
+
+	.page2 .m-time .m-time-run span:last-child i {
+		-webkit-transition: none;
+		transition: none
+	}
+
+	.page2 .m-time .m-time-run.txt {
+		margin-top: 5px;
+		height: 10px;
+		line-height: 10px
+	}
+
+	.page2 .m-time .m-time-run.txt span,.page2 .m-time .m-time-run.txt span:before,.page2 .m-time .m-time-run.txt span:after {
+		background: 0;
+		border: 0;
+		line-height: 10px;
+		height: 10px;
+		color: #989997;
+		font-size: 9px;
+		vertical-align: top
+	}
+
+	.page2 .m-time-start {
+		margin-top: 20px;
+		color: #787977;
+		opacity: 0
+	}
+
+	/*Page 3*/
+	.page3 .m-text {
+		height: 100%;
+		width: 50%;
+		margin: 0 2.5%;
+		max-width: 500px;
+		position: relative
+	}
+	.m-text .inner h1 {
+		font-size: 24px;
+		/*color: #383937*/
+	}
+
+	.m-text .inner p {
+		margin-top: 20px;
+		line-height: 22px;
+		font-size: 9px;
+	}
+
+	.page3 .m-phone {
+		left: 55%;
+		right: 30px;
+		-webkit-transform: translateY(-160%);
+		transform: translateY(-160%)
+	}
+
+	.page3 .post-item {
+		margin: 2px 0;
+		font-size: 9px;
+	}
+	.page3 .m-text .button {
+		display: inline-block;
+		line-height: 22px;
+		font-size: 9px;
+		margin-top: 10px;
+		border: 1px solid #989997;
+		padding: 5px 22px;
+		border-radius: 23px;
+	}
+	/*Page 4*/
+	.page4 .m-contact-wrap .m-driver {
+		width: 100%;
+		height: 180px;
+		background: url(../img/index_air.png) 50% no-repeat;
+		background-size: cover;
+		position: relative;
+		left: 0;
+		z-index: 6;
+		-webkit-transition: all .6s linear;
+		transition: all .6s linear;
+		top: 80%;
+		margin-top: -186px;
+		-webkit-transform: translateY(200%);
+		transform: translateY(200%)
+	}
+	.page4 .m-contact-wrap .m-driver .inner {
+		position: relative;
+		width: 80%;
+		height: 80%;
+		margin: 10% 10%;
+		/*top: 0;*/
+		/*left: 0;*/
+	}
+	.page4 .m-contact-wrap .m-driver .inner ul {
+		position: relative;
+		height: 2rem;
+		font-size: 0;
+		/*margin-top: 100px;*/
+		text-align: center;
+	}
+	.page4 .m-contact-wrap .m-driver .inner ul li {
+		display: inline-block;
+		top: 3rem;
+		width: 2.5rem;
+		height: 2.5rem;
+		border: 2px solid #787977;
+		border-radius: 50%;
+		margin: 0 20px;
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+		-webkit-transition: all .6s linear;
+		transition: all .6s linear;
+		opacity: 0
+	}
+
+	.page4 .m-contact-wrap .m-driver .inner ul li a {
+		display: block;
+		text-align: center;
+		width: 2.5rem;
+		height: 2.5rem;
+		border-radius: 50%;
+		color: #989997;
+		text-decoration: none;
+		font-size: 16px;
+		-webkit-transition: all .6s linear;
+		transition: all .6s linear
+	}
+
+	/*.page4 .m-contact-wrap .m-driver .inner ul li a:before, .page4 .m-contact:before {*/
+		/*content: '';*/
+		/*height: 10%;*/
+	/*}*/
+	.page4 .m-contact-wrap .m-driver .inner ul li a i {
+		width: 2rem;
+		height: 2rem;
+		 margin: 6px 2px 0 -2px;
+	}
+	.page4 .m-contact .txt {
+		width: 80%;
+		height: 50%;
+		/*margin-top: 10%;*/
+	}
+	.page4 .m-contact .txt p {
+		font-size: 9px;
+		line-height: 16px;
+		text-align: center;
 	}
 }
 
@@ -2386,6 +2749,8 @@ h1 {
 	left: 50%;
 	bottom: -8px;
 	margin-left: -8px
+
+
 }
 
 #smohan-title-tip.top:after {
