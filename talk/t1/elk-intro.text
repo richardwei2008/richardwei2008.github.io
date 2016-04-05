@@ -1,0 +1,733 @@
+title: ELK 实时日志监控系统
+subtitle: Elasticsearch + Logstash + Kibana
+author: 魏喆
+
+
+%%%%%
+%% Add some inline style rules...
+
+%css
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+body {
+  color: white;
+  font-family: STKaiti;
+  background-image: -webkit-linear-gradient(top , silver, white);
+  background-image:    -moz-linear-gradient(top left, silver, white);
+  background-image:     -ms-linear-gradient(top left, silver, white);
+  background-image:      -o-linear-gradient(top left, silver, white);
+  background-image:         linear-gradient(top left, silver, white);
+}
+
+.step {
+  width: 800px;
+  height: 450px;
+  padding: 40px 60px;
+
+  font-size: 48px;
+  text-align: center;
+
+  opacity: 0.3;
+}
+
+.step.active {
+  opacity: 1;
+}
+
+.slide {
+  background-image: -webkit-linear-gradient(top , #000000, #5A77A9);
+  background-image:    -moz-linear-gradient(top , #000000, #5A77A9);
+  background-image:     -ms-linear-gradient(top , #000000, #5A77A9);
+  background-image:      -o-linear-gradient(top , #000000, #5A77A9);
+  background-image:         linear-gradient(top , #000000, #5A77A9);
+}
+
+code {
+  background-color: yellow;
+  font-size: 14px;
+}
+
+h3 {
+  margin: auto 10px;
+}
+h4 {
+  margin: auto 10px;
+  color: black;
+}
+h6 {
+  position: absolute;
+  top: 100%;
+  left: 100%;
+  margin-top: -5%;
+  margin-left: -15%;
+  text-align: right;
+  font-size: 14px;
+}
+.container {
+  align: center;
+  height: 60%;
+  width: 100%
+}
+.exception-left {
+  position: absolute;
+  display: inline-block;
+  float: left;
+  height: 50%;
+  width: 49%;
+  top:0;
+  left:30%;
+  background:url(./images/1-1-2.png);
+  background-size:50% 60%;
+  background-repeat:no-repeat;
+}
+.exception-right {
+  position: relative;
+  display: inline-block;
+  height: 100%;
+  width: 49%;
+  background:url(./images/1-1-1.png);
+  background-size:100% 100%;
+  background-repeat:no-repeat;
+}
+
+.attack-left {
+  position: relative;
+  display: inline-block;
+  height: 100%;
+  width: 49%;
+  background:url(./images/1-2-1.png);
+  background-size:100% 100%;
+  background-repeat:no-repeat;
+}
+.attack-right {
+  position: relative;
+  display: inline-block;
+  height: 100%;
+  width: 49%;
+  background:url(./images/1-2-2.png);
+  background-size:100% 100%;
+  background-repeat:no-repeat;
+}
+.crash-left {
+  position: relative;
+  display: inline-block;
+  height: 100%;
+  width: 80%;
+  background:url(./images/1-3.png);
+  background-size:100% 100%;
+  background-repeat:no-repeat;
+}
+.monitor-system {
+  position: relative;
+  display: inline-block;
+  height: 100%;
+  width: 80%;
+  background:url(./images/1-4.png);
+  background-size:100% 100%;
+  background-repeat:no-repeat;
+}
+.monitor-cpu {
+  position: relative;
+  display: inline-block;
+  height: 100%;
+  width: 80%;
+  background:url(./images/1-5.png);
+  background-size:100% 100%;
+  background-repeat:no-repeat;
+}
+.monitor-latency {
+  position: relative;
+  display: inline-block;
+  height: 100%;
+  width: 80%;
+  background:url(./images/1-6.png);
+  background-size:100% 100%;
+  background-repeat:no-repeat;
+}
+.user-popular {
+  position: relative;
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  background:url(./images/1-7.png);
+  background-size:100% 100%;
+  background-repeat:no-repeat;
+}
+.user-location {
+  position: relative;
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  background:url(./images/1-8.png);
+  background-size:100% 100%;
+  background-repeat:no-repeat;
+}
+.user-bestseller {
+  position: relative;
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  background:url(./images/1-9.png);
+  background-size:100% 100%;
+  background-repeat:no-repeat;
+}
+.elk-overview {
+  position: relative;
+  display: inline-block;
+  height: 80%;
+  width: 80%;
+  background:url(./images/1-10.png);
+  background-size:100% 100%;
+  background-repeat:no-repeat;
+}
+.elk-visualization {
+  position: relative;
+  display: inline-block;
+  height: 80%;
+  width: 80%;
+  background:url(./images/1-11.png);
+  background-size:100% 100%;
+  background-repeat:no-repeat;
+}
+.elk-biz {
+  position: relative;
+  display: inline-block;
+  height: 80%;
+  width: 80%;
+  background:url(./images/1-12.png);
+  background-size:100% 100%;
+  background-repeat:no-repeat;
+}
+.elk-adopt {
+  position: relative;
+  display: inline-block;
+  height: 80%;
+  width: 80%;
+  background:url(./images/1-13.png);
+  background-size:100% 100%;
+  background-repeat:no-repeat;
+}
+.elk-splunk {
+position: relative;
+display: inline-block;
+height: 80%;
+width: 80%;
+background:url(./images/1-14.png);
+background-size:100% 100%;
+background-repeat:no-repeat;
+}
+.elk-hadoop {
+position: relative;
+display: inline-block;
+height: 80%;
+width: 80%;
+background:url(./images/1-15.png);
+background-size:100% 100%;
+background-repeat:no-repeat;
+}
+.elk-lucene {
+position: relative;
+display: inline-block;
+height: 80%;
+width: 80%;
+background:url(./images/1-16.png);
+background-size:100% 100%;
+background-repeat:no-repeat;
+}
+.elk-eval {
+position: relative;
+display: inline-block;
+margin: 10% auto;
+height: 40%;
+width: 80%;
+background:url(./images/1-17.png);
+background-size:100% 100%;
+background-repeat:no-repeat;
+}
+.elk-industry {
+position: relative;
+display: inline-block;
+margin: 10% auto;
+height: 80%;
+width: 80%;
+background:url(./images/1-18.png);
+background-size:100% 100%;
+background-repeat:no-repeat;
+}
+.elk-itiaoling {
+position: relative;
+display: inline-block;
+margin: 10% auto;
+height: 80%;
+width: 80%;
+background:url(./images/1-19.png);
+background-size:100% 100%;
+background-repeat:no-repeat;
+}
+.cluster-monitor {
+  position: relative;
+  display: inline-block;
+  height: 80%;
+  width: 80%;
+  background:url(./images/3-1.png);
+  background-size:100% 100%;
+  background-repeat:no-repeat;
+}
+.crm-monitor {
+  position: relative;
+  display: inline-block;
+  height: 80%;
+  width: 80%;
+  background:url(./images/3-2.png);
+  background-size:100% 100%;
+  background-repeat:no-repeat;
+}
+%end
+
+
+%%%%%%%%%%%%%%%%%%%
+%% Here we go...
+
+
+!SLIDE slide x=-1000 y=-1500
+
+<h2>ELK 实时日志监控系统</h2>
+<h5>Elasticsearch + Logstash + Kibana</h5>
+
+
+!SLIDE slide x=0 y=-1500
+
+<h3>议程</h3>
+<div>
+<ul style="text-align: left; font-size: 32px">
+<li>第一部分：为什么是 ELK？</li>
+  <ul>
+    <li>关注点</li>
+    <li>选择 ELK</li>
+  </ul>
+<li>第二部分：原理与应用</li>
+<li>第三部分：实施状态</li>
+<li>第四部分：使用演示</li>
+<li>第五部分：未来</li>
+</ul>
+</div>
+
+
+!SLIDE slide x=1000 y=-1500
+
+<h2>第一部分</h2>
+<h2>为什么是 ELK？</h2>
+
+
+!SLIDE x=0 y=0 scale=4
+
+<h4>我们可能</h4>
+<h4>想知道</h4>
+
+
+!SLIDE x=-250 y=3000 rotate=90 scale=5
+
+<h3 style="color: black;">昨天凌晨2:12到2:39</h3>
+<h3 style="color: black;">系统的异常是什么</h3>
+<h3 style="color: black; font-family: arial">?</h3>
+<div class="container">
+  <div class="exception-right">
+    <div class="exception-left"></div>
+  </div>
+</div>
+
+
+!SLIDE x=3500 y=2100 rotate=180 scale=6
+<h3 style="color: black;">是否正遭到DDOS攻击</h3>
+<h3 style="color: black; font-family: arial">?</h3>
+<div class="container">
+  <div class="attack-left"></div>
+  <div class="attack-right"></div>
+</div>
+
+
+!SLIDE x=-2000 y=-1100 rotate=270 scale=1
+<h3 style="color: black;">有个节点宕机了</h3>
+<h3 style="color: black;">你不知道吗</h3>
+<h3 style="color: black; font-family: arial">?</h3>
+<div class="container">
+  <div class="crash-left"></div>
+</div>
+
+
+!SLIDE x=-4500 y=-1850 z=-3000 rotate=300 scale=1
+
+<h3 style="color: black;">是CPU的问题还是内存的问题?</h3>
+<div class="monitor-system"></div>
+
+
+!SLIDE x=-4000 y=-850 rotate=270 scale=6
+
+<div class="monitor-cpu"></div>
+
+
+!SLIDE x=-3000 y=-3550 rotate=30 scale=1
+
+<h3 style="color: black;">用户抱怨，系统怎么又变慢了?</h3>
+<div class="monitor-latency"></div>
+
+
+!SLIDE x=6700 y=-300 scale=1
+
+<h2 style="color: black;">不只是系统</h2>
+<h2 style="color: black;">还有更多</h2>
+
+
+!SLIDE x=8300 y=2000 rotate=40 scale=4
+
+<h3 style="color: black;">用户搜索热词是什么?</h3>
+<div class="user-popular"></div>
+
+
+!SLIDE x=6000 y=5000 rotate=20 scale=2
+
+<h3 style="color: black;">我们的客户是从哪里来的?</h3>
+<div class="user-location"></div>
+
+!SLIDE x=4000 y=8000 scale=2
+
+<h3 style="color: black;">我们最好卖的产品是什么?</h3>
+<div class="user-bestseller"></div>
+
+
+!SLIDE x=6200 y=7300 z=-100 rotate-x=-40 rotate-y=10 scale=2
+
+<h3 style="color: black;">不止这些</h3>
+<div style="color: black;">
+  <ul style="text-align: left; font-size: 32px">
+    <li>过去5分钟CRM有多少活跃用户?</li>
+    <li>过去3秒钟官网有多少人下单发货?</li>
+    <li>过去1个小时有多少货物发出?</li>
+    <li>当前有多少车在路上跑?</li>
+    <li>……</li>
+    <li>……</li>
+  </ul>
+</div>
+
+!SLIDE x=3000 y=1500 scale=10
+
+<h4>ELK 还可以告诉</h4>
+<h4>我们</h4>
+<h4>上一秒发生了什么</h4>
+
+
+!SLIDE slide x=2000 y=-1500
+
+<h3>ELK ＝ Elasticsearch + Logstash + Kibana</h3>
+<div class="elk-overview"></div>
+
+
+!SLIDE slide x=3000 y=-1500
+
+<h2>为什么选ELK?</h2>
+
+
+
+!SLIDE x=3000 y=-2500 rotate=10
+
+<h4>不只是日志</h4>
+<h4>还有可视化</h4>
+
+
+!SLIDE x=3000 y=-3500 rotate=20
+
+<div class="elk-visualization"></div>
+
+
+!SLIDE x=3000 y=-4500 rotate=30
+
+<div class="elk-biz"></div>
+
+
+!SLIDE x=3000 y=-5500 rotate=40
+
+<h4>好孩子</h4>
+<h4>都在用</h4>
+
+
+!SLIDE x=3000 y=-6500 rotate=50
+
+<div class="elk-adopt"></div>
+
+
+!SLIDE x=4000 y=-6500 rotate=50
+
+<h4>为什么不用</h4>
+<h4>其他的？</h4>
+
+
+!SLIDE x=4000 y=-5500 rotate=40
+
+<h3 style="color: black;">为什么不用Splunk?</h3>
+<div class="elk-splunk"></div>
+
+
+!SLIDE x=4000 y=-4500 rotate=30
+
+<h3 style="color: black;">为什么不用Hadoop?</h3>
+<div class="elk-hadoop"></div>
+
+
+!SLIDE x=4000 y=-3500 rotate=20
+
+<h3 style="color: black;">为什么不用Lucene?</h3>
+<div class="elk-lucene"></div>
+
+!SLIDE x=4000 y=-2500 rotate=10
+
+<h3 style="color: black;">为什么不?</h3>
+<div class="elk-eval"></div>
+
+
+!SLIDE x=3500 y=-2000 rotate=-90  scale=0.8
+
+<h3 style="color: black;">别人家的孩子</h3>
+<h4>可能是这样</h4>
+
+
+!SLIDE x=3800 y=-2200 scale=0.5
+
+<div class="elk-industry"></div>
+
+
+!SLIDE x=4000 y=-2000 rotate=90 scale=0.2
+
+<h3 style="color: black;">咱家的孩子</h3>
+<h4>可能是这样</h4>
+
+
+!SLIDE slide x=4000 y=-1500
+
+<div class="elk-itiaoling"></div>
+<h6>第一部分结束</h6>
+
+
+%% 第一部分结束
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+!SLIDE slide x=5000 y=-1500
+
+<h2>第二部分</h2>
+<h2>原理与应用</h2>
+
+
+!SLIDE x=5000 y=-2000 rotate-x=90 rotate-y=-60 scale=1
+
+<h3 style="color: black;">三角模型：大数据、精确性和实时性</h3>
+<div style="color: black;">
+  <ul style="text-align: left; font-size: 32px">
+    <li>精确 + 实时</li>
+    <ul>
+      <li>数据可以存入单台机器的内存之中，我们可以随心所欲，使用任何想用的算法。结果会 100% 精确，响应会相对快速。</li>
+    </ul>
+    <li>大数据 + 精确</li>
+    <ul>
+      <li>传统的 Hadoop。可以处理 PB 级的数据并且为我们提供精确的答案，但它可能需要几周的时间才能为我们提供这个答案。</li>
+    </ul>
+    <li>大数据 + 实时</li>
+    <ul>
+      <li>近似算法为我们提供准确但不精确的结果。</li>
+    </ul>
+  </ul>
+</div>
+
+
+!SLIDE x=10000 y=-2000 rotate-x=90 rotate-y=-60 scale=1
+
+<h3 style="color: black;">信息检索</h3>
+<div style="color: black;">
+  <ul style="text-align: left; font-size: 32px">
+    <li>搜索引擎 Lucene</li>
+    <ul>
+      <li>Inverted Index</li>
+      <li>Stored Field</li>
+      <li>Document Values</li>
+    </ul>
+    <li>分布式存储</li>
+    <ul>
+      <li>索引 Index</li>
+      <li>分片 Sharding</li>
+      <li>选举 Quorum</li>
+      <li>路由 Routing</li>
+    </ul>
+  </ul>
+</div>
+
+!SLIDE x=15000 y=-2000 rotate-x=90 rotate-y=-60 scale=1
+
+<h3 style="color: black;">实时（NRT）</h3>
+<div style="color: black;">
+  <ul style="text-align: left; font-size: 32px">
+    <li>收集：pipe</li>
+    <li>查询：过滤器缓存</li>
+    <li>聚合：统计规则与机器学习</li>
+    <ul>
+      <li>分词算法</li>
+      <li>压缩算法</li>
+      <li>各级缓存</li>
+    </ul>
+  </ul>
+</div>
+
+!SLIDE x=15000 y=1000 rotate-x=90 rotate-y=-60 scale=1
+
+<h3 style="color: black;">Elasticsearch 2.x 权威指南</h3>
+<div style="color: black;">
+  <ul style="text-align: left; font-size: 32px">
+    <li>第二部分：深入搜索</li>
+    <li>第三部分：自然语言处理</li>
+    <li>第四部分：信息聚合</li>
+  </ul>
+</div>
+
+!SLIDE x=20000 y=4000 rotate-x=90 rotate-y=-60 scale=1
+
+<h3 style="color: black;">远不止商业智能</h3>
+<div style="color: black;">
+  <ul style="text-align: left; font-size: 32px">
+    <li>实时推荐</li>
+    <ul>
+      <li>电商网站个性推荐</li>
+    </ul>
+    <li>机器学习与深度学习</li>
+    <ul>
+      <li>信用卡欺诈</li>
+    </ul>
+  </ul>
+</div>
+
+
+!SLIDE slide x=6000 y=-1500
+
+<h2>改变</h2>
+<h2>组织和企业的</h2>
+<h2>游戏规则</h2>
+<h6>第二部分结束</h6>
+
+%% 第二部分结束
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+!SLIDE slide x=7000 y=-1500
+
+<h2>第三部分</h2>
+<h2>实施状态</h2>
+
+!SLIDE x=7200 y=-3500 rotate-x=-30 rotate-y=10 scale=1
+
+<h3 style="color: black;">状态</h3>
+<div style="color: black;">
+  <ul style="text-align: left; font-size: 32px">
+    <li>评估完成</li>
+    <li>本地集群环境搭建完成</li>
+    <li>基本测试完成</li>
+    <li>特许接入完成（3月4日）</li>
+    <li>产品环境搭建完成</li>
+    <li>CRM 接入完成（3月25日）</li>
+  </ul>
+</div>
+
+
+!SLIDE x=8800 y=-3000 rotate-x=-90 rotate-y=30 scale=1
+
+<h3 style="color: black;">ELK 集群环境</h3>
+<div class="cluster-monitor"></div>
+
+
+!SLIDE slide x=8000 y=-1500
+
+<h3>CRM Web/App 日志监控</h3>
+<div class="crm-monitor"></div>
+<h6>第三部分结束</h6>
+
+%% 第三部分结束
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+!SLIDE slide x=9000 y=-1500
+
+<h2>第四部分</h2>
+<h2>使用演示</h2>
+
+
+!SLIDE x=9500 y=-500 rotate=60 scale=1
+
+<h3 style="color: black;">演示地址</h3>
+<div style="color: black;">
+  <ul style="text-align: left; font-size: 32px">
+    <li>Kopf </li>
+    <ul>
+      <li>集群监控</li>
+      <ul>
+        <li><a href="http://10.39.59.90:9200/_plugin/kopf/">http://10.39.59.90:9200/_plugin/kopf/</a></li>
+      </ul>
+    </ul>
+    <li>Kibana 仪表盘</li>
+    <ul>
+      <li>系统监控</li>
+      <ul>
+        <li><a href="http://10.39.59.90:5601/app/kibana#/dashboard/Topbeat-Dashboard">http://10.39.59.90:5601/app/kibana#/dashboard/Topbeat-Dashboard</a></li>
+      </ul>
+      <li>应用监控（CRM）</li>
+      <ul>
+        <li><a href="http://10.39.59.90:5601/app/kibana#/dashboard/CRM-Dashboard">http://10.39.59.90:5601/app/kibana#/dashboard/CRM-Dashboard</a></li>
+      </ul>
+    </ul>
+  </ul>
+</div>
+
+
+!SLIDE slide x=10000 y=-1500
+
+<h3>如何监控/查询异常</h3>
+<div>
+  <ul style="text-align: left; font-size: 32px">
+    <li>发现 Discover -> </li>
+    <li>索引（crmweblog-*）-> </li>
+    <li>搜索</li>
+    <ul>
+      <li>loglevel : error</li>
+      <li>msg : [orderNo]</li>
+    </ul>
+  </ul>
+</div>
+<h6>第四部分结束</h6>
+
+%% 第四部分结束
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+!SLIDE slide x=11000 y=-1500
+
+<h2>第五部分</h2>
+<h2>未来</h2>
+
+!SLIDE x=11500 y=-2000 rotate=20 scale=1
+
+<h3 style="color: black;">未来</h3>
+<div style="color: black;">
+  <ul style="text-align: left; font-size: 32px">
+    <li>更多应用程序接入</li>
+    <li>短信、微信、企业号消息通知</li>
+    <li>应用程序日志规范</li>
+    <li>集群监控、优化、扩展开发</li>
+    <li>高级应用</li>
+  </ul>
+</div>
+
+!SLIDE slide x=12000 y=-1500
+
+<h2>谢谢！</h2>
+
+%% The End
+%%%%%%%%%%%%%%%

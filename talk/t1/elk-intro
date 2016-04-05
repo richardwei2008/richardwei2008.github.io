@@ -1,0 +1,34 @@
+title : ELK 实时日志系统
+subtitle : Elasticsearch + Logstash + Kibana
+
+# 第一部分：为什么是 ELK？
+
+- What's REST?
+- Universal Identifiers, Formats & Protocols
+- The Holy REST Trinity - Noun, Verbs, Types
+- REST Design Principles
+- Architecture Astronaut REST Speak
+
+
+# 第二部分：原理与应用
+
+rest - n. - peace, ease, or refreshment resulting from the insight that the web works
+
+No matter what vendors tell you - no need to "Light Up the Web" - relax - built on
+an *open architecture using universal identifiers, formats & protocols and __evolving__
+open standards* - no need to reinvent the wheel and sign-up for single-vendor offerings.
+
+### Broad Definition
+
+- Best Practices for Designing Web Services for a Unified Human and Programable Web
+
+### Narrow Definition
+
+- Alternative to BigCo Web Services (SOAP, WS-*) and RPC-Style Web Services (XML-RPC)
+
+
+# 第三部分：实施状态
+
+# 第四部分：使用演示
+
+# 第五部分：未来
