@@ -1373,7 +1373,7 @@ h1 {
 }
 
 .page4 .m-contact {
-	/*width: 400px;*/
+	width: 400px;
 	position: absolute;
 	right: 0;
 	top: 0;
@@ -2277,62 +2277,102 @@ h1 {
 }
 
 
-@media screen and (min-width: 321px) and (max-width:480px) {
-	#navgation:before {
-		width: 100%
-	}
-
-	.page1 h1 {
-		width: 100%;
-		height: 40px;
-		font-size: 24px;
-		margin: 0 auto 0 auto
-	}
-	.page1 .m-driver {
-		width: 300px;
-		height: 184px;
-		margin-top: 10px
-	}
-	.page1 .m-driver .inner {
-		position: relative;
-		z-index: 5;
-		width: 76%;
-		height: 82%;
-		margin: 3% 12%;
-		margin-bottom: 12%;
-		background-color: hsla(90, 3%, 13%, 0.45);
-	}
-	.page1 .inner .logo {
-		width: 5rem;
-		height: 5rem;
-		background: url(../img/logo-flat.png) no-repeat;
-		background-size: cover;
-		display: block;
-		margin: 1rem auto
-	}
-	.page1 .inner .button,.page2 .button {
-		width: 50%;
-		height: 30px;
-		border: 2px solid rgba(255,255,255,.8);
-		border-radius: 50px;
-		display: block;
-		margin: 0 auto;
-		line-height: 30px;
-		text-align: center;
-		color: rgba(255,255,255,.8);
-		font-size: 12px;
-		text-decoration: none;
-		overflow: hidden;
-		position: relative;
-		-webkit-transition: all .6s linear;
-		transition: all .6s linear
-	}
-}
-
-@media screen and (max-width:320px) {
+@media screen and (max-width:480px) {
 	#navgation:before {
 		width: 80%
 	}
+	.u-menu-btn {
+		display: block;
+		width: 30px;
+		height: 30px;
+		position: fixed;
+		top: 70px;
+		right: 15px;
+		z-index: 100;
+		background-color: rgba(0,0,0,.1);
+		border-radius: 50%;
+		-webkit-transition: background-color .3s linear;
+		transition: background-color .3s linear;
+	}
+	.u-menu-btn span:nth-of-type(1) {
+		top: 10px
+	}
+
+	.u-menu-btn span:nth-of-type(2) {
+		top: 16px
+	}
+
+	.u-menu-btn span:nth-of-type(3) {
+		top: 22px
+	}
+
+	.u-menu-btn:hover span:nth-of-type(1) {
+		top: 9px
+	}
+
+	.u-menu-btn:hover span:nth-of-type(3) {
+		top: 23px
+	}
+
+	.u-menu-btn.close span {
+		background-color: #787977
+	}
+
+	.u-menu-btn.close span:nth-of-type(1) {
+		top: 16px;
+		-webkit-transform: rotateZ(45deg);
+		-moz-transform: rotateZ(45deg);
+		transform: rotateZ(45deg)
+	}
+
+	.u-menu-btn.close span:nth-of-type(2) {
+		opacity: 0
+	}
+
+	.u-menu-btn.close span:nth-of-type(3) {
+		top: 16px;
+		-webkit-transform: rotateZ(-45deg);
+		-moz-transform: rotateZ(-45deg);
+		transform: rotateZ(-45deg)
+	}
+	.u-menu-btn span {
+		display: inline-block;
+		width: 18px;
+		height: 2px;
+		position: absolute;
+		left: 7px;
+		background-color: #fff;
+		-webkit-backface-visibility: hidden;
+		-moz-backface-visibility: hidden;
+		backface-visibility: hidden;
+		-webkit-transition: all .6s cubic-bezier(0.165,0.840,0.440,1.000);
+		-moz-transition: all .6s cubic-bezier(0.165,0.840,0.440,1.000);
+		transition: all .6s cubic-bezier(0.165,0.840,0.440,1.000);
+	}
+	.page-dots {
+		position: fixed;
+		width: 14px;
+		top: 50%;
+		right: 20px;
+		z-index: 50;
+		margin-top: -134px
+	}
+	.music-wrap {
+		display: block;
+		width: 46px;
+		height: 46px;
+		position: fixed;
+		top: 50%;
+		margin-top: 134px;
+		right: 20px;
+		z-index: 52;
+		margin-right: -16px;
+		-webkit-transform-style: preserve-3d;
+		background: url(../img/smohan_icons.png) -180px 0 no-repeat;
+		overflow: hidden;
+	}
+
+	/* Page 1 */
 	.page1 h1 {
 	 	width: 100%;
 		height: 40px;
@@ -2367,7 +2407,7 @@ h1 {
 		border: 1px solid rgba(255,255,255,.8);
 		border-radius: 50px;
 		display: block;
-		margin: 0 auto;
+		margin: 3px auto;
 		line-height: 24px;
 		text-align: center;
 		color: rgba(255,255,255,.8);
@@ -2379,18 +2419,37 @@ h1 {
 		transition: all .6s linear
 	}
 
+	 /* Page 2 */
 	.page2 .m-phone,.page3 .m-phone {
 		width: 120px;
 		height: 213px;
 		position: absolute;
-		left: 50px;
+		left: 50%;
 		top: 50%;
 		margin-top: -142px;
 		-webkit-transform: translateY(160%);
 		transform: translateY(160%);
 		opacity: .2
 	}
+	@-webkit-keyframes blogMoveStep2 {
+		from {
+			left: 50%
+		}
 
+		to {
+			left: 55%
+		}
+	}
+
+	@keyframes blogMoveStep2 {
+		from {
+			left: 50%
+		}
+
+		to {
+			left: 55%
+		}
+	}
 	.page2 .m-phone.shadow,.page3 .m-phone.shadow {
 		background: url(../img/index_p2_main.png) 50% no-repeat;
 		background-size: cover;
@@ -2433,9 +2492,10 @@ h1 {
 		background-position: -90px -59px;
 		right: 2px
 	}
+
 	.page2 .m-phone.blog .post-cover,.page3 .m-phone.works .post-cover {
 		margin: 5px;
-		height: 92px;
+		height: 72px;
 		overflow: hidden;
 		-webkit-box-sizing: border-box;
 		box-sizing: border-box;
@@ -2445,7 +2505,19 @@ h1 {
 		margin: 2px 0;
 		font-size: 9px;
 	}
-
+	.page2 .post-item li, .page3 .post-item li {
+		display: block;
+		border-bottom: 1px dashed #585857;
+		padding: 0px 10px;
+		overflow: hidden;
+	}
+	.page2 .m-phone.blog .post-cover img, .page3 .m-phone.works .post-cover img {
+		display: block;
+		width: 100%;
+		height: 72px;
+		position: relative;
+		-webkit-filter: grayscale(100%);
+	}
 	.page2 .about-wrap {
 		width: 100%;
 		text-align: center;
@@ -2647,11 +2719,23 @@ h1 {
 		border-radius: 23px;
 	}
 	/*Page 4*/
+	.page4 .m-contact {
+		width: 100%;
+		position: absolute;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		color: #585957;
+		text-align: center;
+		opacity: .1;
+		-webkit-transform: translateX(400px);
+		transform: translateX(400px)
+	}
 	.page4 .m-contact-wrap .m-driver {
 		width: 100%;
-		height: 180px;
+		height: 25%;
 		background: url(../img/index_air.png) 50% no-repeat;
-		background-size: cover;
+		background-size: contain;
 		position: relative;
 		left: 0;
 		z-index: 6;
