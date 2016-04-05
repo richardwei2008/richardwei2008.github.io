@@ -1863,6 +1863,10 @@ h1 {
 	left: 50%;
 	/* top: -80px; */
 	transform:translate(-50%,-50%);
+	-ms-transform:translate(-50%,-50%);	/* IE 9 */
+	-moz-transform:translate(-50%,-50%); 	/* Firefox */
+	-webkit-transform:translate(-50%,-50%); /* Safari 和 Chrome */
+	-o-transform:translate(-50%,-50%);
 	z-index: 5;
 }
 .tans{
