@@ -2285,6 +2285,16 @@ h1 {
 	#navgation:before {
 		width: 80%
 	}
+	.page-init .inner {
+		position: absolute;
+		 float: left;
+		top: 0%;
+		left: 0%;
+		/* top: -80px; */
+		transform:translate(-50%,-50%);
+		z-index: 5;
+	}
+
 	.u-menu-btn {
 		display: block;
 		width: 30px;
