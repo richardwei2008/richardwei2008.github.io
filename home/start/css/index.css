@@ -231,7 +231,8 @@ h1 {
 }
 
 .page1 h1 {
-	width: 680px;
+	/*width: 680px;*/
+	width: 100%;
 	height: 60px;
 	/*background: url(../img/index_p1_h1.png) 50% no-repeat;*/
 	/*background-size: 100% auto;*/
