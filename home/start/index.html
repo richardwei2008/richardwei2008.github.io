@@ -404,21 +404,18 @@
             }
         });
 
-        function playAudio() {
-            var audio = $('#my-audio')[0];
-            if (!audio.paused) {
-                audio.pause();
-            }
-            alert(audio);
-            audio.play();
-        }
         $('#smohan-v4-music').bind('click', function(e) {
             alert("clicked");
+            var myAudio = $('#my-audio')[0];
             if (!$(this).hasClass('play-safari')) {
-                $('#my-audio')[0].pause();
+                myAudio.pause();
                 return;
             }
-            playAudio();
+            if (!myAudio.paused) {
+                myAudio.pause();
+            }
+            alert(myAudio);
+            myAudio.play();
         })
 
         $("#next-page-for-init").bind("click", function() {
