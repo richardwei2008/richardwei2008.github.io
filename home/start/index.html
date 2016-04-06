@@ -403,16 +403,17 @@
                 stopVideo();
             }
         });
-        var audio = $('#my-audio')[0];
-        var playAudio = function() {
+
+        function playAudio() {
+            var audio = $('#my-audio')[0];
             if (!audio.paused) {
                 audio.pause();
             }
             audio.play();
-        };
+        }
         $('#smohan-v4-music').on('click', function(e) {
             if (!$(this).hasClass('play-safari')) {
-                audio.pause();
+                $('#my-audio')[0].pause();
                 return;
             }
             playAudio();
@@ -421,7 +422,7 @@
         $("#next-page-for-init").bind("click", function() {
             swiper.slideNext();
         })
-        playAudio();
+//        playAudio();
     })();
 
 </script>
