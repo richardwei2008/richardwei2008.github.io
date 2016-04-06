@@ -412,7 +412,8 @@
             alert(audio);
             audio.play();
         }
-        $('#smohan-v4-music').on('click', function(e) {
+        $('#smohan-v4-music').bind('click', function(e) {
+            alert("clicked");
             if (!$(this).hasClass('play-safari')) {
                 $('#my-audio')[0].pause();
                 return;
