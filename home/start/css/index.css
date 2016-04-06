@@ -8,35 +8,62 @@ html,body {
 	user-select: none
 }
 
-#smohan-v4-container {
-	width: 100%;
-	height: 100%;
-	position: relative;
-	-webkit-transform: translate3d(0,0,0);
-	transform: translate3d(0,0,0)
-}
+/*#smohan-v4-container {*/
+	/*width: 100%;*/
+	/*height: 100%;*/
+	/*position: relative;*/
+	/*-webkit-transform: translate3d(0,0,0);*/
+	/*transform: translate3d(0,0,0)*/
+/*}*/
 
-#smohan-v4-container section {
+/*#smohan-v4-container section {*/
+	/*height: 100%;*/
+	/*width: 100%;*/
+	/*background-color: #000;*/
+	/*overflow: hidden*/
+/*}*/
+
+/*#smohan-v4-container section:nth-of-type(2n) {*/
+	/*background-color: #f1f2f0*/
+/*}*/
+
+/*#smohan-v4-container section:nth-of-type(4) {*/
+	/*background: url(../img/index_contact.jpg) 50% no-repeat scroll;*/
+	/*background-size: contain*/
+/*}*/
+
+/*#smohan-v4-container section .grid-auto-wrapper {*/
+	/*width: 100%;*/
+	/*max-width: 1280px;*/
+	/*margin: 0 auto;*/
+	/*height: 100%;*/
+	/*position: relative*/
+/*}*/
+
+.swiper-wrapper .swiper-slide section {
 	height: 100%;
+	width: 100%;
 	background-color: #000;
 	overflow: hidden
 }
-
-#smohan-v4-container section:nth-of-type(2n) {
+.swiper-wrapper .swiper-slide:nth-of-type(2n) section {
 	background-color: #f1f2f0
 }
-
-#smohan-v4-container section:nth-of-type(4) {
+.swiper-wrapper .swiper-slide:nth-of-type(4) section {
 	background: url(../img/index_contact.jpg) 50% no-repeat scroll;
 	background-size: contain
 }
 
-#smohan-v4-container section .grid-auto-wrapper {
+.swiper-wrapper .swiper-slide section .grid-auto-wrapper {
 	width: 100%;
 	max-width: 1280px;
 	margin: 0 auto;
 	height: 100%;
 	position: relative
+}
+.swiper-slide section {
+	width: 100%;
+	height: 100%;
 }
 
 h1 {
@@ -44,83 +71,83 @@ h1 {
 }
 
 #v4-pre-loaded {
-    background-color: #000;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    overflow: hidden;
-    z-index: 19900207;
-    text-align: center;
-    -webkit-transition: all .36s linear;
-    transition: all .36s linear
+	background-color: #000;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	overflow: hidden;
+	z-index: 19900207;
+	text-align: center;
+	-webkit-transition: all .36s linear;
+	transition: all .36s linear
 }
 
 #v4-pre-loaded:before,#v4-pre-loaded .loading {
-    display: inline-block;
-    vertical-align: middle
+	display: inline-block;
+	vertical-align: middle
 }
 
 #v4-pre-loaded:before {
-    content: '';
-    height: 100%
+	content: '';
+	height: 100%
 }
 
 #v4-pre-loaded .loading {
-    width: 146px;
-    height: 146px;
-    background: url(../img/smohan_logo_mask.png) 50% no-repeat;
-    background-size: cover;
-    -webkit-transition: all .36s linear;
-    transition: all .36s linear;
-    -webkit-animation: loadingInit 1.3s cubic-bezier(0.30, 2.40, 0.85, 2.50) infinite;
-              animation: loadingInit 1.3s cubic-bezier(0.30, 2.40, 0.85, 2.50) infinite; 
-    /*margin-top: -148px*/
+	width: 146px;
+	height: 146px;
+	background: url(../img/smohan_logo_mask.png) 50% no-repeat;
+	background-size: cover;
+	-webkit-transition: all .36s linear;
+	transition: all .36s linear;
+	-webkit-animation: loadingInit 1.3s cubic-bezier(0.30, 2.40, 0.85, 2.50) infinite;
+	animation: loadingInit 1.3s cubic-bezier(0.30, 2.40, 0.85, 2.50) infinite;
+	/*margin-top: -148px*/
 }
 
 #v4-pre-loaded .loading:after {
-    width: 100%;
-    line-height: 36px;
-    content: 'The page is loading...';
-    position: absolute;
-    left: 0;
-    bottom: -36px;
-    font-size: 14px;
-    text-align: center;
-    color: #787977;
-    opacity: 0;
-    -webkit-transition: opacity .36s linear;
-    transition: opacity .36s linear;
-    -webkit-animation: fadeIn .8s linear 1s 1 forwards;
-    animation: fadeIn .8s linear 1s 1 forwards
+	width: 100%;
+	line-height: 36px;
+	content: 'The page is loading...';
+	position: absolute;
+	left: 0;
+	bottom: -36px;
+	font-size: 14px;
+	text-align: center;
+	color: #787977;
+	opacity: 0;
+	-webkit-transition: opacity .36s linear;
+	transition: opacity .36s linear;
+	-webkit-animation: fadeIn .8s linear 1s 1 forwards;
+	animation: fadeIn .8s linear 1s 1 forwards
 }
 
 @-webkit-keyframes loadingInit {
-    from, to {
-    -webkit-transform: translateY(-15vh) scaleY(1.02);
-            transform: translateY(-15vh) scaleY(1.02);
-    }
-    80% {
-    -webkit-transform: translateY(-30vh) scaleY(.98);
-            transform: translateY(-30vh) scaleY(.98);
-    }
+	from, to {
+		-webkit-transform: translateY(-15vh) scaleY(1.02);
+		transform: translateY(-15vh) scaleY(1.02);
+	}
+	80% {
+		-webkit-transform: translateY(-30vh) scaleY(.98);
+		transform: translateY(-30vh) scaleY(.98);
+	}
 }
 
 @keyframes loadingInit {
-    from, to {
-    -webkit-transform: translateY(-15vh) scaleY(1.02);
-            transform: translateY(-15vh) scaleY(1.02);
-    }
-    80% {
-    -webkit-transform: translateY(-30vh) scaleY(.98);
-            transform: translateY(-30vh) scaleY(.98);
-    }
+	from, to {
+		-webkit-transform: translateY(-15vh) scaleY(1.02);
+		transform: translateY(-15vh) scaleY(1.02);
+	}
+	80% {
+		-webkit-transform: translateY(-30vh) scaleY(.98);
+		transform: translateY(-30vh) scaleY(.98);
+	}
 }
 
 #v4-pre-loaded.hide {
-    opacity: 0;
-    visibility: hidden
+	opacity: 0;
+	visibility: hidden
 }
 .page-dots {
 	position: fixed;
@@ -242,7 +269,7 @@ h1 {
 .page1 h3 {
 	width: 320px;
 	height: 40px;
-	color: #898989
+	color: #898989;
 	/*background: url(../img/index_p1_p.png) 50% no-repeat;*/
 	/*background-size: 100% auto;*/
 	margin: 20px auto 0 auto
@@ -271,7 +298,7 @@ h1 {
 	/*left: 96px;*/
 	margin: 3% 12%;
 	margin-bottom: 12%;
-    background-color: hsla(90, 3%, 13%, 0.45);
+	background-color: hsla(90, 3%, 13%, 0.45);
 }
 
 .page1 .inner .logo {
@@ -308,7 +335,7 @@ h1 {
 	content: '';
 	width: 0;
 	height: 100%;
-    background-color: rgba(37, 143, 184, 0.7);
+	background-color: rgba(37, 143, 184, 0.7);
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -763,7 +790,9 @@ h1 {
 		transform: scale(1,1)
 	}
 }
-
+.page2 {
+	background-color: #f1f2f0;
+}
 .page2,.page2 .article-wrap {
 	zoom: 1
 }
@@ -863,17 +892,21 @@ h1 {
 	-webkit-filter: grayscale(100%)
 }
 
-.article-wrap.show .shadow {
-	-webkit-animation: blogMove .6s linear 0s 1 forwards,shadowMoveStep2 1.5s linear 2s 1 forwards;
-	animation: blogMove .6s linear 0s 1 forwards,shadowMoveStep2 1.5s linear 2s 1 forwards
+.swiper-slide-active section .grid-auto-wrapper .article-wrap .shadow {
+	-webkit-animation: blogMove .6s linear 0s 1 forwards,
+					shadowMoveStep2 1.5s linear 2s 1 forwards;
+	animation: blogMove .6s linear 0s 1 forwards,
+					shadowMoveStep2 1.5s linear 2s 1 forwards
 }
 
-.article-wrap.show .blog {
-	-webkit-animation: blogMove .6s linear 0s 1 forwards,blogMoveStep2 1s linear .8s 1 forwards;
-	animation: blogMove .6s linear 0s 1 forwards,blogMoveStep2 1s linear .8s 1 forwards
+.swiper-slide-active section .grid-auto-wrapper .article-wrap .blog {
+	-webkit-animation: blogMove .6s linear 0s 1 forwards,
+			blogMoveStep2 1s linear .8s 1 forwards;
+	animation: blogMove .6s linear 0s 1 forwards,
+			blogMoveStep2 1s linear .8s 1 forwards
 }
 
-.article-wrap.show .post-cover img {
+.swiper-slide-active section .grid-auto-wrapper .article-wrap .post-cover img {
 	-webkit-animation: lightImg .6s linear 2.6s 1 forwards;
 	animation: lightImg .6s linear 2.6s 1 forwards
 }
@@ -1007,7 +1040,7 @@ h1 {
 	width: 560px;
 	text-align: center;
 	height: 100%;
-    margin-top: -100px;
+	margin-top: -100px;
 	position: absolute;
 	right: 0;
 	top: 50%;
@@ -1173,24 +1206,26 @@ h1 {
 	opacity: 0
 }
 
-.about-wrap.show .m-about {
-	-webkit-animation: fadeIn 1s linear 0s 1 forwards,aboutMove 1s linear .8s 1 forwards;
-	animation: fadeIn 1s linear 0s 1 forwards,aboutMove 1s linear .8s 1 forwards
+.swiper-slide-active section .grid-auto-wrapper .about-wrap .m-about {
+	-webkit-animation: fadeIn 3s linear 0s 1 forwards,aboutMove 1s linear .8s 1 forwards;
+	animation: fadeIn 3s linear 0s 1 forwards,aboutMove 1s linear .8s 1 forwards
 }
 
-.about-wrap.show .m-time {
-	-webkit-animation: fadeIn .6s linear 1.8s 1 forwards;
-	animation: fadeIn .6s linear 1.8s 1 forwards
+.swiper-slide-active section .grid-auto-wrapper .about-wrap .m-time {
+	-webkit-animation: fadeIn 2.6s linear 1.8s 1 forwards;
+	animation: fadeIn 2.6s linear 1.8s 1 forwards
 }
 
-.about-wrap.show .m-time-run .line {
-	-webkit-animation: timeLineMove .6s linear 2.2s 1 forwards;
-	animation: timeLineMove .6s linear 2.2s 1 forwards
+.swiper-slide-active section .grid-auto-wrapper .about-wrap .m-time-run .line {
+	-webkit-animation: timeLineMove 2.6s linear 2.2s 1 forwards;
+	animation: timeLineMove 2.6s linear 2.2s 1 forwards
 }
 
-.about-wrap.show .m-time-run .line.left:after,.about-wrap.show .m-time-run .line.right:after,.about-wrap.show .m-time-start {
-	-webkit-animation: fadeIn .8s linear 2.6s 1 forwards;
-	animation: fadeIn .8s linear 2.6s 1 forwards
+.swiper-slide-active section .grid-auto-wrapper .about-wrap .m-time-run .line.left:after,
+.swiper-slide-active section .grid-auto-wrapper .about-wrap .m-time-run .line.right:after,
+.swiper-slide-active section .grid-auto-wrapper .about-wrap .m-time-start {
+	-webkit-animation: fadeIn 2.8s linear 2.6s 1 forwards;
+	animation: fadeIn 2.8s linear 2.6s 1 forwards
 }
 
 @-webkit-keyframes fadeIn {
@@ -1432,34 +1467,34 @@ h1 {
 	color: #fff
 }
 
-.page4 .m-contact-wrap.show .m-driver {
-	-webkit-animation: contactDriverMove .8s linear 0s 1 forwards;
-	animation: contactDriverMove .8s linear 0s 1 forwards
+.swiper-slide-active .page4 .m-contact-wrap .m-driver {
+	-webkit-animation: contactDriverMove 2.8s linear 0s 1 forwards;
+	animation: contactDriverMove 2.8s linear 0s 1 forwards
 }
 
-.page4 .m-contact-wrap.show .m-driver:after {
-	-webkit-animation: fadeIn 1s linear 2s 1 forwards;
-	animation: fadeIn 1s linear 2s 1 forwards
+.swiper-slide-active .page4 .m-contact-wrap .m-driver:after {
+	-webkit-animation: fadeIn 3s linear 2s 1 forwards;
+	animation: fadeIn 3s linear 2s 1 forwards
 }
 
-.page4 .m-contact-wrap.show .m-driver .inner ul li:nth-of-type(1) {
-	-webkit-animation: fadeIn .8s linear 1.2s 1 forwards;
-	animation: fadeIn .8s linear 1.2s 1 forwards
+.swiper-slide-active .page4 .m-contact-wrap .m-driver .inner ul li:nth-of-type(1) {
+	-webkit-animation: fadeIn 2.8s linear 1.2s 1 forwards;
+	animation: fadeIn 2.8s linear 1.2s 1 forwards
 }
 
-.page4 .m-contact-wrap.show .m-driver .inner ul li:nth-of-type(2) {
-	-webkit-animation: fadeIn .8s linear 1.6s 1 forwards;
-	animation: fadeIn .8s linear 1.6s 1 forwards
+.swiper-slide-active .page4 .m-contact-wrap .m-driver .inner ul li:nth-of-type(2) {
+	-webkit-animation: fadeIn 2.8s linear 1.6s 1 forwards;
+	animation: fadeIn 2.8s linear 1.6s 1 forwards
 }
 
-.page4 .m-contact-wrap.show .m-driver .inner ul li:nth-of-type(3) {
-	-webkit-animation: fadeIn .8s linear 2s 1 forwards;
-	animation: fadeIn .8s linear 2s 1 forwards
+.swiper-slide-active .page4 .m-contact-wrap .m-driver .inner ul li:nth-of-type(3) {
+	-webkit-animation: fadeIn 2.8s linear 2s 1 forwards;
+	animation: fadeIn 2.8s linear 2s 1 forwards
 }
 
-.page4 .m-contact-wrap.show .m-contact {
-	-webkit-animation: showContact .6s linear 0s 1 forwards;
-	animation: showContact .6s linear 0s 1 forwards
+.swiper-slide-active .page4 .m-contact-wrap .m-contact {
+	-webkit-animation: showContact 2.6s linear 0s 1 forwards;
+	animation: showContact 2.6s linear 0s 1 forwards
 }
 
 @-webkit-keyframes contactDriverMove {
@@ -1609,9 +1644,9 @@ h1 {
 	color: #585957
 }
 
-.page5 .m-link-wrap.show .inner {
-	-webkit-animation: showLinks .6s linear 0s 1 forwards;
-	animation: showLinks .6s linear 0s 1 forwards
+.swiper-slide-active .page5 .m-link-wrap .inner {
+	-webkit-animation: showLinks 2.6s linear 0s 1 forwards;
+	animation: showLinks 2.6s linear 0s 1 forwards
 }
 
 @-webkit-keyframes showLinks {
@@ -1883,7 +1918,8 @@ h1 {
 }
 
 .page-init .inner {
-	width: 100%
+	width: 100%;
+  	background-color: transparent;
 }
 
 .page3 .m-works-wrap {
@@ -1978,22 +2014,22 @@ h1 {
 	color: #258fb8;
 }
 
-.m-works-wrap.show .m-phone.works {
+.swiper-slide-active .page3 .grid-auto-wrapper .m-works-wrap .m-phone.works {
 	-webkit-animation: moveWorksDriver .6s linear forwards,moveWorksDriver2 .6s linear .8s 1 forwards;
 	animation: moveWorksDriver .6s linear forwards,moveWorksDriver2 .6s linear .8s 1 forwards
 }
 
-.m-works-wrap.show .m-phone.shadow {
+.swiper-slide-active .page3 .grid-auto-wrapper .m-works-wrap .m-phone.shadow {
 	-webkit-animation: moveWorksDriver .6s linear forwards,rotateDriverShadow 1s linear 1.6s 1 forwards;
 	animation: moveWorksDriver .6s linear forwards,rotateDriverShadow 1s linear 1.6s 1 forwards
 }
 
-.m-works-wrap.show .post-cover img {
+.swiper-slide-active .page3 .grid-auto-wrapper .m-works-wrap .post-cover img {
 	-webkit-animation: lightImg .6s linear 2.6s 1 forwards;
 	animation: lightImg .6s linear 2.6s 1 forwards
 }
 
-.m-works-wrap.show .m-text .inner {
+.swiper-slide-active .page3 .grid-auto-wrapper .m-works-wrap .m-text .inner {
 	-webkit-animation: fadeIn 4s linear forwards;
 	animation: fadeIn 4s linear forwards
 }
@@ -2176,21 +2212,21 @@ h1 {
 	}
 
 	/*.page1 .m-driver {*/
-		/*width: 600px;*/
-		/*height: 353px;*/
-		/*margin-top: 20px*/
+	/*width: 600px;*/
+	/*height: 353px;*/
+	/*margin-top: 20px*/
 	/*}*/
 
 	/*.page1 .m-driver .inner {*/
-		/*width: 444px;*/
-		/*height: 270px;*/
-		/*top: 28px;*/
-		/*left: 77px*/
+	/*width: 444px;*/
+	/*height: 270px;*/
+	/*top: 28px;*/
+	/*left: 77px*/
 	/*}*/
 
 	/*.page1 .m-driver .inner .logo {*/
-		/*width: 120px;*/
-		/*height: 120px*/
+	/*width: 120px;*/
+	/*height: 120px*/
 	/*}*/
 
 	.page1 .inner .button,.page2 .button {
@@ -2379,7 +2415,7 @@ h1 {
 
 	/* Page 1 */
 	.page1 h1 {
-	 	width: 100%;
+		width: 100%;
 		height: 40px;
 		font-size: 20px;
 		margin: 0 auto 0 auto
@@ -2424,7 +2460,7 @@ h1 {
 		transition: all .6s linear
 	}
 
-	 /* Page 2 */
+	/* Page 2 */
 	.page2 .m-phone,.page3 .m-phone {
 		width: 120px;
 		height: 213px;
@@ -2795,13 +2831,13 @@ h1 {
 	}
 
 	/*.page4 .m-contact-wrap .m-driver .inner ul li a:before, .page4 .m-contact:before {*/
-		/*content: '';*/
-		/*height: 10%;*/
+	/*content: '';*/
+	/*height: 10%;*/
 	/*}*/
 	.page4 .m-contact-wrap .m-driver .inner ul li a i {
 		width: 2rem;
 		height: 2rem;
-		 margin: 6px 2px 0 -2px;
+		margin: 6px 2px 0 -2px;
 	}
 	.page4 .m-contact .txt {
 		width: 80%;

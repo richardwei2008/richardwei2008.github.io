@@ -16,8 +16,134 @@
     <link rel="shortcut icon" type="image/ico" href="img/favicon.png">
 
     <link rel="stylesheet" href="css/global.css"/>
-    <link rel="stylesheet" href="css/index.css"/>
-    <!-- <link rel="stylesheet" href="css/style.css"/> -->
+    <link rel="stylesheet" href="css/index1.css"/>
+    <link rel="stylesheet" href="css/swiper.min.css">
+
+
+    <style>
+        html, body {
+            position: relative;
+            height: 100%;
+        }
+        body {
+            /*background: #eee;*/
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            /*color:#000;*/
+            margin: 0;
+            padding: 0;
+        }
+        .swiper-container {
+            width: 100%;
+            height: 100%;
+        }
+        .swiper-slide {
+            text-align: center;
+            /*font-size: 18px;*/
+            /*background: #fff;*/
+            /*background: #000;*/
+            /* Center slide text vertically */
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+        .swiper-pagination {
+            top: 50%;
+            right: 20px!important;
+        }
+        /*.swiper-pagination:before {*/
+            /*content: '';*/
+            /*width: 1px;*/
+            /*height: 100%;*/
+            /*background: url(./img/index_dot_bg.png) no-repeat;*/
+            /*position: absolute;*/
+            /*top: 12px;*/
+            /*left: 6px;*/
+            /*z-index: -1;*/
+        /*}*/
+        .swiper-pagination-bullets {
+            position: fixed;
+            width: 14px;
+            top: 50%;
+            right: 50px;
+            z-index: 50;
+            /*margin-top: -134px*/
+        }
+
+        .swiper-pagination-bullets:before {
+            content: '';
+            width: 1px;
+            height: 100%;
+            background: url(./img/index_dot_bg.png) no-repeat;
+            position: absolute;
+            top: 12px;
+            left: 6px;
+            z-index: -1
+        }
+
+        .swiper-pagination-bullets .swiper-pagination-bullet {
+            display: block!important;
+            width: 5px;
+            height: 5px;
+            border: 4px solid rgba(152,153,151,.3);
+            border-color: #fff;
+            /*background-color: transparent;*/
+            border-radius: 100%;
+            margin: 0 0 40px 0!important;
+            cursor: pointer;
+            -webkit-transition: all .36s linear;
+            transition: all .36s linear;
+            position: relative;
+            -webkit-box-sizing: content-box;
+            box-sizing: content-box
+        }
+
+        .swiper-pagination-bullets .swiper-pagination-bullet:after,
+        .swiper-pagination-bullets .swiper-pagination-bullet:before {
+            content: '';
+            display: inline-block;
+            width: 31px;
+            height: 31px;
+            border: 2px solid transparent;
+            /*border: 4px solid rgba(152,153,151,.6);*/
+            -webkit-box-sizing: content-box;
+            box-sizing: content-box;
+            border-radius: 100%;
+            position: absolute;
+            top: -15px;
+            left: -15px
+        }
+
+        .swiper-pagination-bullets .swiper-pagination-bullet:before {
+            width: 21px;
+            height: 21px;
+            top: -10px;
+            left: -10px;
+            opacity: .3
+        }
+
+        .swiper-pagination-bullets .swiper-pagination-bullet:hover,
+        .swiper-pagination-bullets .swiper-pagination-bullet.swiper-pagination-bullet-active {
+            border-color: #fff;
+            background-color: #258fb8;
+        }
+
+        .swiper-pagination-bullet.swiper-pagination-bullet-active:before,
+        .swiper-pagination-bullet.swiper-pagination-bullet-active:after {
+            border-color: #258fb8;
+            -webkit-animation: blink 3s linear infinite;
+            animation: blink 3s linear infinite
+        }
+    </style>
 
     <!-- 低版本跳转 -->
     <!--[if lt IE 10]>
@@ -59,66 +185,69 @@
         <span class="logo" style="display:none"></span>
     </div>
 </nav>
-<article id="smohan-v4-container">
-    <section class="page1">
-
-        <div class="banner-canvas" style="position: absolute; z-index: 1;top: 0;left:0;">
-            <canvas></canvas>
-        </div>
-        <script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
-        <script src="js/canvas/bootstrap.min.js"></script>
-        <script src="js/canvas/ban.js"></script>
-        <div class="grid-auto-wrapper page-init">
-            <div class="inner tans">
-                <h1>2016，最简单的 Richaaaard</h1>
-                <!--<h3>Cruising In The Code Of Life</h3>-->
-                <div class="m-driver">
-                    <div class="inner">
-                        <span class="logo"></span>
-                        <a href="http://richardwei2008.github.io/" class="button" name="知者见微的博客">进入博客</a>
-                    </div>
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+            <section class="page1">
+                <div class="banner-canvas" style="position: absolute; z-index: 1;top: 0;left:0;">
+                    <canvas></canvas>
                 </div>
-            </div>
-            <a class="next-page" id="next-page-for-init"></a>
-        </div>
-    </section>
-    <section class="page2">
-        <div class="grid-auto-wrapper">
-            <div class="article-wrap">
-                <div class="m-phone shadow"></div>
-                <div class="m-phone blog">
-                    <header>Latest Posts</header>
-                    <div class="post-cover f-img-light-wrap">
-                        <a href="http://richardwei2008.github.com/5044/">
-                            <img src="img/1452153380.png" alt="2016，新年来一发"/>
-                        </a>
+                <script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+                <script src="js/canvas/bootstrap.min.js"></script>
+                <script src="js/canvas/ban.js"></script>
+                <div class="grid-auto-wrapper page-init" style="background-color: transparent;">
+                    <div class="inner tans">
+                        <h1>2016，最简单的 Richaaaard</h1>
+                        <!--<h3>Cruising In The Code Of Life</h3>-->
+                        <div class="m-driver">
+                            <div class="inner">
+                                <span class="logo"></span>
+                                <a href="http://richardwei2008.github.io/" class="button" name="知者见微的博客">进入博客</a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="post-item">
-                        <ul>
-                            <li>
-                                <a href="http://richardwei2008.github.com/" title="Hexo插件安装" class="f-toe"  rel="title-tip">Hexo插件安装</a>
-                            </li>
-
-                        </ul>
-                    </div>
-                    <a class="button" href="http://richardwei2008.github.com/">进入博客</a>
+                    <a class="next-page" id="next-page-for-init"></a>
                 </div>
-            </div>
-            <div class="about-wrap">
-                <div class="inner">
-                    <div class="m-about">
-                        <h1>关于我</h1>
-                        <p>
-                            Richaaaard，80后，不会写代码的架构师，不是好的数据科学家。
-                            <br/>
-                            爱猫，爱旅游，爱美食，爱折腾，爱运动，更爱各种乱七八糟的新奇技术，无法自拔。
-                            从事于架构师工作。喜欢敲代码的感觉，相信数据科学家是人类智能，
-                            在数据人生里游弋</p>
+            </section>
+        </div>
+        <div class="swiper-slide">
+            <section class="page2">
+                <div class="grid-auto-wrapper">
+                    <div class="article-wrap">
+                        <div class="m-phone shadow"></div>
+                        <div class="m-phone blog">
+                            <header>Latest Posts</header>
+                            <div class="post-cover f-img-light-wrap">
+                                <a href="http://richardwei2008.github.com/5044/">
+                                    <img src="img/1452153380.png" alt="2016，新年来一发"/>
+                                </a>
+                            </div>
+                            <div class="post-item">
+                                <ul>
+                                    <li>
+                                        <a href="http://richardwei2008.github.com/" title="Hexo插件安装" class="f-toe"  rel="title-tip">Hexo插件安装</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                            <a class="button" href="http://richardwei2008.github.com/">进入博客</a>
+                        </div>
                     </div>
-                    <div class="m-time">
-                        <div class="m-time-run" id="smohan-build-time">
-                            <div class="line left"></div>
-                            <div class="line right"></div>
+                    <div class="about-wrap">
+                        <div class="inner">
+                            <div class="m-about">
+                                <h1>关于我</h1>
+                                <p>
+                                    Richaaaard，80后，不会写代码的架构师，不是好的数据科学家。
+                                    <br/>
+                                    爱猫，爱旅游，爱美食，爱折腾，爱运动，更爱各种乱七八糟的新奇技术，无法自拔。
+                                    从事于架构师工作。喜欢敲代码的感觉，相信数据科学家是人类智能，
+                                    在数据人生里游弋</p>
+                            </div>
+                            <div class="m-time">
+                                <div class="m-time-run" id="smohan-build-time">
+                                    <div class="line left"></div>
+                                    <div class="line right"></div>
                                 <span>
                                     <i>16</i>
                                 </span>
@@ -137,149 +266,207 @@
                                 <span>
                                     <i>11</i>
                                 </span>
+                                </div>
+                                <div class="m-time-run txt">
+                                    <span>年</span>
+                                    <span>月</span>
+                                    <span>天</span>
+                                    <span>时</span>
+                                    <span>分</span>
+                                    <span>秒</span>
+                                </div>
+                                <div class="m-time-start">从2016年4月1日17:24开始</div>
+                            </div>
                         </div>
-                        <div class="m-time-run txt">
-                            <span>年</span>
-                            <span>月</span>
-                            <span>天</span>
-                            <span>时</span>
-                            <span>分</span>
-                            <span>秒</span>
-                        </div>
-                        <div class="m-time-start">从2016年4月1日17:24开始</div>
                     </div>
                 </div>
-            </div>
+            </section>
         </div>
-    </section>
-    <section class="page3">
-        <div class="grid-auto-wrapper">
-            <div class="m-works-wrap">
-                <div class="m-text">
-                    <div class="inner">
-                        <h1>不忘 · 初心</h1>
-                        <p>一切的创造，源于热爱...</p>
-                        <p>回溯最初，在最简洁中传递情感，在数据里游弋...</p>
-                        <a href="http://richardwei2008.github.com/works/" class="button">更多作品</a>
-                    </div>
-                </div>
-                <div class="m-driver">
-                    <div class="m-phone shadow"></div>
-                    <div class="m-phone works">
-                        <header>Latest Works</header>
-                        <div class="post-cover f-img-light-wrap">
-                            <a href="http://richardwei2008.github.com/works/1017/">
-                                <img src="img/190176240.jpg" alt="个人博客界面"/>
-                            </a>
+        <div class="swiper-slide">
+            <section class="page3">
+                <div class="grid-auto-wrapper">
+                    <div class="m-works-wrap">
+                        <div class="m-text">
+                            <div class="inner">
+                                <h1>不忘 · 初心</h1>
+                                <p>一切的创造，源于热爱...</p>
+                                <p>回溯最初，在最简洁中传递情感，在数据里游弋...</p>
+                                <a href="http://richardwei2008.github.com/works/" class="button">更多作品</a>
+                            </div>
                         </div>
-                        <div class="post-item">
-                            <ul>
-                                <li>
-                                    <a href="http://richardwei2008.github.com/works/" title="移动端界面" class="f-toe"  rel="title-tip">移动端界面</a>
-                                </li>
+                        <div class="m-driver">
+                            <div class="m-phone shadow"></div>
+                            <div class="m-phone works">
+                                <header>Latest Works</header>
+                                <div class="post-cover f-img-light-wrap">
+                                    <a href="http://richardwei2008.github.com/works/1017/">
+                                        <img src="img/190176240.jpg" alt="个人博客界面"/>
+                                    </a>
+                                </div>
+                                <div class="post-item">
+                                    <ul>
+                                        <li>
+                                            <a href="http://richardwei2008.github.com/works/" title="移动端界面" class="f-toe"  rel="title-tip">移动端界面</a>
+                                        </li>
 
-                            </ul>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
         </div>
-    </section>
-    <section class="page4">
-        <div class="grid-auto-wrapper">
-            <div class="m-contact-wrap">
-                <div class="m-driver">
-                    <div class="inner">
-                        <div class="m-driver-overlay"></div>
-                        <ul>
-                            <li>
-                                <a href="http://weibo.com/richaaaard" title="关注richaaaard的新浪微博">
-                                    <i class="u-icon icon-weibo"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="http://wpa.qq.com/msgrd?v=3&uin=190176240&site=qq&menu=yes"  title="QQ交谈">
-                                    <i class="u-icon icon-qq"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://github.com/richardwei2008" title="GitHub">
-                                    <i class="u-icon icon-github"></i>
-                                </a>
-                            </li>
-                        </ul>
+        <div class="swiper-slide">
+            <section class="page4">
+                <div class="grid-auto-wrapper">
+                    <div class="m-contact-wrap">
+                        <div class="m-driver">
+                            <div class="inner">
+                                <div class="m-driver-overlay"></div>
+                                <ul>
+                                    <li>
+                                        <a href="http://weibo.com/richaaaard" title="关注richaaaard的新浪微博">
+                                            <i class="u-icon icon-weibo"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://wpa.qq.com/msgrd?v=3&uin=190176240&site=qq&menu=yes"  title="QQ交谈">
+                                            <i class="u-icon icon-qq"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://github.com/richardwei2008" title="GitHub">
+                                            <i class="u-icon icon-github"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="m-contact">
+                            <div class="txt">
+                                <p>
+                                    联系QQ：
+                                    <a href="http://wpa.qq.com/msgrd?v=3&uin=190176240&site=qq&menu=yes">190176240</a>
+                                </p>
+                                <p>
+                                    唯一网址：
+                                    <a href="http://richardwei2008.github.com/">http://richardwei2008.github.com/</a>
+                                </p>
+                                <p>
+                                    新浪微博：
+                                    <a href="http://weibo.com/richaaaard">http://weibo.com/richaaaard</a>
+                                </p>
+                                <p>
+                                    电子邮箱：
+                                    <a href="mailto:190176240@qq.com">190176240#qq.com</a>
+                                    或
+                                    <a href="mailto:sh_career_wz@126.com">sh_career_wz#126.com</a>
+                                    (#换为@)
+                                </p>
+                                <!--<p class="btn-groups">-->
+                                <!--<a class="btn" rel="title-tip" title="群号：327388215 ">JavaScript交流群</a>-->
+                                <!--<a class="btn" rel="title-tip" title="群号：148257606">Mobile交流群</a>-->
+                                <!--</p>-->
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="m-contact">
-                    <div class="txt">
-                        <p>
-                            联系QQ：
-                            <a href="http://wpa.qq.com/msgrd?v=3&uin=190176240&site=qq&menu=yes">190176240</a>
-                        </p>
-                        <p>
-                            唯一网址：
-                            <a href="http://richardwei2008.github.com/">http://richardwei2008.github.com/</a>
-                        </p>
-                        <p>
-                            新浪微博：
-                            <a href="http://weibo.com/richaaaard">http://weibo.com/richaaaard</a>
-                        </p>
-                        <p>
-                            电子邮箱：
-                            <a href="mailto:190176240@qq.com">190176240#qq.com</a>
-                            或
-                            <a href="mailto:sh_career_wz@126.com">sh_career_wz#126.com</a>
-                            (#换为@)
-                        </p>
-                        <!--<p class="btn-groups">-->
-                        <!--<a class="btn" rel="title-tip" title="群号：327388215 ">JavaScript交流群</a>-->
-                        <!--<a class="btn" rel="title-tip" title="群号：148257606">Mobile交流群</a>-->
-                        <!--</p>-->
+            </section>
+        </div>
+        <div class="swiper-slide">
+            <section class="page5">
+                <div class="grid-auto-wrapper">
+                    <div class="m-link-wrap">
+                        <div class="inner">
+                            <div class="u-qr-code"></div>
+                            <div class="links">
+                                <ul>
+                                    <!--<li>-->
+                                    <!--<a href="http://blog.doyoe.com/" title="Doyoe's Blog" rel="title-tip" class="f-toe">Doyoe's Blog</a>-->
+                                    <!--</li>-->
+                                    <!--<li>-->
+                                    <!--<a href="http://moxfive.xyz/" title="MOxFIVE's Blog" rel="title-tip" class="f-toe">MOxFIVE's Blog</a>-->
+                                    <!--</li>-->
+                                    <!--<li>-->
+                                    <!--<a href="http://blog.dandyweng.com/" title="Dandy's Blog" rel="title-tip" class="f-toe">Dandy's Blog</a>-->
+                                    <!--</li>-->
+                                    <!--<li>-->
+                                    <!--<a href="http://kayosite.com/" title="kayo's Blog" rel="title-tip" class="f-toe">kayo's Blog</a>-->
+                                    <!--</li>-->
+                                    <!--<li>-->
+                                    <!--<a href="http://muo.me/" title="Muo's Blog" rel="title-tip" class="f-toe">Muo's Blog</a>-->
+                                    <!--</li>-->
+                                    <!--<li>-->
+                                    <!--<a href="http://richardwei2008.github.io/about/" class="f-toe">+ 申请链接</a>-->
+                                    <!--</li>-->
+                                </ul>
+                            </div>
+                            <div class="copyright">
+                                <!-- Copyright © 2012-2016 Luuman. All Rights Reserved. --> </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </section>
         </div>
-    </section>
-    <section class="page5">
-        <div class="grid-auto-wrapper">
-            <div class="m-link-wrap">
-                <div class="inner">
-                    <div class="u-qr-code"></div>
-                    <div class="links">
-                        <ul>
-                            <!--<li>-->
-                            <!--<a href="http://blog.doyoe.com/" title="Doyoe's Blog" rel="title-tip" class="f-toe">Doyoe's Blog</a>-->
-                            <!--</li>-->
-                            <!--<li>-->
-                            <!--<a href="http://moxfive.xyz/" title="MOxFIVE's Blog" rel="title-tip" class="f-toe">MOxFIVE's Blog</a>-->
-                            <!--</li>-->
-                            <!--<li>-->
-                            <!--<a href="http://blog.dandyweng.com/" title="Dandy's Blog" rel="title-tip" class="f-toe">Dandy's Blog</a>-->
-                            <!--</li>-->
-                            <!--<li>-->
-                            <!--<a href="http://kayosite.com/" title="kayo's Blog" rel="title-tip" class="f-toe">kayo's Blog</a>-->
-                            <!--</li>-->
-                            <!--<li>-->
-                            <!--<a href="http://muo.me/" title="Muo's Blog" rel="title-tip" class="f-toe">Muo's Blog</a>-->
-                            <!--</li>-->
-                            <!--<li>-->
-                            <!--<a href="http://richardwei2008.github.io/about/" class="f-toe">+ 申请链接</a>-->
-                            <!--</li>-->
-                        </ul>
-                    </div>
-                    <div class="copyright">
-                        <!-- Copyright © 2012-2016 Luuman. All Rights Reserved. --> </div>
-                </div>
-            </div>
-        </div>
-    </section>
-</article>
-<script src="js/jquery.js"></script>
-<script src="js/luuman.scrollPage.min.js"></script>
-<script src="js/index.min.js"></script>
-<!--     <div style="display: none;">
-<script src="js/z_stat.php" language="JavaScript"></script>
+        <!--<div class="swiper-slide">Slide 6</div>-->
+        <!--<div class="swiper-slide">Slide 7</div>-->
+        <!--<div class="swiper-slide">Slide 8</div>-->
+        <!--<div class="swiper-slide">Slide 9</div>-->
+        <!--<div class="swiper-slide">Slide 10</div>-->
+    </div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
 </div>
--->
+<script src="js/jquery.js"></script>
+<script src="js/swiper.min.js"></script>
+<script src="js/index.min.js"></script>
+<script src="js/smohan.scrollPage.min.js"></script>
+<script>
+    (function(){
+        var swiper = new Swiper('.swiper-container', {
+            pagination: '.swiper-pagination',
+            paginationClickable: true,
+            keyboardControl: true,
+            mousewheelControl: true,
+            direction: 'vertical'
+        });
+
+        function b() {
+            var b = (new Date).getTime() - new Date(2016, 3, 1, 17, 24, 0).getTime(),
+                    c = b % 31104e6,
+                    d = c % 2592e6,
+                    e = d % 864e5,
+                    f = e % 36e5;
+            i = [Math.floor(b / 31104e6), Math.floor(c / 2592e6), Math.floor(d / 864e5), Math.floor(e / 36e5), Math.floor(f / 6e4), Math.floor(f % 6e4 / 1e3)], h.each(function(b, c) {
+                $(c).css({
+                    backgroundPosition: "0 " + (-44 * i[b] + "px")
+                })
+            })
+        }
+        function c() {
+            var a;
+            h.removeClass("init"), clearInterval(j), clearTimeout(a), a = setTimeout(function() {
+                j = setInterval(function() {
+                    b()
+                }, 1e3)
+            }, 800)
+        }
+        var j, h = $("#smohan-build-time i"),
+                i = [];
+
+        swiper.on('slideChangeEnd', function (s) {
+            console.log('slide change end');
+            switch (s.activeIndex) {
+                case 1:
+                    c();
+                    break;
+                default :
+                    break;
+            }
+        });
+    })();
+
+</script>
 </body>
 </html>
