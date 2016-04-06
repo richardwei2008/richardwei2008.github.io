@@ -409,6 +409,7 @@
             var myAudio = $('#my-audio')[0];
             if (!$(this).hasClass('play-safari')) {
                 myAudio.pause();
+                alert("return");
                 return;
             }
             if (!myAudio.paused) {
