@@ -300,7 +300,8 @@
             <section class="page5">
                 <div class="grid-auto-wrapper">
                     <div class="m-video-wrap">
-                        <video id="myVideo" width="100%" height="40%" controls="controls" preload="auto" webkit-playsinline>
+                        <div class="video-cover"></div>
+                        <video id="myVideo" width="100%" height="100%" controls="controls" preload="auto" webkit-playsinline>
                             您的浏览器不支持 video 标签。
                             <source src="img/bigdata.mp4" type="video/mp4" />
                             <source src="img/bigdata.ogg" type="video/ogg" />
@@ -395,6 +396,7 @@
             }
         });
         var stopVideo = function() {
+            $(".video-cover").css("display", "block");
             $("#myVideo")[0].pause();
         };
         swiper.on('slideChangeStart', function (s) {
@@ -422,6 +424,11 @@
             swiper.slideNext();
         })
 //        playAudio();
+        $(".video-cover").bind("click", function() {
+            $(".video-cover").css("display", "none");
+            var myVideo = $("#myVideo")[0];
+            myVideo.play();
+        })
     })();
 
 </script>
