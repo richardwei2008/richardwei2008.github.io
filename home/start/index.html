@@ -392,7 +392,15 @@
                     break;
             }
         });
-
+        var stopVideo = function() {
+            $("#myVideo")[0].pause();
+        };
+        swiper.on('slideChangeStart', function (s) {
+            console.log('slide change start');
+            if (s.activeIndex !== 4) {
+                stopVideo();
+            }
+        });
 
         $('#smohan-v4-music').on('click', function(e) {
             var audio = $('#my-audio')[0];
