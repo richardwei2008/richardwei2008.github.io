@@ -8,37 +8,85 @@ html,body {
 	user-select: none
 }
 
-/*#smohan-v4-container {*/
-	/*width: 100%;*/
-	/*height: 100%;*/
-	/*position: relative;*/
-	/*-webkit-transform: translate3d(0,0,0);*/
-	/*transform: translate3d(0,0,0)*/
-/*}*/
 
-/*#smohan-v4-container section {*/
-	/*height: 100%;*/
-	/*width: 100%;*/
-	/*background-color: #000;*/
-	/*overflow: hidden*/
-/*}*/
 
-/*#smohan-v4-container section:nth-of-type(2n) {*/
-	/*background-color: #f1f2f0*/
-/*}*/
+.swiper-pagination {
+    top: 50%;
+    right: 50px!important;
+}
+.swiper-pagination-bullets {
+    position: fixed;
+    width: 14px;
+    top: 50%;
+    right: 50px;
+    z-index: 50;
+    /*margin-top: -134px*/
+}
 
-/*#smohan-v4-container section:nth-of-type(4) {*/
-	/*background: url(../img/index_contact.jpg) 50% no-repeat scroll;*/
-	/*background-size: contain*/
-/*}*/
+.swiper-pagination-bullets:before {
+    content: '';
+    width: 1px;
+    height: 100%;
+    background: url(../img/index_dot_bg.png) no-repeat;
+    position: absolute;
+    top: 12px;
+    left: 6px;
+    z-index: -1
+}
 
-/*#smohan-v4-container section .grid-auto-wrapper {*/
-	/*width: 100%;*/
-	/*max-width: 1280px;*/
-	/*margin: 0 auto;*/
-	/*height: 100%;*/
-	/*position: relative*/
-/*}*/
+.swiper-pagination-bullets .swiper-pagination-bullet {
+    display: block!important;
+    width: 5px;
+    height: 5px;
+    border: 4px solid rgba(152,153,151,.3);
+    border-color: #fff;
+    /*background-color: transparent;*/
+    border-radius: 100%;
+    margin: 0 0 40px 0!important;
+    cursor: pointer;
+    -webkit-transition: all .36s linear;
+    transition: all .36s linear;
+    position: relative;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box
+}
+
+.swiper-pagination-bullets .swiper-pagination-bullet:after,
+.swiper-pagination-bullets .swiper-pagination-bullet:before {
+    content: '';
+    display: inline-block;
+    width: 31px;
+    height: 31px;
+    border: 2px solid transparent;
+    /*border: 4px solid rgba(152,153,151,.6);*/
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+    border-radius: 100%;
+    position: absolute;
+    top: -15px;
+    left: -15px
+}
+
+.swiper-pagination-bullets .swiper-pagination-bullet:before {
+    width: 21px;
+    height: 21px;
+    top: -10px;
+    left: -10px;
+    opacity: .3
+}
+
+.swiper-pagination-bullets .swiper-pagination-bullet:hover,
+.swiper-pagination-bullets .swiper-pagination-bullet.swiper-pagination-bullet-active {
+    border-color: #fff;
+    background-color: #258fb8;
+}
+
+.swiper-pagination-bullet.swiper-pagination-bullet-active:before,
+.swiper-pagination-bullet.swiper-pagination-bullet-active:after {
+    border-color: #258fb8;
+    -webkit-animation: blink 3s linear infinite;
+    animation: blink 3s linear infinite
+}
 
 .swiper-wrapper .swiper-slide section {
 	height: 100%;
@@ -55,11 +103,13 @@ html,body {
 }
 
 .swiper-wrapper .swiper-slide section .grid-auto-wrapper {
-	width: 100%;
-	max-width: 1280px;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-width: 1280px;
 	margin: 0 auto;
-	height: 100%;
-	position: relative
+	text-align: center;
+
 }
 .swiper-slide section {
 	width: 100%;
@@ -1613,7 +1663,6 @@ h1 {
 	position: relative;
 	z-index: 1
 }
-
 .page5 .m-link-wrap .inner .links li:after {
 	content: '';
 	width: 0;
@@ -2098,6 +2147,22 @@ h1 {
 	}
 }
 
+.page5 .m-video-wrap {
+    position: relative;
+    max-width: 720px;
+    max-height: 400px;
+    top: 45%;
+    margin: 0 auto;
+    margin-top: -25%;
+}
+.page5 .m-link-wrap {
+    position: relative;
+    text-align: center;
+    top : 55%;
+    width: 100%;
+
+}
+
 .music-wrap {
 	display: block;
 	width: 46px;
@@ -2321,6 +2386,10 @@ h1 {
 	#navgation:before {
 		width: 80%
 	}
+    .swiper-pagination {
+        top: 50%;
+        right: 20px!important;
+    }
 
 	.u-menu-btn {
 		display: block;
@@ -2851,11 +2920,7 @@ h1 {
 	}
 
     /*Page 5*/
-    .page5 .m-video-wrap {
-        position: relative;
-        top: 50%;
-        margin-top: -25%;
-    }
+
     .page5 .m-link-wrap {
         position: relative;
         /*top: ;*/
