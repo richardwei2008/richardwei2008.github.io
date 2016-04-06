@@ -405,10 +405,17 @@
         });
 
         $('#smohan-v4-music').bind('click', function(e) {
-            alert("clicked");
-            var myAudio = $('#my-audio')[0];
-
+//            alert("clicked");
+            var myAudios = $('#my-audio');
+            if (myAudios.hasClass('playing')) {
+                myAudios[0].pause();
+                myAudios.removeClass('playing');
+//                alert("stoped");
+                return;
+            }
+            var myAudio = myAudios[0];
             myAudio.play();
+            $('#my-audio').addClass('playing');
         })
 
         $("#next-page-for-init").bind("click", function() {
