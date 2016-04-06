@@ -74,7 +74,7 @@
 </div>
 <img src="img/logo-search.jpg" alt="richaaaard" style="visibility:hidden;position: absolute;top: 0;left: 0;">
 <a class="music-wrap" id="smohan-v4-music" rel="title-tip" data-music-hash="75ec5a824cfbd89d9b2383914fbe11dd" data-music-flag="Y" title="Big Data">
-    <audio id="my-audio">
+    <audio id="my-audio" preload="auto" >
         您的浏览器不支持 audio 标签。
         <source src="img/Big_Data.mp3" type="audio/mp3" />
         <source src="img/Big_Data.ogg" type="audio/ogg" />
@@ -403,28 +403,25 @@
                 stopVideo();
             }
         });
-
+        var audio = $('#my-audio')[0];
+        var playAudio = function() {
+            if (!audio.paused) {
+                audio.pause();
+            }
+            audio.play();
+        };
         $('#smohan-v4-music').on('click', function(e) {
-            var audio = $('#my-audio')[0];
-            var playAudio = function() {
-                if (!audio.paused) {
-                    audio.pause();
-                }
-                audio.play();
-            };
-            (function(that) {
-                if (!$(that).hasClass('play-safari')) {
-                    audio.pause();
-                    return;
-                }
-                playAudio();
-            })(this);
+            if (!$(this).hasClass('play-safari')) {
+                audio.pause();
+                return;
+            }
+            playAudio();
         })
 
         $("#next-page-for-init").bind("click", function() {
             swiper.slideNext();
         })
-
+        playAudio();
     })();
 
 </script>
