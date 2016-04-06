@@ -1542,15 +1542,15 @@ h1 {
 }
 
 .page5 .m-link-wrap {
-	position: absolute;
+	position: relative;
 	text-align: center;
-	top: 0;
-	bottom: 0;
+	/*top: 0;*/
+	/*bottom: 0;*/
 	width: 100%
 }
 
 .page5 .m-link-wrap:before,.page5 .m-link-wrap .inner {
-	display: inline-block;
+	/*display: inline-block;*/
 	vertical-align: middle;
 }
 
@@ -1645,27 +1645,27 @@ h1 {
 }
 
 .swiper-slide-active .page5 .m-link-wrap .inner {
-	-webkit-animation: showLinks 2.6s linear 0s 1 forwards;
-	animation: showLinks 2.6s linear 0s 1 forwards
+	-webkit-animation: showLinks 0.6s linear 0s 1 forwards;
+	animation: showLinks 0.6s linear 0s 1 forwards
 }
 
 @-webkit-keyframes showLinks {
 	from {
-		-webkit-transform: translateY(-180%)
+		-webkit-transform: translateY(+180%)
 	}
 
 	to {
-		-webkit-transform: translateY(0)
+		-webkit-transform: translateY(0%)
 	}
 }
 
 @keyframes showLinks {
 	from {
-		transform: translateY(-180%)
+		transform: translateY(+180%)
 	}
 
 	to {
-		transform: translateY(0)
+		transform: translateY(0%)
 	}
 }
 
@@ -2849,6 +2849,38 @@ h1 {
 		line-height: 16px;
 		text-align: center;
 	}
+
+    /*Page 5*/
+    .page5 .m-video-wrap {
+        position: relative;
+        top: 50%;
+        margin-top: -25%;
+    }
+    .page5 .m-link-wrap {
+        position: relative;
+        /*top: ;*/
+        top: 50%;
+        margin-top: 5%;
+        width: 100%;
+    }
+    .page5 .m-link-wrap .inner {
+        position: relative;
+        margin: 0 auto;
+        /*margin-top: 40%;*/
+        text-align: center;
+        width: 50%;
+        -webkit-transform: translateY(-180%);
+        transform: translateY(-180%);
+    }
+    .page5 .m-link-wrap .inner .u-qr-code {
+         display: block;
+         width: 80px;
+         height: 80px;
+         background: url(../img/mobile_qr_code.png) no-repeat;
+         background-size: cover;
+         margin: 0 auto;
+         border-radius: 6px
+     }
 }
 
 #smohan-title-tip {
