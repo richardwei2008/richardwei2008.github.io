@@ -152,6 +152,8 @@ var Responsivook = (function(){
       })
       .setStyles(opt.styles)
       .setContent(opt.html);
+    console.log("========_create_page_document=========")
+    console.log(opt.html);
   };
 
   var _create_layout = function(opt){
