@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>your awesome site</title>
+    <description>your awesome site description</description>
+    <link>/static/jekyll-nehan/</link>
+    <atom:link href="/static/jekyll-nehan/feed.xml" rel="self" type="application/rss+xml" />
+    
+      <item>
+        <title>Japanese vertical book sample</title>
+        <description>&lt;div class=&quot;gap-after&quot;&gt;使用するマークダウンエンジンによって出力するHTMLはまちまちなので、このサンプルでは基本的なマークダウン文法を除いて、生のHTMLをハードコーディングしている箇所もあります。&lt;/div&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;ルビ、回り込み、傍点、圏点など&lt;/h3&gt;
+
+&lt;div class=&quot;drop-caps&quot;&gt;表示機能をテストするために作ったエントリです。内容に特に意味はありません。表示機能をテストするために作ったエントリです。内容に特に意味はありません。表示機能をテストするために作ったエントリです。内容に特に意味はありません。&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/static/jekyll-nehan/assets/tb-brand.png&quot; width=&quot;100&quot; height=&quot;100&quot; class=&quot;float-start disp-block gap-end&quot; /&gt;
+日本国民は正当に選挙された国会における代表者を通じて行動し、われらとわれらの子孫のために、諸国民との協和による成果と、わが国全土にわたって自由のもたらす&lt;ruby&gt;&lt;rb&gt;恵沢&lt;/rb&gt;&lt;rt&gt;けいたく&lt;/rt&gt;&lt;/ruby&gt;を確保し、政府の行為によって再び&lt;ruby&gt;&lt;rb&gt;戦争&lt;/rb&gt;&lt;rt&gt;せんそう&lt;/rt&gt;&lt;/ruby&gt;の&lt;ruby&gt;&lt;rb&gt;惨禍&lt;/rb&gt;&lt;rt&gt;さんか&lt;/rt&gt;&lt;/ruby&gt;が起ることのないやうにすることを決意。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/static/jekyll-nehan/assets/tb-brand.png&quot; width=&quot;100&quot; height=&quot;100&quot; class=&quot;disp-block float-end&quot; /&gt;
+日本国民は正当に&lt;ruby&gt;選挙&lt;rt&gt;せんきょ&lt;/rt&gt;&lt;/ruby&gt;された国会における代表者を通じて行動し、&lt;span class=&quot;empha-sesame-filled&quot;&gt;われら&lt;/span&gt;と&lt;span class=&quot;empha-double-circle-filled&quot;&gt;われら&lt;/span&gt;の&lt;ruby&gt;&lt;rb&gt;子孫&lt;/rb&gt;&lt;rt&gt;しそん&lt;/rt&gt;&lt;/ruby&gt;のために、諸国民との協和による成果と、わが国全土にわたって自由のもたらす&lt;ruby&gt;&lt;rb&gt;恵沢&lt;/rb&gt;&lt;rt&gt;けいたく&lt;/rt&gt;&lt;/ruby&gt;を確保する。&lt;/p&gt;
+
+&lt;h3 class=&quot;break-before&quot;&gt;混合レイアウト&lt;/h3&gt;
+
+&lt;div&gt;&lt;img src=&quot;http://www.gravatar.com/avatar/cc261502060d214e7c482da86be35de3?s=128&amp;amp;d=identicon&quot; width=&quot;100&quot; height=&quot;100&quot; class=&quot;float-start gap-end disp-block&quot; /&gt;日本国民は正当に&lt;ruby&gt;選挙&lt;rt&gt;せんきょ&lt;/rt&gt;&lt;/ruby&gt;された国会における代表者を通じて行動し、われらとわれらの&lt;ruby&gt;&lt;rb&gt;子孫&lt;/rb&gt;&lt;rt&gt;しそん&lt;/rt&gt;&lt;/ruby&gt;のために、諸国民との協和による成果と、わが国全土にわたって自由のもたらす&lt;ruby&gt;&lt;rb&gt;恵沢&lt;/rb&gt;&lt;rt&gt;けいたく&lt;/rt&gt;&lt;/ruby&gt;を確保&lt;/div&gt;
+
+&lt;div class=&quot;flow-flip gap-after&quot;&gt;lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/div&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;テーブルのページ送り&lt;/h3&gt;
+
+&lt;table class=&quot;gap-after&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;&lt;th&gt;head1&lt;/th&gt;&lt;th&gt;head2&lt;/th&gt;&lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;ruby&gt;日本&lt;rt&gt;にほん&lt;/rt&gt;&lt;/ruby&gt;国民は正当に&lt;span class=&quot;xx-large&quot;&gt;&lt;ruby&gt;選挙&lt;rt&gt;せんきょ&lt;/rt&gt;&lt;/ruby&gt;&lt;/span&gt;された&lt;ruby&gt;国会&lt;rt&gt;こっかい&lt;/rt&gt;&lt;/ruby&gt;における代表者を通じて行動し、われらとわれらの&lt;ruby&gt;&lt;rb&gt;子孫&lt;/rb&gt;&lt;rt&gt;しそん&lt;/rt&gt;&lt;/ruby&gt;のために、諸国民との協和による成果と、わが国全土にわたって自由のもたらす&lt;ruby&gt;&lt;rb&gt;恵沢&lt;/rb&gt;&lt;rt&gt;けいたく&lt;/rt&gt;&lt;/ruby&gt;を確保し、政府の行為によって再び&lt;ruby&gt;&lt;rb&gt;戦争&lt;/rb&gt;&lt;rt&gt;せんそう&lt;/rt&gt;&lt;/ruby&gt;の&lt;ruby&gt;&lt;rb&gt;惨禍&lt;/rb&gt;&lt;rt&gt;さんか&lt;/rt&gt;&lt;/ruby&gt;が起ることのないやうにすることを決意し、ここに&lt;ruby&gt;&lt;rb&gt;主権&lt;/rb&gt;&lt;rt&gt;しゅけん&lt;/rt&gt;&lt;/ruby&gt;が国民に存することを宣言し、この憲法を確定する。&lt;/td&gt;&lt;td&gt;body2&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+  &lt;tr&gt;&lt;td&gt;body3&lt;/td&gt;&lt;td&gt;body4&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;body5&lt;/td&gt;&lt;td&gt;body6&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;body7&lt;/td&gt;&lt;td&gt;body8&lt;/td&gt;&lt;/tr&gt;
+  &lt;tfoot&gt;
+    &lt;tr&gt;&lt;td&gt;foot1&lt;/td&gt;&lt;td&gt;foot2&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tfoot&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;順序なしリスト&lt;/h3&gt;
+&lt;ul class=&quot;gap-after&quot;&gt;
+&lt;li&gt;あいうえおあいうえおあいうえおあいうえおあいうえお&lt;/li&gt;
+&lt;li&gt;かきくけこかきくけこかきくけこかきくけこかきくけこ&lt;/li&gt;
+&lt;li&gt;さしすせそさしすせそさしすせそさしすせそさしすせそ&lt;/li&gt;
+&lt;li&gt;たちつてとたちつてとたちつてとたちつてとたちつてと&lt;/li&gt;
+&lt;li&gt;なにぬねのなにぬねのなにぬねのなにぬねのなにぬねの&lt;/li&gt;
+&lt;li&gt;はまやらわはまやらわはまやらわはまやらわはまやらわ&lt;/li&gt;
+&lt;li&gt;まみむめもまみむめもまみむめもまみむめもまみむめも&lt;/li&gt;
+&lt;li&gt;やゆよやゆよやゆよやゆよやゆよやゆよやゆよやゆよ&lt;/li&gt;
+&lt;li&gt;らりるれろらりるれろらりるれろらりるれろらりるれろ&lt;/li&gt;
+&lt;li&gt;わをんわをんわをんわをんわをんわをんわをんわをん&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;section-3&quot;&gt;順序リスト&lt;/h3&gt;
+&lt;ol class=&quot;gap-after&quot;&gt;
+&lt;li&gt;あいうえおあいうえおあいうえおあいうえおあいうえお&lt;/li&gt;
+&lt;li&gt;かきくけこかきくけこかきくけこかきくけこかきくけこ&lt;/li&gt;
+&lt;li&gt;さしすせそさしすせそさしすせそさしすせそさしすせそ&lt;/li&gt;
+&lt;li&gt;&lt;ol class=&quot;lst-lower-alpha&quot;&gt;
+&lt;li&gt;たちつてとたちつてとたちつてとたちつてとたちつてと&lt;/li&gt;
+&lt;li&gt;なにぬねのなにぬねのなにぬねのなにぬねのなにぬねの&lt;/li&gt;
+&lt;li&gt;はまやらわはまやらわはまやらわはまやらわはまやらわ&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;まみむめもまみむめもまみむめもまみむめもまみむめも&lt;/li&gt;
+&lt;li&gt;やゆよやゆよやゆよやゆよやゆよやゆよやゆよやゆよ&lt;/li&gt;
+&lt;li&gt;らりるれろらりるれろらりるれろらりるれろらりるれろ&lt;/li&gt;
+&lt;li&gt;わをんわをんわをんわをんわをんわをんわをんわをん&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;section-4&quot;&gt;縦中横&lt;/h3&gt;
+
+&lt;div class=&quot;gap-after&quot;&gt;平成&lt;span class=&quot;tcy&quot;&gt;25&lt;/span&gt;年&lt;span class=&quot;tcy&quot;&gt;1&lt;/span&gt;月&lt;span class=&quot;tcy&quot;&gt;10&lt;/span&gt;日&lt;/div&gt;
+
+&lt;h3 id=&quot;section-5&quot;&gt;アイコンフォント&lt;/h3&gt;
+
+&lt;p&gt;ユーザー：&lt;fa name=&quot;user&quot;&gt;&lt;/fa&gt;&lt;/p&gt;
+
+&lt;p&gt;スター：&lt;fa name=&quot;star&quot;&gt;&lt;/fa&gt;&lt;/p&gt;
+
+&lt;p&gt;ハート：&lt;fa name=&quot;heart&quot;&gt;&lt;/fa&gt;&lt;/p&gt;
+
+&lt;p&gt;ハート（赤）：&lt;fa name=&quot;heart&quot; style=&quot;color:red&quot;&gt;&lt;/fa&gt;&lt;/p&gt;
+
+&lt;p&gt;ローディング：&lt;fa name=&quot;spin spinner&quot;&gt;&lt;/fa&gt;&lt;/p&gt;
+
+&lt;p&gt;回転する歯車：&lt;fa name=&quot;spin cog&quot;&gt;&lt;/fa&gt;&lt;/p&gt;
+
+</description>
+        <pubDate>Mon, 23 Jun 2014 00:00:00 +0800</pubDate>
+        <link>/static/jekyll-nehan/2014/06/23/vert/</link>
+        <guid isPermaLink="true">/static/jekyll-nehan/2014/06/23/vert/</guid>
+      </item>
+    
+      <item>
+        <title>Latin horizontal book sample</title>
+        <description>&lt;h2 id=&quot;drop-caps&quot;&gt;drop caps&lt;/h2&gt;
+&lt;div class=&quot;drop-caps&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/div&gt;
+
+&lt;h2 id=&quot;image-float&quot;&gt;image float&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;/static/jekyll-nehan/assets/tb-brand.png&quot; width=&quot;128&quot; height=&quot;128&quot; class=&quot;disp-block float-start gap-end&quot; /&gt;
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+&lt;img src=&quot;/static/jekyll-nehan/assets/tb-brand.png&quot; width=&quot;128&quot; height=&quot;128&quot; class=&quot;float-end&quot; /&gt;
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;
+
+&lt;h2 id=&quot;ul-listings&quot;&gt;ul listings&lt;/h2&gt;
+
+&lt;ul class=&quot;break-after&quot;&gt;
+&lt;li&gt;Lorem ipsum dolor sit amet,&lt;/li&gt;
+&lt;li&gt;consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.&lt;/li&gt;
+&lt;li&gt;&lt;ul&gt;
+&lt;li&gt;Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.&lt;/li&gt;
+&lt;li&gt;Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/li&gt;
+&lt;li&gt;Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;ol-listings&quot;&gt;ol listings&lt;/h2&gt;
+
+&lt;ol class=&quot;break-after&quot;&gt;
+&lt;li&gt;Lorem ipsum dolor sit amet,&lt;/li&gt;
+&lt;li&gt;consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.&lt;/li&gt;
+&lt;li&gt;&lt;ol&gt;
+&lt;li&gt;Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.&lt;/li&gt;
+&lt;li&gt;Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/li&gt;
+&lt;li&gt;Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;table&quot;&gt;table&lt;/h2&gt;
+
+&lt;table style=&quot;table-layout:auto&quot;&gt;
+&lt;thead&gt;&lt;tr&gt;&lt;th&gt;head1&lt;/th&gt;&lt;th&gt;head2&lt;/th&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.&lt;/td&gt;
+&lt;td&gt;Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Lorem ipsum dolor sit amet,&lt;/td&gt;
+&lt;td&gt;consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+
+&lt;/tr&gt;&lt;/thead&gt;&lt;/table&gt;
+</description>
+        <pubDate>Mon, 23 Jun 2014 00:00:00 +0800</pubDate>
+        <link>/static/jekyll-nehan/2014/06/23/hori/</link>
+        <guid isPermaLink="true">/static/jekyll-nehan/2014/06/23/hori/</guid>
+      </item>
+    
+  </channel>
+</rss>
