@@ -7,6 +7,20 @@
     <atom:link href="http://richardwei2008.github.io/read/shiji/tutorial1/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>從史記學史記</title>
+        <description>&lt;h3 id=&quot;section&quot;&gt;從史記學史記&lt;/h3&gt;
+
+&lt;div class=&quot;drop-caps gap-after&quot;&gt;人二三十年讀圣人書，一旦遇事，便與里巷人無異，⋯⋯，只緣讀書不作有用看故也，⋯⋯何取？觀史如身在其中，見事之利害，時之禍患，必掩卷自思，使我遇此等事，當作何處之。如此觀史，學問亦可以進，智識亦可以高，方為有益。——呂祖謙&lt;/div&gt;
+
+&lt;div class=&quot;drop-caps&quot;&gt;讀書時，須細看古人處一事，接一物，是如何思量？如何氣象？及自己處事接物時，又細心將古人比擬。設若古人當此，其措置之法，當是如何？我自己任性為之，又當如何？然後自己過錯始見，古人道理始出。斷不可以古人之書，與自己處事接物為兩事。——左宗堂&lt;/div&gt;
+
+</description>
+        <pubDate>Wed, 21 Oct 2015 00:00:00 +0800</pubDate>
+        <link>http://richardwei2008.github.io/read/shiji/tutorial1/2015/10/21/vert/</link>
+        <guid isPermaLink="true">http://richardwei2008.github.io/read/shiji/tutorial1/2015/10/21/vert/</guid>
+      </item>
+    
+      <item>
         <title>Japanese vertical book sample</title>
         <description>&lt;div class=&quot;gap-after&quot;&gt;使用するマークダウンエンジンによって出力するHTMLはまちまちなので、このサンプルでは基本的なマークダウン文法を除いて、生のHTMLをハードコーディングしている箇所もあります。&lt;/div&gt;
 
