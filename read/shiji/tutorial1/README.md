@@ -1,4 +1,40 @@
-# [Records of the Grand Historian](https://en.wikipedia.org/wiki/Records_of_the_Grand_Historian)
+## Summary
 
-The Records of the Grand Historian (太史公書), now usually known as the Shǐjì (史記, "The Scribe's Records"), is a monumental history of ancient China and the world finished around 94 BC by the Han dynasty official Sima Qian after having been started by his father, Sima Tan, Grand Astrologer to the imperial court. The work covers the world as it was then known to the Chinese and a 2500-year period from the age of the legendary Yellow Emperor to the reign of Emperor Wu of Han in the author's own time.
+jekyll-nehan is Jekyll theme powered by [nehan.js](https://github.com/tategakibunko/nehan.js) to display your blog post like book style.
+
+See [demo](http://tb.antiscroll.com/static/jekyll-nehan/).
+
+## Screen shot
+
+<img src="https://raw.github.com/tategakibunko/jekyll-nehan/master/assets/sshot-hori.png" width="300" height="160" />
+
+<img src="https://raw.github.com/tategakibunko/jekyll-nehan/master/assets/sshot-vert.png" width="300" height="160" />
+
+## How to use
+
+Just add <code>book_type</code>('vert' or 'hori') to the header of post.
+
+```YAML
+---
+layout: post
+title: awesome book
+date: 2014-06-23
+book_type: hori
+---
+```
+
+<code>hori</code> means 'horizontal text style', and <code>vert</code> means 'vertical text style'.
+
+
+## Keyboard shortcuts
+
+- <code>j</code> : goto next page
+- <code>k</code> : goto previous page
+- <code>left</code>: next(vert), previous(hori)
+- <code>right</code>: previous(vert), next(hori)
+
+## License
+
+jekyll-nehan is licensed under MIT License.
+
 
