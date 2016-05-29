@@ -136,6 +136,7 @@ a:hover { background:#fff1ed;  color:#ff1c18; text-decoration:none;}
 
 .page-content {
   padding: 30px 0;
+  min-height: 200px;
   background-color: #fff;
 }
 
