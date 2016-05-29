@@ -3,21 +3,21 @@
   <channel>
     <title>史記（一）學習筆記</title>
     <description>台灣大學呂世浩老師</description>
-    <link>http://richardwei2008.github.io/read/shiji/tutorial1/</link>
-    <atom:link href="http://richardwei2008.github.io/read/shiji/tutorial1/feed.xml" rel="self" type="application/rss+xml" />
+    <link>http://richardwei2008.github.io/jekyll-nehan/_site/</link>
+    <atom:link href="http://richardwei2008.github.io/jekyll-nehan/_site/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
         <title>從史記學史記</title>
         <description>&lt;h3 id=&quot;section&quot;&gt;從史記學史記&lt;/h3&gt;
 
-&lt;div class=&quot;drop-caps gap-after&quot;&gt;人二三十年讀圣人書，一旦遇事，便與里巷人無異，⋯⋯，只緣讀書不作有用看故也，⋯⋯何取？觀史如身在其中，見事之利害，時之禍患，必掩卷自思，使我遇此等事，當作何處之。如此觀史，學問亦可以進，智識亦可以高，方為有益。——呂祖謙&lt;/div&gt;
+&lt;p class=&quot;drop-caps gap-after&quot;&gt;人二三十年讀圣人書，一旦遇事，便與里巷人無異，⋯⋯，只緣讀書不作有用看故也，⋯⋯何取？觀史如身在其中，見事之利害，時之禍患，必掩卷自思，使我遇此等事，當作何處之。如此觀史，學問亦可以進，智識亦可以高，方為有益。——呂祖謙&lt;/p&gt;
 
-&lt;div class=&quot;drop-caps&quot;&gt;讀書時，須細看古人處一事，接一物，是如何思量？如何氣象？及自己處事接物時，又細心將古人比擬。設若古人當此，其措置之法，當是如何？我自己任性為之，又當如何？然後自己過錯始見，古人道理始出。斷不可以古人之書，與自己處事接物為兩事。——左宗堂&lt;/div&gt;
+&lt;p class=&quot;drop-caps&quot;&gt;讀書時，須細看古人處一事，接一物，是如何思量？如何氣象？及自己處事接物時，又細心將古人比擬。設若古人當此，其措置之法，當是如何？我自己任性為之，又當如何？然後自己過錯始見，古人道理始出。斷不可以古人之書，與自己處事接物為兩事。——左宗堂&lt;/p&gt;
 
 </description>
         <pubDate>Wed, 21 Oct 2015 00:00:00 +0800</pubDate>
-        <link>http://richardwei2008.github.io/read/shiji/tutorial1/2015/10/21/vert/</link>
-        <guid isPermaLink="true">http://richardwei2008.github.io/read/shiji/tutorial1/2015/10/21/vert/</guid>
+        <link>http://richardwei2008.github.io/jekyll-nehan/_site/2015/10/21/vert/</link>
+        <guid isPermaLink="true">http://richardwei2008.github.io/jekyll-nehan/_site/2015/10/21/vert/</guid>
       </item>
     
       <item>
@@ -28,10 +28,10 @@
 
 &lt;div class=&quot;drop-caps&quot;&gt;表示機能をテストするために作ったエントリです。内容に特に意味はありません。表示機能をテストするために作ったエントリです。内容に特に意味はありません。表示機能をテストするために作ったエントリです。内容に特に意味はありません。&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/read/shiji/tutorial1/assets/tb-brand.png&quot; width=&quot;100&quot; height=&quot;100&quot; class=&quot;float-start disp-block gap-end&quot; /&gt;
+&lt;p&gt;&lt;img src=&quot;/jekyll-nehan/_site/assets/tb-brand.png&quot; width=&quot;100&quot; height=&quot;100&quot; class=&quot;float-start disp-block gap-end&quot; /&gt;
 日本国民は正当に選挙された国会における代表者を通じて行動し、われらとわれらの子孫のために、諸国民との協和による成果と、わが国全土にわたって自由のもたらす&lt;ruby&gt;&lt;rb&gt;恵沢&lt;/rb&gt;&lt;rt&gt;けいたく&lt;/rt&gt;&lt;/ruby&gt;を確保し、政府の行為によって再び&lt;ruby&gt;&lt;rb&gt;戦争&lt;/rb&gt;&lt;rt&gt;せんそう&lt;/rt&gt;&lt;/ruby&gt;の&lt;ruby&gt;&lt;rb&gt;惨禍&lt;/rb&gt;&lt;rt&gt;さんか&lt;/rt&gt;&lt;/ruby&gt;が起ることのないやうにすることを決意。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/read/shiji/tutorial1/assets/tb-brand.png&quot; width=&quot;100&quot; height=&quot;100&quot; class=&quot;disp-block float-end&quot; /&gt;
+&lt;p&gt;&lt;img src=&quot;/jekyll-nehan/_site/assets/tb-brand.png&quot; width=&quot;100&quot; height=&quot;100&quot; class=&quot;disp-block float-end&quot; /&gt;
 日本国民は正当に&lt;ruby&gt;選挙&lt;rt&gt;せんきょ&lt;/rt&gt;&lt;/ruby&gt;された国会における代表者を通じて行動し、&lt;span class=&quot;empha-sesame-filled&quot;&gt;われら&lt;/span&gt;と&lt;span class=&quot;empha-double-circle-filled&quot;&gt;われら&lt;/span&gt;の&lt;ruby&gt;&lt;rb&gt;子孫&lt;/rb&gt;&lt;rt&gt;しそん&lt;/rt&gt;&lt;/ruby&gt;のために、諸国民との協和による成果と、わが国全土にわたって自由のもたらす&lt;ruby&gt;&lt;rb&gt;恵沢&lt;/rb&gt;&lt;rt&gt;けいたく&lt;/rt&gt;&lt;/ruby&gt;を確保する。&lt;/p&gt;
 
 &lt;h3 class=&quot;break-before&quot;&gt;混合レイアウト&lt;/h3&gt;
@@ -107,8 +107,8 @@
 
 </description>
         <pubDate>Mon, 23 Jun 2014 00:00:00 +0800</pubDate>
-        <link>http://richardwei2008.github.io/read/shiji/tutorial1/2014/06/23/vert/</link>
-        <guid isPermaLink="true">http://richardwei2008.github.io/read/shiji/tutorial1/2014/06/23/vert/</guid>
+        <link>http://richardwei2008.github.io/jekyll-nehan/_site/2014/06/23/vert/</link>
+        <guid isPermaLink="true">http://richardwei2008.github.io/jekyll-nehan/_site/2014/06/23/vert/</guid>
       </item>
     
       <item>
@@ -117,9 +117,9 @@
 &lt;div class=&quot;drop-caps&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/div&gt;
 
 &lt;h2 id=&quot;image-float&quot;&gt;image float&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&quot;/read/shiji/tutorial1/assets/tb-brand.png&quot; width=&quot;128&quot; height=&quot;128&quot; class=&quot;disp-block float-start gap-end&quot; /&gt;
+&lt;p&gt;&lt;img src=&quot;/jekyll-nehan/_site/assets/tb-brand.png&quot; width=&quot;128&quot; height=&quot;128&quot; class=&quot;disp-block float-start gap-end&quot; /&gt;
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-&lt;img src=&quot;/read/shiji/tutorial1/assets/tb-brand.png&quot; width=&quot;128&quot; height=&quot;128&quot; class=&quot;float-end&quot; /&gt;
+&lt;img src=&quot;/jekyll-nehan/_site/assets/tb-brand.png&quot; width=&quot;128&quot; height=&quot;128&quot; class=&quot;float-end&quot; /&gt;
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;
 
 &lt;h2 id=&quot;ul-listings&quot;&gt;ul listings&lt;/h2&gt;
@@ -162,8 +162,8 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 &lt;/tr&gt;&lt;/thead&gt;&lt;/table&gt;
 </description>
         <pubDate>Mon, 23 Jun 2014 00:00:00 +0800</pubDate>
-        <link>http://richardwei2008.github.io/read/shiji/tutorial1/2014/06/23/hori/</link>
-        <guid isPermaLink="true">http://richardwei2008.github.io/read/shiji/tutorial1/2014/06/23/hori/</guid>
+        <link>http://richardwei2008.github.io/jekyll-nehan/_site/2014/06/23/hori/</link>
+        <guid isPermaLink="true">http://richardwei2008.github.io/jekyll-nehan/_site/2014/06/23/hori/</guid>
       </item>
     
   </channel>
