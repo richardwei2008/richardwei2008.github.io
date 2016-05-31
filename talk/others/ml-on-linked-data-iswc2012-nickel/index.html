@@ -14,7 +14,7 @@
          More info: h5bp.com/i/378 -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-    <title>ISWC 2012 Tutorial - Machine Learning on Linked Data: Tensors and their Applications in Graph-Structured Domains - by @mnick</title>
+    <title>Machine Learning on Linked Data: Tensors and their Applications in Graph-Structured Domains - by @mnick</title>
     <meta name="description" content="A tutorial held at ISWC 2012, Boston about machine learning with tensor factorizations in graph-structured domains. Special focus on applications for Linked Data and the Semantic Web">
     <meta name="keywords" content="machine learning, linked data, semantic web, tensor factorization, rescal, maximilian nickel, volker tresp">
 
@@ -34,13 +34,16 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
 
     <!-- screen css -->
-    <link rel="stylesheet" href="../../assets/reset/css/reset.css">
+    <!--<link rel="stylesheet" href="../../assets/reset/css/reset.css">-->
     <link rel="stylesheet" href="../../assets/rickshaw/css/rickshaw.min.css" type="text/css">
     <link rel="stylesheet" href="../../assets/nvd3/css/nv.d3.min.css" type="text/css">
-    <link rel="stylesheet" href="./css/main.css" type="text/css">
+
+    <link rel="stylesheet" href="../../assets/reveal/css/reveal.css">
+    <link rel="stylesheet" href="../../assets/reveal/css/theme/black.css" id="theme">
+    <!--<link rel="stylesheet" href="./css/main.css" type="text/css">-->
     <link rel="stylesheet" href="../../assets/reveal/lib/css/zenburn.css" type="text/css">
 
-    <link rel="stylesheet" href="./css/reveal-console.css" type="text/css" media="screen,projection">
+    <!--<link rel="stylesheet" href="./css/reveal-console.css" type="text/css" media="screen,projection">-->
     <link rel="stylesheet" href="./css/viz.css" type="text/css" media="screen,projection">
     <link rel="stylesheet" href="./css/math.css" type="text/css" media="screen,projection">
 
@@ -2207,20 +2210,20 @@
     <aside id="references" class="references"></aside>
 
     <!-- The navigational controls UI -->
-    <aside class="controls">
-        <div class="slide-number"></div>
-        <a class="left" href="#">&#x25C4;</a>
-        <a class="right" href="#">&#x25BA;</a>
-        <a class="up" href="#">&#x25B2;</a>
-        <a class="down" href="#">&#x25BC;</a>
-    </aside>
+    <!--<aside class="controls">-->
+        <!--<div class="slide-number"></div>-->
+        <!--<a class="left" href="#">&#x25C4;</a>-->
+        <!--<a class="right" href="#">&#x25BA;</a>-->
+        <!--<a class="up" href="#">&#x25B2;</a>-->
+        <!--<a class="down" href="#">&#x25BC;</a>-->
+    <!--</aside>-->
 
-    <aside id="impressum">
-        <a href="http://www.cip.ifi.lmu.de/~nickel/impressum.html">Impressum</a></p>
-    </aside>
+    <!--<aside id="impressum">-->
+        <!--<a href="http://www.cip.ifi.lmu.de/~nickel/impressum.html">Impressum</a></p>-->
+    <!--</aside>-->
 
     <!-- Presentation progress bar -->
-    <div class="progress"><span></span></div>
+    <!--<div class="progress"><span></span></div>-->
 </div>
 
 
@@ -2253,9 +2256,9 @@
 
 <script>
     // Load reveal.js as well as a classList polyfill if needed
-    // Load reveal.js as well as a classList polyfill if needed
     head.js( !document.body.classList ? 'js/vendor/classList.js' : null )
-            .js( 'js/vendor/reveal.min.js', function() {
+//            .js( 'js/vendor/reveal.min.js', function() {
+            .js( '../../assets/reveal/js/reveal.js', function() {
 
                 // Parse the query string into a key/value object
                 var query = {};
@@ -2298,24 +2301,45 @@
 
                 // Full list of configuration options available here:
                 // https://github.com/hakimel/reveal.js#configuration
+//                Reveal.initialize({
+//                    controls: true,
+//                    progress: true,
+//                    history: true,
+//                    overview: false,
+//                    rollingLinks: false,
+//
+//                    theme: query.theme || 'default', // default/neon/beige
+//                    transition: query.transition || 'linear', // default/cube/page/concave/linear(2d)
+//
+//                    dependencies: [
+//                        // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
+//                        { src: 'js/vendor/classList.js', condition: function() { return !document.body.classList; } },
+//                        // Speaker notes support
+//                        { src: 'js/reveal-console.js', async: true, callback: function() { rvconsole().init(); } },
+//                        { src: 'js/vendor/highlight.js', async: true, callback: function() { window.hljs.initHighlightingOnLoad(); } },
+//                    ]
+//                });
+
                 Reveal.initialize({
                     controls: true,
                     progress: true,
                     history: true,
-                    overview: false,
-                    rollingLinks: false,
+                    center: true,
 
-                    theme: query.theme || 'default', // default/neon/beige
-                    transition: query.transition || 'linear', // default/cube/page/concave/linear(2d)
+                    theme: query.theme || 'black',
+                    transition: 'slide', // none/fade/slide/convex/concave/zoom
 
+                    // Optional reveal.js plugins
                     dependencies: [
-                        // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
-                        { src: 'js/vendor/classList.js', condition: function() { return !document.body.classList; } },
-                        // Speaker notes support
-                        { src: 'js/reveal-console.js', async: true, callback: function() { rvconsole().init(); } },
-                        { src: 'js/vendor/highlight.js', async: true, callback: function() { window.hljs.initHighlightingOnLoad(); } },
+                        { src: '../../assets/reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                        { src: '../../assets/reveal/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                        { src: '../../assets/reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                        { src: '../../assets/reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                        { src: '../../assets/reveal/plugin/zoom-js/zoom.js', async: true },
+                        { src: '../../assets/reveal/plugin/notes/notes.js', async: true }
                     ]
                 });
+
 
             } );
 </script>
