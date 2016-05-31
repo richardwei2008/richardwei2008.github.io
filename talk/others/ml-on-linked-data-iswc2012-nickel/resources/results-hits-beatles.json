@@ -1,0 +1,10 @@
+{
+	"name": "HITS", "children":
+	[
+		{"name": "George", "dislikes": 0, "doesntlike": 0, "likes": 0},
+		{"name": "John", "dislikes": 0.4597, "doesntlike": 0.7071, "likes": 0},
+		{"name": "Paul", "dislikes": 0.628, "doesntlike": 0, "likes": 0},
+		{"name": "Ringo", "dislikes": 0, "doesntlike": 0.7071, "likes": 0.8507},
+		{"name": "Yoko", "dislikes": 0.628, "doesntlike": 0, "likes": 0.5257}
+	]
+}

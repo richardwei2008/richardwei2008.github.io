@@ -1,0 +1,156 @@
+{
+	"name": "The Beatles",
+	"show": true,
+	"klass": "root",
+	"score": 1,
+	"children": [
+		{
+			"name":"Factor 1",
+			"score":0.5,
+			"klass": "factor",
+			"children": [
+				{
+					"name":"predicates",
+					"klass":"predicates",
+					"score": 0,
+					"children": [
+						{"name":"skos:subject", "score":0.66, "klass":"predicates"},
+						{"name":"dbp-ont:label", "score":0.49, "klass":"predicates"},
+						{"name":"dbp-prop:label", "score":0.48, "klass":"predicates"},
+						{"name":"dbp-prop:producer", "score": 0.11, "klass":"predicates"}
+					]
+				},
+				{
+					"name":"resources",
+					"klass":"resources",
+					"score": 0,
+					"children": [
+						{"name":"Songs produced by George Martin", "score":0.35, "klass":"resources"},
+						{"name":"1968 songs", "score":0.32, "klass":"resources"},
+						{"name":"Jazz songs", "score":0.27, "klass":"resources"},
+						{"name":"Psychedelic songs", "score":0.27, "klass":"resources"},
+						{"name":"Folk songs", "score":0.27, "klass":"resources"},
+						{"name":"The Beatles songs sung by George Harrison", "score":0.27, "klass":"resources"},
+						{"name":"George Harrison songs", "score":0.27, "klass":"resources"},
+						{"name":"Apple Records", "score":0.16, "klass":"resources"},
+						{"name":"Apple Records Albums", "score":0.11, "klass":"resources"},
+						{"name":"Double Albums", "score":0.11, "klass":"resources"}
+					]
+				}
+			]
+		},
+		{
+			"name":"Factor 2",
+			"score":0.5,
+			"klass": "factor",
+			"children": [
+				{
+					"name":"predicates",
+					"klass":"predicates",
+					"score": 0,
+					"children": [
+						{"name":"dbp-prop:tracks", "score":0.95, "klass":"predicates"},
+						{"name":"dbp-prop:wikilink", "score":0.32, "klass":"predicates"}
+					]
+				},
+				{
+					"name":"resources",
+					"klass":"resources",
+					"score": 0,
+					"children": [
+						{"name":"Cry Baby Cry", "score":0.36, "klass":"resources"},
+						{"name":"Long", "score":0.36, "klass":"resources"},
+						{"name":"Piggies", "score":0.16, "klass":"resources"},
+						{"name":"Ob La Di", "score":0.16, "klass":"resources"},
+						{"name":"I", "score":0.16, "klass":"resources"},
+						{"name":"Rocky Racoon", "score":0.16, "klass":"resources"},
+						{"name":"Good Night", "score":0.16, "klass":"resources"},
+						{"name":"While My Guitar Gently Weeps", "score":0.16, "klass":"resources"},
+						{"name":"Mother Nature", "score":0.16, "klass":"resources"},
+						{"name":"Julia", "score":0.16, "klass":"resources"}
+					]
+				}
+			]
+		},
+		{
+			"name":"Factor 3",
+			"score":0.5,
+			"klass": "factor",
+			"children": [
+				{
+					"name":"predicates",
+					"klass":"predicates",
+					"score": 0,
+					"children": [
+						{"name":"rdf:type", "score":0.96, "klass":"predicates"},
+						{"name":"skos:subject", "score":0.29, "klass":"predicates"}
+					]
+				},
+				{
+					"name":"resources",
+					"klass":"resources",
+					"score": 0,
+					"children": [
+						{"name":"The Beatles Albums", "score":0.25, "klass":"resources"},
+						{"name":"Instrumental Artifact", "score":0.25, "klass":"resources"},
+						{"name":"Artifact", "score":0.25, "klass":"resources"},
+						{"name":"Albums produced by George Martin", "score":0.25, "klass":"resources"},
+						{"name":"Album", "score":0.25, "klass":"resources"}
+					]
+				}
+			]
+		},
+		{
+			"name":"Factor 4",
+			"score":0.5,
+			"klass": "factor",
+			"children": [
+				{
+					"name":"predicates",
+					"klass":"predicates",
+					"score": 0,
+					"children": [
+						{"name":"dbp-prop:origin", "score":1.0, "klass":"predicates"}
+					]
+				},
+				{
+					"name":"resources",
+					"klass":"resources",
+					"score": 0,
+					"children": [
+						{"name":"England", "score":0.99, "klass":"resources"},
+						{"name":"Liverpool", "score":0.11, "klass":"resources"}
+					]
+				}
+			]
+		},
+		{
+			"name":"Factor 5",
+			"score":0.5,
+			"klass": "factor",
+			"children": [
+				{
+					"name":"predicates",
+					"klass":"predicates",
+					"score": 0,
+					"children": [
+						{"name":"dbp-prop:genre", "score":0.70, "klass":"predicates"},
+						{"name":"dbp-ont:genre", "score":0.70, "klass":"predicates"}
+					]
+				},
+				{
+					"name":"resources",
+					"klass":"resources",
+					"score": 0,
+					"children": [
+						{"name":"Rock and Roll", "score":0.73, "klass":"resources"},
+						{"name":"Beat Music", "score":0.45, "klass":"resources"},
+						{"name":"Psychedelic Rock", "score":0.23, "klass":"resources"},
+						{"name":"Jazz Waltz", "score":0.23, "klass":"resources"},
+						{"name":"Folk Music", "score":0.23, "klass":"resources"}
+					]
+				}
+			]
+		}
+	]
+}

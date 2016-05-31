@@ -1,0 +1,23 @@
+{
+	"likes": [
+  		{"source": "John", "target":"Yoko", "type":"likes"}, 
+  		{"source": "Yoko", "target":"John", "type":"likes"}, 
+  		{"source": "John", "target":"Ringo", "type":"likes"}, 
+  		{"source": "Paul", "target":"Ringo", "type":"likes"}
+ 	],
+
+	"dislikes": [
+  		{"source": "George", "target":"Yoko", "type":"dislikes"}, 
+  		{"source": "George", "target": "Paul", "type": "dislikes"}, 
+  		{"source": "George", "target": "John", "type": "dislikes"}, 
+  		{"source": "John", "target": "Paul", "type": "dislikes"},
+  		{"source": "Paul", "target":"Yoko", "type":"dislikes"}
+	],
+  
+	"doesntlike": [
+  		{"source": "George", "target": "Ringo", "type": "doesntlike"}, 
+  		{"source": "George", "target": "John", "type": "doesntlike"}, 
+  		{"source": "John", "target": "Paul", "type": "doesntlike"},
+  		{"source": "Paul", "target":"Yoko", "type":"doesntlike"}
+	]
+}
