@@ -1,0 +1,2324 @@
+<!DOCTYPE html>
+<!-- vim: set foldmethod=marker -->
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!-- Consider specifying the language of your content by adding the `lang` attribute to <html> -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" itemscope itemtype="http://schema.org/Article"> <!--<![endif]-->
+<head>
+    <meta charset="UTF-8">
+    <meta content="utf-8" http-equiv="encoding">
+
+    <!-- Use the .htaccess and remove these lines to avoid edge case issues.
+         More info: h5bp.com/i/378 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>ISWC 2012 Tutorial - Machine Learning on Linked Data: Tensors and their Applications in Graph-Structured Domains - by @mnick</title>
+    <meta name="description" content="A tutorial held at ISWC 2012, Boston about machine learning with tensor factorizations in graph-structured domains. Special focus on applications for Linked Data and the Semantic Web">
+    <meta name="keywords" content="machine learning, linked data, semantic web, tensor factorization, rescal, maximilian nickel, volker tresp">
+
+    <meta name="author" content="Maximilian Nickel" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <!-- Mobile viewport optimized: h5bp.com/viewport -->
+    <meta name="viewport" content="width=device-width">
+
+    <!-- Google Plus Snippet -->
+    <meta itemprop="name" content="Machine Learning on Linked Data via Tensor Factorizations">
+    <meta itemprop="description" content="ISWC 2012 Tutorial about Machine Learning on Linked Data via Tensor Factorizations.">
+    <meta itemprop="image" content="http://www.cip.ifi.lmu.de/~nickel/iswc2012-slides/thumb.png">
+    <!--<link rel="author" href="http://plus.google.com/117723203386082459211" />-->
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
+
+    <!-- screen css -->
+    <link rel="stylesheet" href="../../assets/reset/css/reset.css">
+    <link rel="stylesheet" href="../../assets/rickshaw/css/rickshaw.min.css" type="text/css">
+    <link rel="stylesheet" href="../../assets/nvd3/css/nv.d3.min.css" type="text/css">
+    <link rel="stylesheet" href="./css/main.css" type="text/css">
+    <link rel="stylesheet" href="../../assets/reveal/lib/css/zenburn.css" type="text/css">
+
+    <link rel="stylesheet" href="./css/reveal-console.css" type="text/css" media="screen,projection">
+    <link rel="stylesheet" href="./css/viz.css" type="text/css" media="screen,projection">
+    <link rel="stylesheet" href="./css/math.css" type="text/css" media="screen,projection">
+
+    <!-- print css -->
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+        document.write( '<link rel="stylesheet" href="../../assets/reveal/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
+    <!-- link rel="stylesheet" href="css/viz-print.css" type="text/css" media="print">
+    <link rel="stylesheet" href="css/math-print.css" type="text/css" media="print"-->
+
+    <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
+
+    <!-- All JavaScript at the bottom, except this Modernizr build.
+         Modernizr enables HTML5 elements & feature detects for optimal performance.
+         Create your own custom Modernizr build: www.modernizr.com/download/ -->
+    <script src="../../assets/modernizr/js/modernizr-2.6.1.min.js"></script>
+
+    <!-- {{{ MathJax Config -->
+    <script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			"HTML-CSS": {
+				scale: 95,
+				showMathMenu: false,
+				mtextFontInherit: true,
+				preferredFont: "TeX",
+				styles: {
+					".MathJax_Display": {
+						margin: "0.75em 0em"
+					}
+				}
+			},
+			"SVG": {mtextFontInherit: true, scale: 95, showMathMenu: false},
+  			jax: ["input/TeX","output/HTML-CSS"],
+			tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+  			extensions: ["tex2jax.js"],
+  			TeX: {
+    			//extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]
+    			extensions: ["AMSmath.js","AMSsymbols.js"]
+			}
+		});
+	</script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.1-latest/MathJax.js"></script>
+    <!-- }}} -->
+
+</head>
+
+<body>
+<!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
+     chromium.org/developers/how-tos/chrome-frame-getting-started -->
+<!--[if lt IE 7]><p class="chromeframe">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+
+<div class="reveal">
+    <!-- Used to fade in a background when a specific slide state is reached -->
+    <div class="state-background"></div>
+
+    <div class="slides" id="reveal-slides">
+        <section> <!-- {{{ Title -->
+            <object data="img/cora.svg" style="position:absolute; top:-400px; -webkit-transform:scale(2);"></object>
+            <div class="title">
+                <h4>Machine Learning on Linked Data</h4>
+                <h1>Tensors and their Applications in Graph-Structured Domains</h1>
+                <div class="authors">
+                    <p><a href="http://www.cip.ifi.lmu.de/~nickel/">Maximilian Nickel</a>, Ludwig Maximilian University Munich<p>
+                    <p><a href="http://www.tresp.org/">Volker Tresp</a>, Siemens AG</p>
+                </div>
+
+                <div class="social">
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-via="mnick" data-count="horizontal" data-size="large" data-hashtags="iswc2012,machine-learning,tutorial">Tweet</a>
+                    <a href="https://twitter.com/mnick" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @mnick</a>
+
+                    <!--<div class="g-plusone" data-size="standard" style="height:30px;width:60px;"></div>-->
+
+                    <!-- Place this code where you want the badge to render. -->
+                    <!--<a href="https://plus.google.com/117723203386082459211?prsrc=3" rel="publisher" style="text-decoration:none;">-->
+                        <!--<img src="http://ssl.gstatic.com/images/icons/gplus-32.png" alt="Google+" style="border:0;width:30px;height:30px;"/></a>-->
+
+                    <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://o7xfeasig.bkt.clouddn.com/88x31.png" /></a><br /><span class="footnote">This work by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.cip.ifi.lmu.de/~nickel/iswc2012-learning-on-linked-data/" property="cc:attributionName" rel="cc:attributionURL">Maximilian Nickel and Volker Tresp</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/">Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License</a></span>
+                </div>
+            </div>
+        </section> <!-- }}} -->
+
+        <!-- section>
+        <h2>Tensor Motivation</h2>
+        <ul>
+            <li>Tensor decompositions have a long tradition in psychometrics and chemometrics</li>
+        </ul>
+
+            XXX TODO XXX: Find really, really cool applications, videos etc.
+            possibly only on graphs, or general tensor applications
+        </section -->
+
+        <!-- {{{ Agenda -->
+        <section style="font-size: .75em;">
+            <h2>What the tutorial will be about</h2>
+            <p class="txt">This tutorial is dedicated to how machine learning on Linked Data can be realized using <em>tensor factorizations</em>. In general, the focus will rest on applications important to Linked Data and we will introduce necessary theory when needed along that way.</p>
+            <ol class="agenda">
+                <li>
+                    <strong>From Linked Data to Tensors</strong><br />
+                    Some tensor theory and data representation of Linked Data as tensors
+                </li>
+                <li>
+                    <strong>Explanatory Analysis of Linked Data</strong><br />
+                    Starting from graphs and moving to multigraphs for ranking of nodes in RDF data
+                </li>
+                <li>
+                    <strong>Relational Learning & Link Prediction</strong><br />
+                    Prediction of unknown links, a central problem when learning on relational data.
+                </li>
+                <li>
+                    <strong>Entity Resolution & Taxonomy Learning</strong><br />
+                    Unsupervised instance matching and learning of taxonomies
+                </li>
+                <li>
+                    <strong>Scaling to complete Knowledge Bases</strong><br />
+                    Scaling tensor factorizations to the size of complete knowledge bases
+                </li>
+                <li>
+                    <strong>Analysis of time-evolving graphs</strong>
+                </li>
+            </ol>
+            <!-- ul class="tight">
+                <li><span class="predictive">Link Prediction:</span> Prediction of truth-valus for unknown triples in incomplete knowledge bases</li>
+                <li><span class="predictive">Entity Resolution:</span> Identification which entities refer to the same underlying entity (Instance Matching, Ontology Alignment)</li>
+                <li><span class="explanatory">(Hierarchical) Clustering:</span> Hierarchical grouping of entities based on the entities' and their clusters' similarities (Taxonomy Learning)</li>
+                <li><span class="explanatory">Information Retrieval:</span> Retrieval of similar entities, Faceted Browsing</li>
+                <li>Scalability</li>
+                <li><span class="explanatory">Time-Dependent Analysis of Graphs</span></li>
+                </ul-->
+        </section> <!-- }}} -->
+
+        <!--section>
+        <h2>What Machine Learning Has to Offer</h2>
+        <p class="txt">Typical machine learning tasks on relational data</p>
+        <ul>
+            <li><span class="predictive">Link Prediction:</span> Prediction of truth-valus for unknown triples in incomplete knowledge bases</li>
+            <li><span class="predictive">Classification:</span> Assignment of classes to entities according to their graph patterns</li>
+            <li><span class="predictive">Entity Resolution:</span> Identification which entities refer to the same underlying entity (Instance Matching, Ontology Alignment)</li>
+            <li><span class="explanatory">(Hierarchical) Clustering:</span> Hierarchical grouping of entities based on the entities' and their clusters' similarities (Taxonomy Learning)</li>
+            <li><span class="explanatory">Information Retrieval:</span> Retrieval of similar entities, Faceted Browsing</li>
+        </ul>
+        </section-->
+
+        <!-- {{{ ML & Linked Data -->
+        <section style="font-size: .9em;">
+            <h2>Machine Learning and Linked Data</h2>
+            <ul class="column" style="width:55%">
+                <li>Machine Learning depends on <em>repeatable statistical patterns</em> to <em>generalize from examples</em></li>
+                <!--li>In relational data patterns occur as links between entities</li-->
+                <li>
+                    The party membership of a U.S. vice president can be predicted reasonably well, given knowledge about his president's party
+                </li>
+                <li>
+                    Predicting the first name of
+                    US (vice) presidents is not meaningful
+                    (one-to-one relationship, no recurring patterns)
+                </li>
+                <li>Machine Learning depends strongly on the data at hand and the task that should be solved</li>
+            </ul>
+            <div class="column" style="float:right; width: 39%">
+                <div id="mlexample2"></div>
+                <div id="mlexample1"></div>
+            </div>
+        </section> <!-- }}} -->
+
+        <!-- {{{ LD & ML -->
+        <section style="font-size: .85em;">
+            <h2>Linked Data and Machine Learning</h2>
+            <p class="txt">The <strong>Linked Data principles</strong> are:</p>
+            <div class="definition">
+                <ul id="ld-principles">
+                    <li>Use URIs as names for <span class="highlight">things</span></li>
+                    <li class="fade">Use HTTP URIs, so that people can look up those names</li>
+                    <li class="fade">When someone looks up a URI, provide useful information, using the standards (RDF, SPARQL)</li>
+                    <li>Include <span class="highlight">links</span> to other URIs, so that they can discover more things</li>
+                </ul>
+            </div>
+            <div class="fragment" data-event="ldPrinciplesAnim">
+                <p class="txt">From a <strong>machine learning perspective:</strong></p>
+                <ul class="tight">
+                    <li>Linked Data is <em>(semi-)structured</em>, i.e. (subject, predicate, object) triples</li>
+                    <li>Data consists of <em>entities</em> and <em>relations</em> of different <em>types</em> between those entities
+                        <ul>
+                            <li>Entities = All subjects and objects that are not literals<br /> (In this tutorial: no special treatment of ontological knowledge)
+                            <li>Relations = Individual links between entities</li>
+                            <li>Relation Types = Properties in RDF</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ Relations, the Beauty and the Challenge - Relational Learning Intro -->
+        <section data-refs="[Koopman, 2010]">
+            <h2>Relations, the Beauty & the Challenge</h2>
+            <ul>
+                <li>Knowledge models such as Linked Data and many problems in machine learning have a <em>natural representation</em> as relational data</li>
+                <!-- Source Relational Patterns are Better, Koopman, 2010-->
+                <li style="position:relative;">Relations between entities are often more important for a prediction task than attributes</li>
+                <object data="img/presidents.svg" style="-webkit-transform:rotate(-40deg); width: 300px;  height: 300px;position:absolute; top: 270px; right: 50px;"></object>
+                <li style="width: 500px; position: relative; margin-top: 1.2em;">For instance, can be easier to predict the party of a vice-president from the party of <em>his</em> president than from his attributes</li>
+                <li style="margin-top: 1.2em;">Linked Data is <em>not independent and identically distributed</em> (iid), as
+                    <ul>
+                        <li>it does not consist of only one type of objects (e.g only persons)</li>
+                        <li>the entities are related to each other</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ Heterogenity -->
+        <section>
+            <object data="img/lod-datasets_2011-09-19_white.svg" type="image/svg+xml" style="position:absolute; width: 200%; top: -300px; left: -450px"></object>
+            <h2 style="position: relative; padding: .25em;" class="box">Learning, Linked Data & Heterogenity</h2>
+            <div class="bottom-container">
+                <aside class="note" style="right: 10em;">
+                    Linking Open Data cloud diagram, by Richard Cyganiak and Anja Jentzsch. <a href="http://lod-cloud.net/">lod-cloud.net</a>
+                </aside>
+            </div>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ Heterogenity -->
+        <section>
+            <h2>Learning, Linked Data & Heterogeneity</h2>
+            <ul>
+                <li>Heterogeneity introduces additional <em>noise</em> to the data
+                    <ul>
+                        <li><strong>Duplicate entities:</strong> URIs from different data sources refer to the same underlying entity (without specifying <span class="rdf">owl:sameAs</span>)</li>
+                        <li><strong>Duplicate predicates:</strong> Same case as for duplicate entities</li>
+                        <li><strong>Predicates with similar semantics:</strong> Probably more common case, for instance, different domain/range constraints, super/sub-predicates etc.</li>
+                    </ul>
+                </li>
+                <li><strong>Need of Linked Data</strong> Instance matching and Ontology Alignment to remove the noise introduced by heterogeneity</li>
+                <li><strong>Need of Machine Learning</strong>: <em>Joint</em> disambiguation of predicates and entities</li>
+            </ul>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ Open World Assumption -->
+        <section>
+            <h2>The Open World of Linked Data</h2>
+            <ul>
+                <!-- Source http://talis-systems.com/2011/10/w3c-library-linked-data-final-report-published -->
+                <li>Linked Data follows an <em>open-world assumption</em>, i.e. data cannot generally be assumed to be complete</li>
+                <!-- Source Tresp ESWC Tutorial -->
+                <li>In fact, Linked Data can be quite <em>incomplete</em></li>
+                <li style="position: relative;">
+                    <div class="column" style="float:right; position:relative; top: -4em;" id="chart-lp-al">
+                    </div>
+                    <strong>Need of Linked Data</strong>: Prediction of unknown triples in incomplete knowledge bases $\Rightarrow$ Link Prediciton
+                </li>
+                <!-- Source Tresp ESWC Tutorial -->
+                <li><strong>Problem for ML</strong>: Linked Data <em>rarely contains negative examples</em> or negations (i.e. <span class="rel">!partyOf(Al Gore, Republican)</span>)</li>
+            </ul>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ Challenges -->
+        <section>
+            <h2>Challenges !?</h2>
+            <p>Many of the features that make Linked Data so valuable (e.g. relations, linked data sources, size), can be a problem for machine learning and also Linked Data itself</p>
+            <div class="definition">The rest of this tutorial is dedicated to show how most of these problems can be approached by using <br/> <em>tensor factorizations</em></div>
+
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ >>> CHAPTER DATA REPRESENTATION -->
+        <section>
+            <div class="frontface">
+                <h4>Data Representation</h4>
+                <h1>Linked Data<div style="margin: .1em;">$\downarrow$</div>Tensors</h1>
+            </div>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ LD as Multigraph -->
+        <section>
+            <h2>Linked Data is a Multigraph</h2>
+            <p class="txt">From a mathematical perspective, Linked Data can be regarded as a <em>labeled directed multigraph</em>. A minimal definition for the purpose of this tutorial is</p>
+            <div class="definition">
+                <p style="text-align: left;">
+                    A labeled directed multigraph is a tuple $\mathcal{G} := (V, E, L)$
+                    <br />
+                    where
+                </p>
+                <ul>
+                    <li>$V$ is a set of vertices</li>
+                    <li>$L$ is a set of edge labels</li>
+                    <li>$E \subseteq V \times V \times L$ is a set of ordered triples</li>
+                </ul>
+            </div>
+            <ul class="tight">
+                <li>$V$ corresponds to the entities in the domain</li>
+                <li>$L$ corresponds to the different relation types</li>
+                <li>$E$ corresponds to the known facts about the entities (RDF triples)</li>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ Multigraph Example -->
+        <section>
+            <h2>Multigraph Example</h2>
+            <div class="column" style="width: 50%;">
+                <div class="legend">
+                    <ul>
+                        <li><svg class="line-legend"><line class="presidentOf" x1="0" y1="0" x2="30" y1="0"></line></svg> presidentOf</li>
+                        <li><svg class="line-legend"><line class="vicePresidentOf" x1="0" y1="0" x2="30" y1="0"></line></svg> vicePresidentOf</li>
+                        <li><svg class="line-legend"><line class="partyOf link" x1="0" y1="0" x2="30" y1="0"></line></svg> partyOf</li>
+                        <li><svg class="line-legend"><line class="knows link" x1="0" y1="0" x2="30" y1="0"></line></svg> knows</li>
+                    </ul>
+                </div>
+                <div id="multigraphexample"></div>
+            </div>
+            <div class="column" style="width: 45%; vertical-align: top; font-size: .7em; margin-left: 1em;">
+                <p class="txt">The set of vertices, edge labels and edges for this multigraph are
+                    \begin{align}
+                    V = \{&\text{Bill Clinton}, \text{Al Gore}, \text{Democratic Party }\} \\ \\
+                    L = \{&\text{presidentOf}, \text{vicePresidentOf}, \text{partyOf}, \text{knows }\}\\ \\
+                    E = \{&\text{(Bill Clinton, Al Gore, presidentOf)},\\
+                    & \text{(Al Gore, Democratic Party, partyOf)}, \\
+                    & \vdots \\
+                    & \text{(Bill Clinton, Al Gore, knows) } \}
+                    \end{align}
+                </p>
+            </div>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ Matrix Representation of Graphs -->
+        <section style="font-size: .9em;" data-refs="[Liben-Nowell, 2007], [Brin, 1998], [Kleinberg, 1999]">
+            <h2>Matrix Representation of Graphs</h2>
+            <p class="txt">Adjacency matrices are standard representations for graphs, i.e. data with only one type of edges or relations</p>
+            <div style="width: 55%; vertical-align:top; float: right;">
+                <div class="math-plus">$A = $</div>
+                <div id="matrix-graph-example" class="math-block subnote-container">
+                    <div class="subnote">
+                        Likes relation
+                    </div>
+                </div>
+                <div style="float:right; font-size: .6em; vertical-align: middle;">
+                    <p>Legend</p>
+                    <div class="matrix-legend-block" style="background-color:#333;"></div> $=1$<br />
+                    <div class="matrix-legend-block" style="background-color:#555;"></div> $=0$
+                </div>
+            </div>
+            <ul style="display: block">
+                <li>
+                    Some <em>graph properties</em> translate directly to adjacency matrix
+                    <ul>
+                        <li>Undirected $\rightarrow$ Symmetric</li>
+                        <li>Directed $\rightarrow$ Asymmetric</li>
+                        <li>Unweighted $\rightarrow$ Binary</li>
+                    </ul>
+                </li>
+                <li>Analysis of graphs using adjacency matrices
+                    <ul>
+                        <li><strong>Ranking:</strong> PageRank, HITS</li>
+                        <li><strong>Link Prediction:</strong> Common Neighbours, Katz, Adamic/Adar, low-rank matrix factorization</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+        <!-- }}} -->
+
+        <!-- section data-refs="[Liben-Nowell, 2007], [Brin, 1998], [Kleinberg, 1999]">
+        <h2>Learning on Graphs</h2>
+        <p class="txt">Popular methods for learning on graphs include</p>
+        <ul>
+            <li><strong>Link Prediction:</strong>
+            <ul>
+                <li>Common Neighbours, Katz, Adamic / Adar, Jaccard</li>
+                <li>Low-rank matrix factorization</li>
+            </ul>
+            </li>
+
+            <li><strong>Clustering:</strong>
+            <ul>
+                <li>XXX TODO XXX [Yu, 2005], [Drineas, 2004]</li>
+            </ul>
+            </li>
+
+            <li><strong>Information Retrieval:</strong>
+            <ul>
+                <li>PageRank - Random walk on graph</li>
+                <li>HITS - Hubs and authorities</li>
+            </ul>
+            </li>
+            <li>
+                General Framework that we will use in the tutorial:
+                <em>Latent Variable Models</em>
+            </li>
+        </ul>
+        </section -->
+
+        <!-- {{{ Multigraphs and Matrices -->
+        <section>
+            <h2>Multigraphs and Matrices</h2>
+            <p class="txt">
+                Multigraphs can not be represented by a single matrix
+                without <em>information loss</em>, given no
+                constraints on structure are enforced
+            </p>
+            <div id="matrix-multigraph" class="subnote-wrapper">
+                <div class="m1 math-block subnote-container"><div class="subnote">Loves</div></div>
+                <div class="math-plus">$+$</div>
+                <div class="m2 math-block subnote-container"><div class="subnote">Hates</div></div>
+                <div class="math-plus">$+$</div>
+                <div class="m3 math-block subnote-container"><div class="subnote">Indifferent</div></div>
+            </div>
+            <span class="fragment" data-event="multigraphMatrixAnim" data-args="1"></span>
+            <span class="fragment" data-event="multigraphMatrixAnim" data-args="2"></span>
+            <div id="combination-projection" style="display:none">
+                <ul>
+                    <li>Simple method: Projection of multigraph onto graph structure</li>
+                    <li>Loses information about multiple predicates</li>
+                </ul>
+            </div>
+            <div id="combination-append" style="display:none">
+                <ul>
+                    <li>Alternative method: Concatenation of adjacency matrices</li>
+                    <li>Loses information about subject / object identities without additional constraints</li>
+                </ul>
+            </div>
+        </section>
+        <!-- }}} -->
+
+        <section>
+            <!-- note: another way to look at it -->
+            <h2>Moving from Matrices to Tensors</h2>
+            <ul>
+                <li><strong>Underlying problem:</strong> Two modes, as in the matrix case, are not expressive enough to model multi-relational data without information loss</li>
+                <li><strong>Possible solution:</strong> Move to <em>tensors</em>, which are $n$-modal generalizations of matrices</li>
+            </ul>
+        </section>
+
+        <!-- {{{ Tensor Definition -->
+        <section>
+            <h2>What are tensors?</h2>
+            <p class="txt">Formally, tensors are defined as</p>
+            <div class="definition">
+                <p>
+                    An $n$-th order tensor is an element of the
+                    tensor product of $n$ vector spaces, i.e.
+                </p>
+                $\mathcal{T} \in V_1 \otimes ... \otimes V_n$
+            </div>
+            <ul>
+                <li>
+                    Less formally: tensors are <em>multidimensional
+                    arrays</em>, i.e. data structures with (possibly)
+                    more than two indices ($\mathcal{T}_{ijqrs}$)
+                </li>
+                <li>
+                    The <em>order</em> of an tensor is the number of modes
+                    (i.e, number of indices needed to identify elements in the array)
+                </li>
+            </ul>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ Tensor order examples -->
+        <section>
+            <h2>What are tensors?</h2>
+            <ul>
+                <li><em>Vectors</em> are 1st order tensors: $x_i$ (one mode)</li>
+                <li><em>Matrices</em> are 2nd order tensors: $X_{ij}$ (two modes)</li>
+                <li>Tensors of order $\geq$ 3 are called <em>higher-order tensors</em> $\mathcal{T}_{ijqrs}$</li>
+            </ul>
+
+            <p class="box" style="margin-top: 2em; padding:1em .75em;">In the following we will only use third-order tensors, i.e. "cubes"</p>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ Third-order tensor example -->
+        <section>
+            <h2>Example for a third-order tensor</h2>
+            <table style="margin: 2em 0em;">
+                <tr>
+                    <td style="width:40%; margin-right: 2em;">
+                        <object data="img/tensor-cells.svg" type="image/svg+xml"></object>
+                        <div style="padding-top: 1em;">
+                            $\mathcal{T} \in \mathbb{R}^{10 \times 7 \times 5}$
+                        </div>
+                    </td>
+                    <td style="width:40%; vertical-align:middle; text-align:left;">
+                        <div>
+                            <object data="img/cell-111.svg" type="image/svg+xml"></object>
+                            $= \mathcal{T}_{1,1,1}$
+                        </div>
+                        <div>
+                            <object data="img/cell-372.svg" type="image/svg+xml"></object>
+                            $= \mathcal{T}_{3,7,2}$
+                        </div>
+                        <div>
+                            <object data="img/cell-154.svg" type="image/svg+xml"></object>
+                            $= \mathcal{T}_{1,5,4}$
+                        </div>
+                        <div style="width:100%; margin-top: 2em;">
+                            <em>Mode-1</em> has dimension $I = 10$ <br />
+                            <em>Mode-2</em> has dimension $J = 7$ <br />
+                            <em>Mode-3</em> has dimension $K = 5$
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </section>
+        <!-- }}} -->
+
+        <!--  {{{ RDF Data to Tensors -->
+        <section style="font-size: 0.9em;">
+            <h2>Tensor Representation of RDF Data</h2>
+            <object style="width:30%;float:left; margin: 1em 2em; vertical-align:top;" data="img/tensor-indexing.svg" type="image/svg+xml"></object>
+            <ul style="display:block; width:100%">
+                <li>RDF data, or any other multigraph, can be represented as a <em>third-order tensor</em></li>
+                <li>Two modes refer to the entities, one mode to the relation types
+					<span style="font-size: 0.7em">
+						\begin{align}
+							\Rightarrow & |Mode\ 1| = |Mode\ 2| = |V|\\
+							& |Mode\ 3| = |L|
+						\end{align}
+					</span>
+                </li>
+                <li>We also require that the ordering of the entities on both modes is identical</li>
+            </ul>
+            <div>
+                $\mathcal{T}_{ijk}=\cases{1, & if triple ($\color{orangered}{i}$-th entity, $\color{yellow}{k}$-th predicate, $\color{greenyellow}{j}$-th entity) exists\cr 0, & otherwise\cr}$
+            </div>
+            <div class="definition">In the following we will refer to this modeling as <em>adjacency tensor</em></div>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ Adjancency Tensor Example -->
+        <section style="font-size: .9em;">
+            <h2>Running Example $\rightarrow$ Tensor</h2>
+            <p class="txt">The adjacency tensor for the running example used so far is</p>
+            <div style="position: relative; margin-top:2em; margin-bottom:1em;">
+                <div class="legend" style="position:absolute">
+                    <ul>
+                        <li><svg class="line-legend"><line class="presidentOf" x1="0" y1="0" x2="30" y1="0"></line></svg> presidentOf</li>
+                        <li><svg class="line-legend"><line class="vicePresidentOf" x1="0" y1="0" x2="30" y1="0"></line></svg> vicePresidentOf</li>
+                        <li><svg class="line-legend"><line class="partyOf link" x1="0" y1="0" x2="30" y1="0"></line></svg> partyOf</li>
+                    </ul>
+                </div>
+
+                <div class="math-block subnote-container" style="width:40%; vertical-align: middle; height:50%;">
+                    <div id="tensor-rep-example"></div>
+                    <div class="subnote">$\mathcal{G}$</div>
+                </div>
+                <div class="math-block" style="position:relative;">$\rightarrow$</div>
+                <div  style="height: 300px; vertical-align: top;" class="math-block subnote-container">
+                    <object data="img/tensor-indexing-example.svg" style="widht:100%;"></object>
+                    <div class="subnote">$\mathcal{T}$</div>
+                </div>
+            </div>
+            <p class="txt">An adjacency tensor contains a cell for every possible triple that could be created from the entities and relation types that are present in the data</p>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ Notation - Slices -->
+        <section style="font-size: .8em;">
+            <h2>Notation & Terminology</h2>
+            <em>Slices</em> are two-dimensional sections of a tensor (i.e. matrices)
+            <table width="100%" style="margin:1em 0em;">
+                <tr>
+                    <td width="32%"><object
+                            data="img/horizontal-slices.svg" type="image/svg+xml">
+                    </object></td>
+                    <td width="32%"><object
+                            data="img/lateral-slices.svg" type="image/svg+xml">
+                    </object></td>
+                    <td width="32%"><object
+                            data="img/frontal-slices.svg" type="image/svg+xml">
+                    </object></td>
+                </tr>
+                <tr>
+                    <td>Horizontal slices<br/>$\mathcal{T}_{i,:,:}$</td>
+                    <td>Lateral slices<br />$\mathcal{T}_{:,j,:}$</td>
+                    <td>Frontal slices<br />$\mathcal{T}_{:,:,k}$<br />
+                        <aside class="note" style="float:none; width:auto; text-align:center; margin-top:1em;">
+                            = stacked adjacency matrices in adjacency tensors
+                        </aside>
+                    </td>
+                </tr>
+            </table>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ Notation - Fibers -->
+        <section>
+            <h2>Notation & Terminology</h2>
+            <em>Fibers</em> are higher-order analogues of rows and columns in matrices
+            <table width="100%" style="margin:1em 0em;">
+                <tr>
+                    <td width="32%"><object
+                            data="img/mode1-fibers-white.svg" type="image/svg+xml">
+                    </object></td>
+                    <td width="32%"><object
+                            data="img/mode2-fibers-white.svg" type="image/svg+xml">
+                    </object></td>
+                    <td width="32%"><object
+                            data="img/mode3-fibers-white.svg" type="image/svg+xml">
+                    </object></td>
+                </tr>
+                <tr>
+                    <td>Mode-1 fibers<br />$\mathcal{T}_{:,j,k}$</td>
+                    <td>Mode-2 fibers<br />$\mathcal{T}_{i,:,k}$</td>
+                    <td>Mode-3 fibers<br />$\mathcal{T}_{i,j,:}$</td>
+                </tr>
+            </table>
+        </section>
+        <!-- }}} -->
+
+        <section>
+            <!-- {{{ Machine Learning on Tensors -->
+            <section>
+                <h2>Machine Learning on Tensors</h2>
+                <div class="definition">The general focus of this tutorial will be learning on adjacency tensors of multigraphs with <em>tensor factorizations</em></div>
+                <ul>
+                    <li>Tensor factorizations can be considers higher-order generalizations of matrix factorization methods</li>
+                    <li>Matrix factorizations have a long tradition in machine learning</li>
+                    <li>Matrix factorizations try to express data in terms of factor matrices</li>
+                    <li>Factorization methods have an appealing interpretation as <em>latent variable models</em></li>
+                </ul>
+
+                <div class="bottom-container">
+                    <aside class="note">
+                        Alternatives for learning on multigraphs include kernel
+                        methods, probabilistic relational models, markov logic
+                        networks amongst others
+                    </aside>
+                </div>
+            </section>
+            <!-- }}} -->
+
+            <!--section style="font-size: 0.8em;">
+            <h2>Latent Variable Models</h2>
+            <p>Latent variable models are statistical models the explain observed variables by a set of latent (or hidden) variables</p>
+            <!-- Source Borsboom - "The Theoretical Status of Latent Variables" - ->
+            <blockquote>
+                Einstein would not have been able to come up with his
+                $e = mc^2$ had he not possessed such an extraordinary
+                intelligence.
+            <div class="lvexample observed box" id="lvexample-observed">Einstein invented $e = mc^2$</div>
+                <div class="lvexample latent box" id="lvexample-latent">Einstein is very intelligent</div>
+            </blockquote>
+            <span class="fragment" data-event="lvexample" data-args="1"></span>
+            <div class="fragment" data-event="lvexample" data-args="2">
+                <ul class="column" style="width: 52%; float: left;">
+                    <li>Other examples for latent variables: quality of life, morale, happiness</li>
+                    <li>Many applications in e.g. machine learning, psychology, economics, bioinformatics, recommendation engines etc.</li>
+                    <li>Well known latent variable models: PCA, Factor Analysis, ICA etc.</li>
+                    <li>Often called "dimensionality reduction", since typically, fewer latent then observed dimensions exist</li>
+                </ul>
+                <div class="column" style="width:45%; margin-top: 2em;">
+                    <object id="lv-graphical" data="img/lv.svg" type="image/svg+xml"></object>
+                </div>
+            </div>
+            </section -->
+        </section>
+
+        <!-- {{{ CP -->
+        <section>
+            <div class="frontface">
+                <h1>The CP Decomposition & Explanatory Analysis</h1>
+                <h4>Hubs, Authorities, Topics & Co.</h4>
+            </div>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ Beatles DBpedia IFrame -->
+        <section>
+            <h2>The Beatles on DBpedia</h2>
+            <p class="fragment kontur-overlay" style="position: absolute;top:200px; pointer-events:none;">What are the important nodes of this multigraph?</p>
+            <iframe src="http://dbpedia.org/page/The_Beatles" style="width: 100%; min-height: 500px; height: 90%;"></iframe>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ Mobile Patent Suits Graph>
+        <section>
+        <h2>Mobile Patent Law Suits</h2>
+        <div id="mobile-suits"></div>
+        <div class="legend" style="position:relative; top:-500px;">
+            <ul>
+                <li><svg class="line-legend"><line class="sues link" x1="0" y1="0" x2="30" y1="0"></line></svg> sues</li>
+                <li><svg class="line-legend"><line class="resolved link" x1="0" y1="0" x2="30" y1="0"></line></svg> resolved</li>
+                <li><svg class="line-legend"><line class="licensing link" x1="0" y1="0" x2="30" y1="0"></line></svg> licensing</li>
+            </ul>
+        </div>
+        <p class="footnote">Source: <a href="http://blog.thomsonreuters.com/index.php/mobile-patent-suits-graphic-of-the-day/" target="_blank">Thomson Reuters</a>, 2011</p>
+        <p class="fragment kontur-overlay" style="position: relative;top:-350px; pointer-events:none;">What are the important nodes of this graph?</p>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ HITS Introduction -->
+        <section data-refs="HITS [Kleinberg, 1999]" style="font-size: .9em;">
+            <h4>In the Case of Graphs</h4>
+            <h2>Authoritative Ranking with HITS</h2>
+            <object data="img/HITS/hubs-auths.svg" style="float:right; margin: 1em;"></object>
+            <ul style="display:block;">
+                <li><strong>Task:</strong> Ranking of nodes relative to their relevance for a query</li>
+                <li><strong>Main Idea:</strong> Describe nodes in the graph in terms of <em>hub-</em> and <em>authority-scores</em></li>
+                <li><strong>Authority score $a_j$:</strong> Importance of the node $i$ for incoming links (web context: value of the content of a page), i.e.
+                    $a_j = \sum_{i \rightarrow j} h_i$
+                </li>
+                <li><strong>Hub scores $h_i$:</strong> Importance of the node $j$ for outgoing links (web context: value of links to other pages), i.e.
+                    $h_i = \sum_{i \rightarrow j} a_j$
+                </li>
+                <li><strong>Mutual Reinforcement:</strong> Good hubs link to many good authorities, good authorities receive many links from good hubs</li>
+            </ul>
+        </section>
+        <!-- }}} -->
+
+        <!--  {{{ Singular Value Decomposition -->
+        <section style="font-size: .75em;">
+            <h4>(rank-reduced)</h4>
+            <h2>Singular Value Decomposition</h2>
+            <p class="txt">Any matrix $X$ has a decomposition into a weighted sum of the outer products of pairwise orthonormal vectors, i.e. $X = \sum_r \lambda_r u_r \circ v_r$, such that</p>
+            <div style="height: 100px; margin: 1em 0em 2em 0em;">
+                <div class="math-block" style="height: 80%;">
+                    <object data="img/HITS/matrix.svg"></object>
+                    <div class="subnote">$X$</div>
+                </div>
+                <div class="math-plus">$=$</div>
+                <div class="math-block" style="height: 80%">
+                    <object data="img/HITS/outer.svg"></object>
+                    <div class="subnote">$\lambda_1 u_1 \circ v_1$</div>
+                </div>
+                <div class="math-plus">$ + \dots + $</div>
+                <div class="math-block" style="height: 80%">
+                    <object data="img/HITS/outer.svg"></object>
+                    <div class="subnote">$\lambda_r u_r \circ v_r$</div>
+                </div>
+            </div>
+
+            <aside class="note" style="float:right; width: 25%; margin-top:1em;">
+                e.g. in the case of two vectors $u \in \mathbb{R}^2$, $v \in \mathbb{R}^3$
+                \begin{align}
+                u \circ v & = u v^T \\
+                & = \begin{bmatrix}u_1 \\ u_2 \end{bmatrix}
+                \begin{bmatrix}v_1 & v_2 & v_3\end{bmatrix} \\
+                & =	\begin{bmatrix}u_1v_1 & u_1v_2 & u_1v_3 \\ u_2v_1 & u_2v_2 & u_2v_3 \end{bmatrix}
+                \end{align}
+            </aside>
+            <ul style="display:block;">
+                <li>$\lambda_{i}$ is the $i$-th <em>singular value</em> of $X$</li>
+                <li>$u_i$ is the $i$-th <em>left singular vector</em> of $X$</li>
+                <li>$v_i$ is the $i$-th <em>right singular vector</em> of $X$</li>
+                <li>the sets $u_i$, $v_i$ are pairwise orthonormal, e.g. $u_i^Tu_i = 1$, $u_i^Tu_{j\neq i} = 0$</li>
+                <li>the <em>rank</em> of $X$ can be defined as the minimal number $r$ of outer products $\lambda_r u_r \circ v_r$ that generate $X$ is their sum</li>
+            </ul>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ Properties of SVD -->
+        <section>
+            <h2>Some Properties of SVD</h2>
+            <aside class="note" style="float:right; width: 25%; margin-top:1em;">
+                Eigenvectors of a matrix do not change direction when multiplied with that matrix, i.e the
+                Eigenvectors of $\begin{bmatrix}2 & 1 \\ 1 & 2\end{bmatrix}$
+                <img src="img/Eigenvectors.gif" style="width:100%"/>
+                are colored blue and pink, while non-eigenvectors are colored red
+                <br />
+                <span class="footnote">Source: <a href="http://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors" target="_blank">Wikipedia</a></span>
+            </aside>
+
+            <ul style="display:block;">
+                <li>The left singular vectors of X, $u_r$ are the eigenvectors of the kernel matrix $XX^T$, i.e $$\lambda_r u_r = XX^T u_r$$</li>
+                <li>The right singular vectors of X, $v_r$ are the eigenvectors of covariance matrix $X^TX$, i.e. $$\lambda_r v_r = X^TX v_r$$</li>
+                <li>SVD has many applications, e.g. LSI, dimensionality reduction, recommendation engines, HITS</li>
+            </ul>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ HITS Computation -->
+        <section style="font-size: 0.8em;">
+            <h4>In the Case of Graphs</h4>
+            <h2>Authoritative Ranking with HITS</h2>
+            <ul class="tight">
+                <li>
+                    The hub- and authority-scores are defined as
+                    \begin{align*}
+                    a_j & = \sum_{i \rightarrow j} h_i &
+                    h_i & = \sum_{i \rightarrow j} a_j \\
+                    \end{align*}
+                </li>
+                <li>In terms of the adjacency matrix $A$, this can be stated as
+                    \begin{align*}
+                    a & = A^T h & h & = A a \\
+                    \Rightarrow a & = A^TAa & h & = AA^Th
+                    \end{align*}
+                </li>
+                <li><p>$\Rightarrow$ The vectors $a$ and $h$ correspond to the singular vectors of $A$, i.e.</p>
+                    <div class="column" style="width:40%;">
+                        $$A = \sum_r \lambda_r \color{greenyellow}{u_r} \circ \color{orangered}{v_r}$$
+                    </div>
+                    <div class="column" style="height: 70px;">
+                        <div class="math-block" style="height:100%;">
+                            <object data="img/HITS/matrix.svg"></object>
+                        </div>
+                        <div class="math-plus">$=$</div>
+                        <div class="math-block" style="height:100%;">
+                            <object data="img/HITS/outer.svg"></object>
+                        </div>
+                        <div class="math-plus">$ +\, \dots \, + $</div>
+                        <div class="math-block" style="height:100%;">
+                            <object data="img/HITS/outer.svg"></object>
+                        </div>
+                    </div>
+                    <p>where, $h = u_1$ and $a = v_1$ is the dominant aspect in the graph, for $\lambda_1 \geq \lambda_{r \neq 1}$ </p>
+                </li>
+            </ul>
+        </section>
+        <!-- }}} -->
+
+
+        <!-- section>
+        <h2>Authoritative Ranking with HITS</h2>
+        <div class="column" style="width: 45%; border-right: thin dotted #fff;">
+            <p class="txt footnote">Iterative algorithm to compute hub and authority scores</p>
+            \begin{align}
+            h_i^{(t+1)} & = \sum_{i \rightarrow j} a_j^{(t)} \\ % & \mathrm{ for }\quad i = 1,\dots,n \\
+            a_j^{(t+1)} & = \sum_{i \rightarrow j} h_i^{(t+1)} \\ % & \mathrm{ for }\quad j = 1,\dots,n
+            \end{align}
+        </div>
+        <div class="column" style="vertical-align: top;">
+            Equivalent formulation
+            \begin{align}
+            h^{(t+1)} & = Aa^{t} \\
+            a^{(t+1)} & = A^Th^{(t+1)}
+            \end{align}
+        </div>
+        <p class="txt">Iterates $a^{(t)}, h^{(t)}$ converge to principal singular vectors of adjacency matrix</p>
+        <aside class="note">
+            HITS can be solved with SVD, since by substitution, it holds
+            \[
+                a = A^TAa \\
+                h = AA^Th
+            \]
+        </aside>
+        </section-->
+
+        <!-- {{{ The Beatles Soap Opera -->
+        <section style="font-size: .8em;">
+            <h4>Toy Data</h4>
+            <h2>The Beatles Soap Opera</h2>
+            <div id="beatles-soap"></div>
+            <div class="legend" style="position: relative; top: -300px;">
+                <ul>
+                    <li><svg class="line-legend"><line class="dislikes link" x1="0" y1="0" x2="30" y1="0"></line></svg> dislikes</li>
+                    <li><svg class="line-legend"><line class="doesntlike link" x1="0" y1="0" x2="30" y1="0"></line></svg> doesn't like</li>
+                    <li><svg class="line-legend"><line class="likes link" x1="0" y1="0" x2="30" y1="0"></line></svg> likes</li>
+                </ul>
+            </div>
+            <p class="txt">A completely made-up social network for demonstration purposes</p>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ HITS on Beatles Soap Opera -->
+        <section>
+            <h2>HITS on the Beatles Soap Opera</h2>
+            <div style="width:32%; display:inline-block;">
+                <p class="footnote">likes</p>
+                <div id="beatles-hits-likes"></div>
+                <div id="beatles-hits-likes-graph"></div>
+            </div>
+
+            <div style="width:32%; display:inline-block;">
+                <p class="footnote">dislikes</p>
+                <div id="beatles-hits-dislikes"></div>
+                <div id="beatles-hits-dislikes-graph"></div>
+            </div>
+
+            <div style="width:32%; display:inline-block;">
+                <p class="footnote">doesntlike</p>
+                <div id="beatles-hits-doesntlike"></div>
+                <div id="beatles-hits-doesntlike-graph"></div>
+            </div>
+            <div class="fragment" data-event="doClick" data-args="#beatles-hits-likes,#beatles-hits-dislikes,#beatles-hits-doesntlike"></div>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ Ranking with CP -->
+        <section data-refs="TOPHITS [Kolda, 2006], TripleRank [Franz, 2009]">
+            <h4>Graphs $\rightarrow$ Multigraphs</h4>
+            <h2>Authoritative Ranking with CP</h2>
+            <ul>
+                <li>Difficulties with HITS
+                    <ul>
+                        <li>HITS is a graph algorithm and doesn't know about multigraphs</li>
+                    </ul>
+                </li>
+                <li><strong>TOPHITS:</strong> Models a multigraph not only in terms of hubs and authorities but also in terms of its edge labels, i.e. the <em>relation types</em></li>
+
+                \begin{align*}
+                \text{HITS: }\quad A & \approx \sum\nolimits_r \lambda_r h_r \circ a_r\\
+                \text{TOPHITS: }\quad \mathcal{T} & \approx \sum\nolimits_r \lambda_r h_r \circ a_r \circ \color{greenyellow}{t_r}
+                \end{align*}
+                </li>
+
+                <li>TOPHITS is computed by appyling the CP decomposition to the adjacency tensor</li>
+                <!-- li>Model computation is query-independent, but query answering can be performed query-dependent</li -->
+            </ul>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ Outer Product / Rank-1 Tensors -->
+        <section>
+            <h2>Outer Product / Rank-1 Tensors</h2>
+
+            <div>
+                <p class="txt">Rank-1 $n$-order tensors are the result of the outer product of $n$ vectors. For example, in the three-way case</p>
+                <div class="definition column" style="width:25%;">
+                    \begin{align*}
+                    \mathcal{T} & = {\color{orangered}a} \circ {\color{yellow}b} \circ {\color{turquoise}c} \\
+                    \mathcal{T}_{ijk} & = a_i b_j c_k
+                    \end{align*}
+                </div>
+                <div class="column" style="margin-left: 1em; width: 50%">
+                    <object data="img/tensor.svg" type="image/svg+xml" style="vertical-align: middle; width: 42%;"></object>
+                    <span style="margin: 0.5em;">$=$</span>
+                    <object data="img/outer-rank1-color.svg" type="image/svg+xml" style="vertical-align: middle; width: 37%;"></object>
+                </div>
+            </div>
+            <p class="txt">where $\circ$ denotes the <em>outer product</em></p>
+            <br />
+
+            <div class="bottom-container">
+                <aside class="note" style="position: relative;">
+                    e.g. in the case of two vectors $u \in \mathbb{R}^2$, $v \in \mathbb{R}^3$
+                    \[
+                    u \circ v = u v^T
+                    = 		\begin{bmatrix}u_1 \\ u_2 \end{bmatrix}
+                    \begin{bmatrix}v_1 & v_2 & v_3\end{bmatrix}
+                    =	\begin{bmatrix}u_1v_1 & u_1v_2 & u_1v_3 \\ u_2v_1 & u_2v_2 & u_2v_3 \end{bmatrix}
+                    \]
+                </aside>
+            </div>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ CP / Parafac -->
+        <section data-refs="[Hitchcock, 1927], [Carroll & Chang, 1970], [Harshman, 1970]" style="font-size: .8em;">
+            <h2>CANDECOMP / PARAFAC (CP)</h2>
+            <p class="txt">CP is a decomposition of a tensor $\mathcal{T}$ into sum of rank-1 tensors</p>
+            <div id="cp-definition" class="definition" style="margin: 0; height: 200px;">
+                \begin{align*}
+                \mathcal{T} & \approx \sum_{r=1}^{R} \lambda_r a_r \circ b_r \circ c_r \\
+                \mathcal{T}_{ijk} & \approx \sum_{r=1}^{R} \lambda_r a_{ir} b_{jr} c_{kr}
+                \end{align*}
+            </div>
+            <div id="cp-viz" class="model-viz fragment" data-event="modelDefinition" data-args="cp">
+                <div class="math-block" style="height: 100%;">
+                    <object data="img/tensor.svg" type="image/svg+xml"></object>
+                    <div>$\mathcal{T}$</div>
+                </div>
+                <div class="math-block">$\approx$</div>
+                <div class="math-block" style="height: 100%;">
+                    <object data="img/outer-rank1.svg" type="image/svg+xml"></object>
+                    <div>$\lambda_1 a_1 \circ b_1 \circ c_1$</div>
+                </div>
+                <div class="math-block">$+$</div>
+                <div class="math-block" style="height: 100%;">
+                    <object data="img/outer-rank1.svg" type="image/svg+xml"></object>
+                    <div>$\lambda_2 a_2 \circ b_2 \circ c_2$</div>
+                </div>
+                <div class="math-block">$+$</div>
+                <div class="math-block" style="height: 100%;">
+                    <object data="img/outer-rank1.svg" type="image/svg+xml"></object>
+                    <div>$\lambda_3 a_3 \circ b_3 \circ c_3$</div>
+                </div>
+            </div>
+            <ul class="note-container">
+                <li>The rank $r$ of a CP decomp. is the number of rank-1 tensors used to approximate $\mathcal{T}$</li>
+                <li>"$\approx$" is the best approximation under some loss, e.g. $\|\mathcal{T} - \sum_r \lambda_r a_r \circ b_r \circ c_r \|^2$</li>
+                <aside class="note">
+                    SVD can be written as the weighted sum of outer products of singular vectors, i.e. $X \approx \sum_r \lambda_r u_r \circ v_r$
+                </aside>
+                <li><em>Tensor rank</em> $rank(\mathcal{T})$ is the smallest number $r$ of rank&#8209;1 tensors that are needed to exactly reconstruct $\mathcal{T}$ as their sum</li>
+                <li class="note-container">CP can be regarded a multilinear generalization of SVD
+                </li>
+            </ul>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ Authoritative Ranking with CP -->
+        <section data-refs="TOPHITS [Kolda, 2006], TripleRank [Franz, 2009]" style="font-size: .9em;">
+            <h2>Authoritative Ranking with CP</h2>
+            <ul>
+                <li>For a rank-1 decomposition of an adjacency tensor $\mathcal{T} = \lambda h \circ a \circ t$ it holds that
+                    \begin{align}
+                    h_i & = \sum_{i \overset{k}{\rightarrow} j} a_j t_k &
+                    a_j & = \sum_{i \overset{k}{\rightarrow} j} h_i t_k &
+                    t_k & = \sum_{i \overset{k}{\rightarrow} j} h_i a_j
+                    \end{align}</li>
+                <li>Rank-reduced factorization performs simultaneous <em>dimensionality reduction</em> on entities and relation types, such that similar entities or predicates are grouped together</li>
+            </ul>
+            <div>
+                <div class="math-block">
+                    <object data="img/HITS/tensor-dimred.svg" type="image/svg+xml" style="height:25%;"></object>
+                    <div class="subnote">$\mathcal{T} \in \mathbb{3 \times 3 \times 3}$</div>
+                </div>
+                <div class="math-plus">$\approx$</div>
+                <div class="math-block">
+                    <object data="img/HITS/dimred-outer1.svg" type="image/svg+xml" style="height: 25%;"></object>
+                    <div class="subnote">$\lambda_1 a_1 \circ b_1 \circ c_1$</div>
+                </div>
+                <div class="math-plus">$+$</div>
+                <div class="math-block">
+                    <object data="img/HITS/dimred-outer2.svg" type="image/svg+xml" style="height: 25%;"></object>
+                    <div class="subnote">$\lambda_2 a_2 \circ b_2 \circ c_2$</div>
+                </div>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ TOPHITS on Beatles Soup -->
+        <section>
+            <h2>TOPHITS on the Beatles Soap Opera</h2>
+            <div id="chart-mobile-tophits"></div>
+            <span class="fragment" data-event="tophits" data-args="1"></span>
+            <span class="fragment" data-event="tophits" data-args="2"></span>
+            <span class="fragment" data-event="tophits" data-args="3"></span>
+            <span class="fragment" data-event="tophits" data-args="4"></span>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ Triple Rank Intro -->
+        <section>
+            <h2>TripleRank - CP on Semantic Web Data</h2>
+            <ul>
+                <li><strong>Basic Idea:</strong> Apply TOPHITS approach to RDF data to enable <em>faceted browsing</em> in knowledge bases</li>
+                <li><strong>Example:</strong> <a href="http://dbpedia.org/resource/The_Beatles" target="_blank">The Beatles in DBpedia</a></li>
+                <li>TripleRank is applied to a subset of the data (e.g. all nodes with at most 2 hops distance to the query node)</li>
+                <li>Approach closer to original HITS application</li>
+                <li>Correlations between predicates can be important</li>
+            </ul>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ Triple Rank Viz -->
+        <section>
+            <h2>TripleRank - CP on Semantic Web Data</h2>
+            <div id="chart-beatles-sunburst"></div>
+            <span class="fragment" data-event="tripleRank" data-args="1"></span>
+            <span class="fragment" data-event="tripleRank" data-args="2"></span>
+            <span class="fragment" data-event="tripleRank" data-args="3"></span>
+            <span class="fragment" data-event="tripleRank" data-args="4"></span>
+            <span class="fragment" data-event="tripleRank" data-args="5"></span>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ Properties of CP -->
+        <section data-ref="[Hastad, 1990], [Kolda, 2009]">
+            <h4>(some unfortunately problematic)</h4>
+            <h2>Properties of CP / Tensor Rank</h2>
+            <ul>
+                <li>Determining tensor rank is <em>NP-hard!</em> In practice: find tensor rank numerically by fitting multiple models</li>
+                <li><strong>Non-nestedness:</strong> Rank-$(n+1)$ approximation does <em>not</em> necessarily Rank-$n$ approximation (means no overspecification)</li>
+                <li>Weak upper bound of tensor rank for third-order tensors: $rank(\mathcal{T}) \leq \min\{IJ, IK, JK\}$</li>
+                <li><strong>Degeneracy:</strong> A tensor may be approximated arbitrarily well by a lower rank factorization</li>
+            </ul>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ >>> CHAPTER RELATIONAL LEARNING -->
+        <section>
+            <div class="frontface">
+                <h3>(true)</h3>
+                <h1>Relational Learning</h1>
+                <h4>Or "tell me what is your friend's Erdös-Number"</h4>
+            </div>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ DISABLED section>
+        <h2>Link Prediction from a Machine Learning Perspective</h2>
+        <div id="graphexample"></div>
+        <span class="fragment" data-event="graphexample" data-args="addRelation"></span>
+        <span class="fragment" data-event="graphexample" data-args="addRVs"></span>
+        </section -->
+
+        <!-- {{{ Collective Learning -->
+        <section style="font-size: .9em;">
+            <h2>Collective Learning</h2>
+            <p class="txt">Relations between entities are a rich source of information, as they allow to include information that are distant in the graph</p>
+            <div class="definition" style="margin: 0; padding: 0.5em 1em;">
+                <em>Collective Learning</em> is the ability of a learning algorithm to include information such as classes, relations or attributes of related entities in the learning and prediction task for a particular entity
+            </div>
+            <div id="collective-learning-example" style="width:400px;"></div>
+            <p class="footnote"><strong>Example:</strong> Party membership of US presidents</p>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ Factorizations in Machine Learning -->
+        <section data-refs="[Singh, 2008], [Srebro, 2004]" style="font-size: .75em;">
+            <h2>Factorizations & Relational Learning</h2>
+            <h4>Using a Link Prediction Example</h4>
+            <div style="float:right; padding-left: 1em; width: 40%; height: 40%;">
+                <object data="img/ml-factor.svg" type="image/svg+xml" style="width: 100%; height: 100%"></object>
+            </div>
+            <ul style="display:inline;">
+                <li>Matrix factorizations decompose a observed matrix $X$ into latent (or hidden) factors, e.g. \begin{align*}X \approx SO^T && X_{ij} \approx s_i^T o_j\end{align*}$S$ and $O$ are called factor matrices and $s_i$, $o_j$ are the $i$-th and $j$-th row as column-vectors</li>
+                <li>Latent factors can be interpreted as new features that have been invented to describe the data (statistical predicate invention)</li>
+                <li>The rows of the factor matrices $s_i$, $o_j$ can be considered latent-variable representations of (in our case) entities that <em>explain</em> the observed variables $X_{ij}$</li>
+                <li>The columns of the factor matrices can be considered the invented latent features</li>
+                <li>The entries of the factor matrices specify how much an entity participates in a latent feature</li>
+            </ul>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ Collective Learning and CP -->
+        <section style="font-size: 0.8em;">
+            <h2>Collective Learning & Bipartite Model</h2>
+            <ul>
+                <li>CP actually models a <em>bipartite</em> multigraph, i.e. CP assumes that the entries on the 1st mode are not identical to the entries on the 2nd mode (different latent representations $a_r$, $b_r$ in $\sum_r a_r \circ b_r \circ c_r$)</li>
+                <li>$\Rightarrow$ CP does not account for identities between subjects and objects</li>
+                <li>For general relational data, such as Linked Data, this assumption is violated</li>
+                <li>Bipartite modeling <em>prevents information propagation</em> over latent variables, or at least makes it very difficult</li>
+            </ul>
+            <object id="plot-collective-cp" data="img/collective-new.svg" style="position: relative; width: 55%"></object>
+			<span class="fragment" data-event="collectiveLearningAnim">
+				<aside class="note">
+                    $\Rightarrow$ Ideally, factorizations would model adjacency tensors with unique entity representations
+                </aside>
+			</span>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ Collective Learning and CP -->
+        <section>
+            <h2>Collective Learning and CP</h2>
+            <ul>
+                <li>CP model for relational data with unique entity-representation would be
+                    \[
+                    \mathcal{T} \approx \sum_r e_r \circ e_r \circ p_r
+                    \]
+                </li>
+                <li>All frontal slices would be symmetric</li>
+                <li>$\Rightarrow$ CP can not simultaneously enforce the unique entity-representation constraint and still model directed relations</li>
+                <li><em>Tucker Decompositions</em> offer more expressiveness than CP, such that the required constraints can be enforced $\Rightarrow$ <em>RESCAL</em></li>
+            </ul>
+
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ Unfolding -->
+        <section style="font-size: .8em;">
+            <h2>Interlude - Unfolding</h2>
+            <p class="txt">The mode-$n$ unfolding of a tensor $\mathcal{T}$, denoted by <em>$\mathcal{T}_{(n)}$</em>, reorders the elements of $\mathcal{T}$ into a new matrix $M$, by using the mode-$n$ fibers as columns of $M$. For $\mathcal{T} \in \mathbb{R}^{2 \times 3 \times 2}$</p>
+            <table id="unfolding">
+                <tr>
+                    <td>
+                        <object data="img/unfolding-mode1-src.svg" type="image/svg+xml" style="vertical-align: middle;"></object>
+                        <div class="footnote">Mode-1 fibers</div>
+                    </td>
+                    <td>
+                        $\overset{\mathcal{T}_{(1)}}{\rightarrow}$
+                    </td>
+                    <td>
+                        <object data="img/unfolding-mode3-dest.svg" type="image/svg+xml" style="vertical-align: middle;"></object>
+                        $\in \mathbb{R}^{2 \times 6}$
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <object data="img/unfolding-mode2-src.svg" type="image/svg+xml" style="vertical-align: middle;"></object>
+                        <div class="footnote">Mode-2 fibers</div>
+                    </td>
+                    <td>
+                        $\overset{\mathcal{T}_{(2)}}{\rightarrow}$
+                    </td>
+                    <td>
+                        <object data="img/unfolding-mode2-dest.svg" type="image/svg+xml" style="vertical-align: middle;"></object>
+                        $\in \mathbb{R}^{3 \times 4}$
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <object data="img/unfolding-mode3-src.svg" type="image/svg+xml" style="vertical-align: middle;"></object>
+                        <div class="footnote">Mode-3 fibers</div>
+                    </td>
+                    <td>
+                        $\overset{\mathcal{T}_{(3)}}{\rightarrow}$
+                    </td>
+                    <td>
+                        <object data="img/unfolding-mode3-dest.svg" type="image/svg+xml" style="vertical-align: middle;"></object>
+                        $\in \mathbb{R}^{2 \times 6}$
+                    </td>
+                </tr>
+            </table>
+            <div class="bottom-container">
+                <aside class="note">
+                    Unfolding is also referred to as matricization or flattening
+                </aside>
+            </div>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ Mode-n product -->
+        <section>
+            <h2>Interlude - Mode-n Product</h2>
+            <p class="txt">
+                The mode-$n$ product, denoted by <em>$\times_n$</em>, is the multiplication of a tensor by a matrix in mode $n$. Let $\mathcal{T} \in \mathbb{R}^{I_1 \times \dots \times I_N}$ and $M \in \mathbb{R}^{{\color{yellow}Q} \times I_n}$
+            </p>
+            <div class="definition">
+                $$\mathcal{Y} = \mathcal{T} \times_n M \in \mathbb{R}^{I_1 \dots I_{n-1} \dots \times {\color{yellow}Q} \times I_{n+1} \dots I_{N}}$$
+                $$Y_{(n)} = MT_{(n)}$$
+            </div>
+
+            <table class="math">
+                <tr>
+                    <td><object data="img/unfolding-mode2-src.svg"></object></td>
+                    <td>$\times_2$</td>
+                    <td><object data="img/unfolding-mult.svg"></object></td>
+                    <td>$\overset{\mathcal{T_{(2)}}}{\Large \leftrightarrows}$</td>
+                    <td><object data="img/unfolding-mult2.svg"></object></td>
+                </tr>
+                <tr class="math-note">
+                    <td>$\mathbb{R}^{2 \times 3 \times 2}$</td>
+                    <td></td>
+                    <td>$\mathbb{R}^{2 \times 3}$</td>
+                    <td></td>
+                    <td>$\triangleq \mathbb{R}^{2 \times 2 \times 2}$</td>
+                </tr>
+            </table>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ RESCAL -->
+        <section data-refs="[Nickel, 2011]" style="font-size: .8em;">
+            <h2>RESCAL</h2>
+            <div id="rescal-def-wrap">
+                <div id="rescal-definition" style="height: 270px;">
+                    <p class="txt"><strong>Main Idea:</strong> RESCAL is a factorization of multi-relational data, or multigraphs, into <em>unique</em> entity and predicate representations</p>
+                    <div class="definition">
+                        \begin{align}
+                        \mathcal{T} \approx & R \times_1 A \times_2 A \\
+                        \mathcal{T}_k \approx & A R_k A^T \\
+                        \mathcal{T}_{ijk} \approx & \sum\nolimits_{q,r} a_{iq} \mathcal{R}_{qrk} a_{jr}
+                        \end{align}
+                    </div>
+                </div>
+                <div id="rescal-viz" class="model-viz fragment" style="text-align: center; margin-bottom: 3em;" data-event="modelDefinition" data-args="rescal">
+                    <div class="subnote-container math-block" style="height:70%;">
+                        <object data="img/tensor.svg" type="image/svg+xml"></object>
+                        <div class="subnote">$\mathcal{T}_k$</div>
+                    </div>
+                    <div style="top: -.75em;" class="math-block math-plus">$\approx$</div>
+                    <div class="subnote-container math-block" style="height:70%;">
+                        <object id="rescal-svg" data="img/rescal/rescal_factors.svg" type="image/svg+xml"></object>
+                        <div class="subnote">$A R_k A^T$</div>
+                    </div>
+                </div>
+            </div>
+            <ul>
+                <li>
+                    $A \in \mathbb{R}^{|V| \times r}$ represents the
+                    entity-latent-component space
+                </li>
+                <li>
+                    $R_k \in \mathbb{R}^{r \times r}$ is an <i>asymmetric</i>
+                    matrix that specifies the interaction of the latent
+                    components for the $k$-th predicate
+                </li>
+                <li>where $r$ is the number of latent-components of the factorization</li>
+                <li>
+                    $\approx$ means approximate best under some loss, e.g. $\sum_k \|\mathcal{T}_k - A\mathcal{R}_kA^T\|^2$
+                </li>
+            </ul>
+            <div class="fragment" data-event="rescalAnim" data-args="1"></div>
+            <div class="fragment" data-event="rescalAnim" data-args="2"></div>
+            <div class="fragment" data-event="rescalAnim" data-args="3"></div>
+            <div class="fragment" data-event="rescalAnim" data-args="4"></div>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ DISABLED section>
+        <h2>RESCAL as a Graphical Model</h2>
+        <p class="txt">As a graphical model in plate notation, RESCAL has the following form</p>
+        <object data="img/rescal/gm2.svg" style="height: 70%" type="image/svg+xml"></object>
+        </section }}} -->
+
+        <!-- {{{ CHAPTER LINK PREDICTION -->
+        <section>
+            <div class="frontface">
+                <h1>Link Prediction</h1>
+            </div>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ Link Prediction in RESCAL -->
+        <section style="font-size: .7em;">
+            <h2>Link Prediction using RESCAL</h2>
+            <div id="rescal-lp-viz" class="model-viz" style="text-align: center; height: 180px; display: block; opacity: 1;">
+                <div class="subnote-container math-block" style="height:100%;">
+                    <object data="img/tensor.svg" type="image/svg+xml"></object>
+                    <div class="subnote">$\mathcal{T}_k$</div>
+                </div>
+                <div style="top: -.75em;" class="math-plus">$\approx$</div>
+                <div class="subnote-container math-block" style="height:100%">
+                    <object id="rescal-lp-svg" data="img/rescal/rescal_factors.svg" type="image/svg+xml"></object>
+                    <div class="subnote">$A R_k A^T$</div>
+                </div>
+            </div>
+            <span class="fragment" data-event="rescalLinkPrediction"></span>
+            <ul>
+                <li><strong>Basic procedure</strong> of link prediction with RESCAL
+                    <ul>
+                        <li>Compute "rank-reduced" factorization ($\triangleq$ latent-variable representations)
+                        <li>Entries after reconstruction (i.e. $\mathcal{\hat{T}}_{ijk} = a_i R_k a_j^T$) can be regarded as <em>confidence values</em> of the model that the corresponding triple exists</li>
+                    </ul>
+                </li>
+                <li>Method can be motivated from a latent variable interpretation of factorizations</li>
+                <li>Due to the independence of random variables given the latent variables, <em>very fast prediction</em>, since it is equivalent to simple matrix-vector products</li>
+                <li>Similar procedures possible for CP and other tensor decompositions (without or reduced collective learning effect)</li>
+            </ul>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ US Presidents Results -->
+        <section data-refs="[Nickel, 2011]">
+            <h2>U.S. Presidents - Data</h2>
+            <object data="img/presidents.svg" style="width: 350px; height: 400px; float: right; margin-left: 1em;"></object>
+            <ul style="display:block;">
+                <li>Data extracted from <a href="http://dbpedia.org/resource/President_of_the_United_States" target="_blank">DBpedia</a></li>
+                <li>Consists of URIs of (vice) presidents and parties, the party memberships and the information who was (vice) president of whom</li>
+                <li>Importantly, the data contains no other information, therefore only a collective learning algorithm will learn something meaningful on this dataset</li>
+                <li><strong>Task:</strong> Predict party-membership for persons in dataset (link prediction)</li>
+            </ul>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ US Presidents Results -->
+        <section data-refs="[Nickel, 2011a]">
+            <h2>U.S. Presidents - Experiments</h2>
+            <ul class="tight">
+                <li>Experimental setting: 10-fold cross-validation over all persons</li>
+                <li>Evaluation measure: Area under precision-recall curve (AUC-PR)</li>
+            </ul>
+            <div style="height:400px; margin-top: 1em;">
+                <div id="chart-presidents" class="chords" style="width:400px; height:400px; display:inline; margin-right:2em; vertical-align: top;"></div>
+                <div class="subnote-container box" style="width: 40%; height: 300px; vertical-align: top; margin-top: 1.5em;">
+                    <div id="chart-presidents-bar" style=></div>
+                    <div class="y-subnote">AUC-PR</div>
+                </div>
+            </div>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ Link Prediction Bechmarks -->
+        <section data-refs="[Nickel, 2011a]">
+            <h2>Link Prediction Benchmarks</h2>
+            <div class="box subnote-container" style="padding: 1em;">
+                <div class="y-subnote">AUC-PR</div>
+                <div class="subnote-container math-block" style="width:30%; margin-right:.5em;">
+                    <div id="chart-kinships-bar"></div>
+                    <div class="subnote">Kinships</div>
+                </div>
+                <div class="subnote-container math-block" style="width:30%; margin-right:.5em;">
+                    <div id="chart-umls-bar"></div>
+                    <div class="subnote">UMLS</div>
+                </div>
+                <div class="subnote-container math-block" style="width:30%; margin-right:.5em;">
+                    <div id="chart-nations-bar"></div>
+                    <div class="subnote">Nations</div>
+                </div>
+            </div>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ CHAPTER ENTITY RESOLUTION & TAXONOMY LEARNING -->
+        <section>
+            <div class="frontface">
+                <h1>Entity Resolution & Taxonomy Learning</h1>
+            </div>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ Entity Resolution -->
+        <section style="font-size: .9em;">
+            <h2>Entity Resolution</h2>
+            <ul>
+                <li><strong>Problem:</strong> Data contains duplicate instances of the true underlying entities</li>
+                <li>Example: Names as identifiers in citation databases: <span class="rdf">"A. Einstein"</span>, <span class="rdf">"Einstein, A."</span>, <span class="rdf">"Albert Einstein"</span> all refer to the identical underlying entity Albert Einstein</li>
+                <li><strong>Task:</strong> Determine which instances refer to the identical underlying entity</li>
+                <li>Important task in the Linked Data context, where this task is commonly referred to as <em>Instance Matching</em></li>
+                <li>Relational data provides important information for this task, e.g. how similar are the co-authors of <span class="rdf">"A. Einstein"</span> and <span class="rdf">"Einstein, A."</span></li>
+                <li><strong>General approach:</strong> Use some similarity measure to determine which instances are most likely to be identical</li>
+            </ul>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ Similiarity of Entities in RESCAL -->
+        <section style="font-size: .85em;">
+            <h2>Similarity of Entities in RESCAL</h2>
+            <div id="taxonomy-viz" style="text-align: center; height:200px; margin-bottom: 2em;">
+                <div class="math-block subnote-container" style="height: 100%;">
+                    <object data="img/tensor.svg" type="image/svg+xml"></object>
+                    <div class="subnote">$\mathcal{T}_k$</div>
+                </div>
+                <div class="math-plus">$=$</div>
+                <div class="math-block subnote-container" style="height: 100%;">
+                    <object id="tax-svg" data="img/rescal/rescal_factors.svg" type="image/svg+xml"></object>
+                    <div class="subnote">$A R_k A^T$</div>
+                </div>
+            </div>
+            <ul>
+                <li>RESCAL has a unique representation of entities via $A$</li>
+                <li>$A$ can be regarded as an <em>embedding</em> of the entities into a simple vector space</li>
+                <li>Similarity of entities in the latent-space $A$ corresponds to similarity in relational domain. <span class="question">Why?</span></li>
+                <li>$\Rightarrow$ Any <em>feature-based</em> machine-learning method (e.g. for clustering, classification etc.) can already be applied to $A$</li>
+            </ul>
+            <span class="fragment" data-event="taxonomyAnim"></span>
+        </section>
+        <!-- }}} -->
+
+        <!--  {{{ Kronecker Product -->
+        <section>
+            <h2>Interlude - Kronecker Product</h2>
+            <p class="txt">The Kronecker product $\otimes$ is a generalization of the outer product to matrices. Let $A \in \mathbb{R}^{Q \times R}, B \in \mathbb{R}^{S \times T}$. The Kronecker Product is defined as</p>
+
+            <div class="definition">
+                $A \otimes B = \begin{bmatrix} a_{11} \mathbf{B} & \cdots & a_{1n}\mathbf{B} \\ \vdots & \ddots & \vdots \\ a_{m1} \mathbf{B} & \cdots & a_{mn} \mathbf{B} \end{bmatrix}$
+            </div>
+
+            <p class="txt">where $A \otimes B$ is a $QS \times RT$ block-matrix</p>
+            <div class="bottom-container">
+                <aside class="note">
+                    <strong>Relation to tensor product:</strong> If $A$, $B$ represent linear transformations $V_1 \rightarrow V_2$, $W_1 \rightarrow W_2$, then $A \otimes B$ represents the tensor product of the two maps, $V_1 \otimes V2 \rightarrow W_1 \otimes W_2$
+                </aside>
+            </div>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ RESCAL = Constrained Tucker -->
+        <section>
+            <section data-refs="[Tucker, 1966]" style="font-size: .85em;">
+                <h2>RESCAL = Constrained Tucker</h2>
+                <ul>
+                    <li>RESCAL can be regarded a variant of the Tucker Decomposition with the constraint that two factor matrices have to be identical</li>
+                    <li>Equivalent formulations for $\mathcal{T} = \mathcal{R} \times_1 A \times_2 A$ and $I \in \mathbb{R}^{|L| \times |L|}$
+                        \begin{align}
+                        \mathcal{T}_{(1)} & = A R_{(1)} (I \otimes A)^T \\
+                        \mathcal{T}_{(2)} & = A R_{(2)} (I \otimes A)^T \\
+                        \mathcal{T}_{(3)} & = R_{(3)}(A \otimes A)^T
+                        \end{align}
+                    </li>
+                    <li>
+                        For instance
+                        \[
+                        \mathcal{T}_{(1)}
+                        =
+                        A \begin{bmatrix}R_1 & R_2\end{bmatrix} \begin{bmatrix}
+                        A^T & 0 \\
+                        0 & A^T
+                        \end{bmatrix}
+                        =
+                        \begin{bmatrix}
+                        AR_1A^T & AR_2A^T
+                        \end{bmatrix}
+                        \]
+                    </li>
+                </ul>
+                <div class="bottom-container">
+                    <aside class="note">
+                        Tucker and CP are the most commonly used and
+                        well-known tensor decompositions
+                    </aside>
+                </div>
+            </section>
+            <!-- }}} -->
+
+            <!-- {{{ Tucker Decomposition -->
+            <section data-refs="[Tucker, 1966]">
+                <h2>Tucker Decomposition</h2>
+                <p>Decomposition of a tensor $\mathcal{T} \in \mathbb{R}^{I \times J \times K}$ into a core tensor, multiplied by factor matrices along each mode</p>
+                <div id="tucker-definition" class="definition">
+                    \begin{align}
+                    \mathcal{T} & = \mathcal{G} \times_1 A \times_2 B \times_3 C \\
+                    \mathcal{T}_{\color{greenyellow}{ijk}} & = \sum_{p,q,r} g_{pqr} a_{ip} b_{jq} c_{kr}
+                    \end{align}
+                </div>
+
+                <div id="tucker-viz" class="model-viz fragment" data-event="modelDefinition" data-args="tucker">
+                    <div class="subnote-container math-block" style="height:100%;">
+                        <object data="img/tensor.svg" type="image/svg+xml" style="vertical-align: top;"></object>
+                        <div class="subnote">$\mathcal{T}$</div>
+                    </div>
+                    <span class="math-block">$\approx$</span>
+                    <div class="subnote-container math-block" style="height:auto;">
+                        <object data="img/tucker.svg" type="image/svg+xml" class="math-block"></object>
+                        <div class="subnote">
+                            $\color{yellow}{G}
+                            \times_1 \color{deepskyblue}{A}
+                            \times_2 \color{greenyellow}{B}
+                            \times_3 \color{orangered}{C}$
+                        </div>
+                    </div>
+                </div>
+
+                <ul class="tight">
+                    <li>The core tensor $\mathcal{G} \in \mathbb{R}^{P \times Q \times R}$ can be regarded a compressed version of $\mathcal{T}$</li>
+                    <li>The factor matrices $A \in \mathbb{R}^{I \times P}$, $B \in \mathbb{R}^{J \times Q}$, $C \in \mathbb{R}^{K \times R}$ can be thought of the principal components in the respective modes</li>
+                </ul>
+            </section>
+            <!-- }}} -->
+
+            <!-- {{{ Uniqueness -->
+            <section>
+                <h2>Uniqueness</h2>
+                <div class="definition">
+                    Only possible combination of rank-1 tensors that sums to $\mathcal{X}$
+                </div>
+                <ul>
+                    <li>Except basic indeterminacies of scaling and permutation</li>
+                    <li>Matrix decompositions generally are not unique, e.g.
+                        \[M \approx AB = (AQ^{-1}) \, (QB)\]</li>
+                    <li>Interesting property for explanatory data analysis</li>
+                    <li style="position: relative;">
+                        <aside class="note" style="right: -5em; top: -2em;">
+                            For 3-way tensors a sufficient condition <br />for uniqueness of CP is<br /> $k_A + k_B + k_C \geq 2 rank + 1$, <br /> where $k_A$ is the k-rank of $A$
+                        </aside>
+                        <em>CP is unique</em> under mild conditions
+                    </li>
+                    <li><em>Uniqueness is not identical to a global optimum!</em></li>
+                </ul>
+            </section>
+            <!-- }}} -->
+
+            <!-- {{{ Properties of Tuckeer -->
+            <section>
+                <h2>Properties of Tucker</h2>
+                <ul>
+                    <li>Tucker is <em>not unique</em>
+                        \begin{align}
+                        \mathcal{G} \times_1 A \times_2 B \times _3 C = & \hat{\mathcal{G}}\times_1 AQ^{-1} \times_2 BR^{-1} \times_3 CS^{-1} \\
+                        \mbox{where } &
+                        \hat{\mathcal{G}} = (\mathcal{G} \times_1 Q \times_2 R \times_3 S)
+                        \end{align}
+                    </li>
+                    <li>Tucker <em>subsumes CP</em>, i.e. CP is a Tucker model with the additional constraints that the core tensor $\mathcal{G}$ is superdiagonal and the factor matrices have equal rank, i.e. $P = Q = R$</li>
+                    <li>Different variants of Tucker, based on number of modes that are factorized, i.e. Tucker-3, Tucker-2, Tucker-1</li>
+                    <li><em>Tucker does not enforce unique entity constraints</em></li>
+                </ul>
+            </section>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ Similarities of Entities in RESCAL -->
+        <section style="font-size: 0.8em;">
+            <h2>Similarity of Entities in RESCAL</h2>
+            <p class="txt"><strong>General approach:</strong> similarity of entities should be based on the similarity of their relational patterns</p>
+            <div class="column" style="width: 45%; border-right: thin dotted #fff;">
+                <p class="footnote">Outgoing links</p>
+                <object data="img/rescal/taxonomy-subjects.svg" style="height: 150px;"></object>
+                \begin{align*}
+                X_{i,:,:} = & \color{orangered}{a_i} R_{(1)} (I \otimes A^T) \\
+                X_{j,:,:} = & \color{greenyellow}{a_j} R_{(1)} (I \otimes A^T)
+                \end{align*}
+            </div>
+            <div class="column" style="width: 45%">
+                <p class="footnote">Incoming links</p>
+                <object data="img/rescal/taxonomy-objects.svg" style="height: 150px;"></object>
+                \begin{align*}
+                X_{:,i,:} = & \color{orangered}{a_i} R_{(2)} (I \otimes A^T) \\
+                X_{:,j,:} = & \color{greenyellow}{a_j} R_{(2)} (I \otimes A^T)
+                \end{align*}
+            </div>
+            <ul>
+                <li>For both incoming and outgoing links, the similarity of entities $e_i$ and $e_j$ is uniquely determined by the similarity of their latent-component representations $a_i$ and $a_j$</li>
+                <li>Due to the collective learning effect of RESCAL, the latent-variable representation also contains information about distant relations</li>
+            </ul>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ Cora Publication Data -->
+        <section data-refs="[Nickel, 2011a], [McCallum, 2000]" style="font-size: .9em;">
+            <object data="img/cora.svg" style="position:absolute; top:1em; width: 100%; -webkit-transform:scale(2); left: 200px;"></object>
+            <h2>Cora Publication Data</h2>
+            <div class="column" style="width: 55%; float: left;">
+                <ul>
+                    <li>Cora is a hand-labeled dataset consisting of machine learning publications, authors, venues and paper title</li>
+                    <li>Prior to entity resolution, the data contains ~90 authors, ~210 venues, ~400 publications</li>
+                    <li>True number of entities: 50 authors, ~100 venues and ~130 publications</li>
+                    <li>In total ~61.000 matching decisions</li>
+                    <li>Instance matching: Ranking of entities by their similarity in the entity-latent-component space</li>
+                </ul>
+            </div>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ Cora Publication Data -->
+        <section data-refs="[Nickel, 2011a], [Singla, 2006]">
+            <h2>Cora Publication Data</h2>
+            <div class="box subnote-container" style="padding: 1em; width: 67%;vertical-align:middle;">
+                <div class="y-subnote">AUC-PR</div>
+                <div class="subnote-container math-block" style="width:32%;">
+                    <div id="chart-cora-author-bar"></div>
+                    <div class="subnote">Author</div>
+                </div>
+                <div class="subnote-container math-block" style="width:32%;">
+                    <div id="chart-cora-citation-bar"></div>
+                    <div class="subnote">Citation</div>
+                </div>
+                <div class="subnote-container math-block" style="width:32%;">
+                    <div id="chart-cora-venue-bar"></div>
+                    <div class="subnote">Venue</div>
+                </div>
+            </div>
+            <div style="float:left; width: 200px; vertical-align: middle;">
+                <object data="img/cora-connections.svg" style="width: 280px; height: 300px; vertical-align:middle; position:relative;"></object>
+            </div>
+            <p class="txt">Due to noisy citations, a collective learning effect can significantly improve entity resolution results for authors and venues</p>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ Learning Taxonomies -->
+        <section data-refs="[Nickel, 2011b]">
+            <h2>Learning Taxonomies</h2>
+            <ul>
+                <li>Taxonomies are an <em>integral part of ontologies</em></li>
+                <li>
+                    Taxonomies consist of
+                    <ul>
+                        <li>a list of <strong>concepts</strong></li>
+                        <li>a <strong>concept hierarchy</strong></li>
+                        <li>an <strong>assignment</strong> of entities to concepts</li>
+                    </ul>
+                <li><strong>Approach:</strong> Learn taxonomies completely unsupervised by
+                    <em>hierarchical clustering</em> of entities</li>
+                <li>Since similarity of entities is completely contained within the <em>matrix</em> $A$, any feature based hierarchical clustering method can be used</li>
+            </ul>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ Taxonomy Learning - IIMB Experiments -->
+        <section data-refs="[Nickel, 2011b]">
+            <h2>IIMB 2010 Benchmark Data</h2>
+            <ul>
+                <li>Instance matching benchmark from movie domain, consisting of $\approx$ 1400 entities, organized in 80 concepts</li>
+                <li>Top Level Concepts: <span class="rdf">Budget</span>, <span class="rdf">Creature</span>, <span class="rdf">Film</span>, <span class="rdf">Language</span>, <span class="rdf">Location</span></li>
+                <li>The concepts <span class="rdf">Creature</span>, <span class="rdf">Film</span> and <span class="rdf">Location</span> are again subdivided into concepts like <span class="rdf">Person</span>, <span class="rdf">Character</span>, <span class="rdf">Country</span> or <span class="rdf">Action Movie</span></li>
+                <li><strong>Task:</strong> Unsupervised taxonomy learning via hierarchical clustering of entities</li>
+                <li><strong>Method: </strong>Hierarchical clustering on $A$ using the OPTICS method</li>
+            </ul>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ Taxonomy Learning - IIMB Vizualization -->
+        <section data-refs="[Nickel, 2011b]">
+            <div id="chart-iimb-results" class="box">
+                <table>
+                    <tr class="level"><td>Level 1</td><td>0.982</td></tr>
+                    <tr><td>Budget</td><td>1.0</td></tr>
+                    <tr><td>Creature</td><td>1.0</td></tr>
+                    <tr><td>Film</td><td>1.0</td></tr>
+                    <tr><td>Language</td><td>0.963</td></tr>
+                    <tr><td>Location</td><td>0.953</td></tr>
+
+                    <tr class="level"><td>Level 2</td><td>0.806</td></tr>
+                    <tr><td>Character</td><td>1.0</td></tr>
+                    <tr><td>City</td><td>0.992</td></tr>
+                    <tr><td>Country</td><td>0.632</td></tr>
+                    <tr><td>Person</td><td>0.991</td></tr>
+                    <tr><td>Parody</td><td>0.33</td></tr>
+                    <tr><td>Zombie</td><td>1.0</td></tr>
+
+                    <tr class="level"><td>Level 3</td><td>0.946</td></tr>
+                    <tr><td>Actor</td><td>0.987</td></tr>
+                    <tr><td>Capital</td><td>0.992</td></tr>
+                    <tr><td>Character Creator</td><td>0.533</td></tr>
+                    <tr><td>Director</td><td>0.781</td></tr>
+                </table>
+            </div>
+            <div id="chart-iimb-cluster" style="width:900px; display:inline-block; vertical-align: middle;"></div>
+            <span class="fragment" data-event="iimbTaxonomy" data-args=1></span>
+            <span class="fragment" data-event="iimbTaxonomy" data-args=2></span>
+            <span class="fragment" data-event="iimbTaxonomy" data-args=3></span>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ >>> CHAPTER SCALABILITY -->
+        <section>
+            <div class="frontface">
+                <h1>Scalability</h1>
+                <h4>or "Tensors? I thought these things don't scale?"</h4>
+            </div>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ The size of graphs -->
+        <section data-refs="[Leskovec, 2007]" style="font-size: 0.9em;">
+            <h2>The Size of Graphs</h2>
+            <ul>
+                <li>Multigraphs / Linked Data can be of large scale, consisting of millions of entities, thousands of predicates, billions of known facts</li>
+                <li>Number of random variables in a multigraph: <div class="box" style="border: 1.5px solid orangered; padding: 0.5em;">$|V| \times |V| \times |L|$ !</div></li>
+                <li>Real graphs are <em>sparse</em>, i.e. $|E| = O(|V|)$ instead of $O(|V|^2)$</li>
+                <li>Same property holds for most multigraphs and Linked Data, e.g.:
+                    <ul>
+                        <li>DBpedia: ~3.75 million entities, 800 object properties, 1.89 Billion triples XXX TODO XXX: report only entity-entity triples</li>
+                        <li>YAGO 2: ~3 million entities, ~40 object properties, 124 Million triples XXX TODO XXX: report only entity-entity triples</li>
+                    </ul>
+                </li>
+                <li>By using sparse linear algebra, <em>Alternating Least Squares</em> (ALS) algorithms can easily exploit the sparsity of graphs</li>
+            </ul>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ Alternating Least Squares -->
+        <section data-refs="[Kolda, 2009], [Navasca, 2008]" style="font-size: .9em;">
+            <h2>Alternating Least Squares</h2>
+            <ul>
+                <li>Typically, factorization methods are computed by optimizing the squared Frobenius norm, e.g. $\|Y - AB\|^2 = \sum_{ij}(Y_{ij} - a_i^T b_j)^2$
+                <li>Alternating least squares is an <em>alternating optimization scheme</em> (non-linear block Gauss-Seidel method) to compute such least-squares problems in multiple variables</li>
+                <li><strong>Basic procedure:</strong> Alternatingly keep all but one variable fixed and solve only for that variable</li>
+                <!-- LOCAL CONVERGENCE OF THE ALTERNATING LEAST SQUARES ALGORITHM FOR CANONICAL TENSOR APPROXIMATION - ANDRE USCHMAJEW -->
+                <li>"Alternating Least Squares" because the algorithm solves a <em>linear least squares subproblem</em> for each factor matrix</li>
+                <li>Scales well for sparse matrices and tensors, easy to implement</li>
+                <li>Can show slow convergence (swamps), Using normal equations (next slide) ill-conditioned matrices can occur $\rightarrow$ Regularization</li-->
+            </ul>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ Khatri-Rao Product -->
+        <section>
+            <h4>column-wise</h4>
+            <h2>Interlude - Khatri-Rao Product</h2>
+            <div class="txt">
+                Let
+                <div style="text-align: center; top: -2em; position: relative;margin-bottom: -2em;">
+                    \begin{align*}
+                    A \in \mathbb{R}^{Q \times {\color{yellow}R}} & =
+                    \begin{bmatrix} a_1 & a_2 & \dots & a_R \end{bmatrix}
+                    ,\\
+                    B \in \mathbb{R}^{S \times {\color{yellow}R}} & =
+                    \begin{bmatrix} b_1 & b_2 & \dots & b_R \end{bmatrix}
+                    \end{align*} </div>
+                be two column-wise partitioned matrices. <br />
+                The Khatri-Rao Product is defined as
+            </div>
+            <div class="definition">
+                $A \odot B = \begin{bmatrix} a_1 \otimes b_1 & a_2 \otimes b_2 & \dots & a_R \otimes b_R \end{bmatrix}$
+            </div>
+            <div class="txt">
+                where $A \odot B$ is a $QS \times R$ block-matrix
+            </div>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ Scalability CP-ALS -->
+        <section style="font-size: .9em;">
+            <h2>Scalability: CP-ALS</h2>
+            <ul>
+                <li>CP-ALS: Model $\min_{a_r, b_r, c_r}\|\mathcal{T} - \sum_r a_r \circ b_r \circ c_r\|^2$
+                </li>
+                <li>Equivalent formulations in unfolded form, by using the Khatri-Rao product and by forming new matrices $A$, $B$, $C$ from $a_r$, $b_r$, $c_r$, where e.g.
+                    \[
+                    A = \begin{bmatrix}a_1 & a_2 & \dots & a_R\end{bmatrix}
+                    \]
+                    \begin{align*}
+                    T_{(1)} & = {\color{greenyellow}A} (C \odot B)^T & \Rightarrow \min_A \|T_{(1)} - A(C \odot B)^T\|^2 \\
+                    T_{(2)} & = {\color{greenyellow}B} (C \odot A)^T & \Rightarrow \min_B \|T_{(2)} - B(C \odot A)^T\|^2 \\
+                    T_{(3)} & = {\color{greenyellow}C} (B \odot A)^T & \Rightarrow \min_C \|T_{(3)} - C(B \odot A)^T\|^2
+                    \end{align*}
+                </li>
+                <li>CP-ALS algorithm: solve alternatingly for $A$, $B$, $C$</li>
+            </ul>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ Normal Equations -->
+        <section style="font-size: .8em;">
+            <h2>Normal Equations and Sparsity</h2>
+            <ul>
+                <aside class="note">
+                    The method of normal equations can be derived from
+                    setting the gradient of the LLS problem to zero
+                </aside>
+                <li style="line-height:1.5em;">Let $\min_F \|Y - WX\|^2$ be a linear least squares problem, where $Y \in \mathbb{R}^{P \times Q}$, $W \in \mathbb{R}^{P \times rank}$, $X \in \mathbb{R}^{rank \times Q}$</li>
+
+                <li>$F$ can be computed by using the method of <em>normal equations</em>
+                    \[ W \leftarrow Y X^T (XX^T)^{-1} \]
+                </li>
+
+                <aside class="note" style="width: 23%;">
+                    <strong>Computational complexity</strong><br />
+                    $M \in \mathbb{R}^{n \times n}: M^{-1} = O(n^3)$
+                    <hr />
+                    $A \in \mathbb{R}^{n \times m}, B \in \mathbb{R}^{m \times p}:$
+                    $AB = O(nmp)$
+                    <hr />
+                    Sparse matrix-vector product $Xv = $
+                    \[
+                    \begin{bmatrix}
+                    1 & 0 & 3 \\
+                    0 & 5 & 0 \\
+                    0 & 0 & 9
+                    \end{bmatrix}
+                    \begin{bmatrix}
+                    a \\
+                    b \\
+                    c
+                    \end{bmatrix} \\
+                    = \underbrace{a + 3c + 5b +9c}_{O(nnz(X))}
+
+                    \]
+                </aside>
+
+                <li>$P$ and $Q$ can be large, e.g. for a Mode-1 unfolding of an adjacency tensor: $P = |V|$, $Q = |V| \times |L|$</li>
+                <li>Normal equations scale well for sparse tensor factorizations, as
+                    <ul>
+
+                        <li>$XX^T \in \mathbb{R}^{rank \times rank} \Rightarrow$ Inversion is cheap</li>
+                        <li>$Y$ is large but <em>sparse</em> $\Rightarrow$ matrix multiplication $YX^T$ can be computed in only $O(nnz(Y) \times rank)$</li>
+                        <li>$X$ is large in one dimension ($Q$) and dense but <em>structured</em> $\Rightarrow$ allows for very efficient optimizations to compute $XX^T$ for CP, Tucker and RESCAL</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ Normal Equation for CP -->
+        <section style="font-size: .8em;">
+            <h2>Normal Equations and CP</h2>
+            <ul>
+                <li>CP Model: $\mathcal{T}_{(1)} = A(C \odot B)^T$</li>
+                <li>For instance, the update of $A$ is computed by
+                    <!-- vphantom for braces alignment -->
+                    \[
+                    A \leftarrow
+                    \underbrace{\vphantom{C_{(1)}^{-1}}\mathcal{T}_{(1)}}_{\vphantom{(X^T)^{-1}}=Y}
+                    \underbrace{\vphantom{C_{(1)}^{-1}}(C \odot B)}_{\vphantom{(X^T)^{-1}}=X}
+                    \underbrace{\vphantom{C_{(1)}^{-1}}(C^TC * B^TB)^{-1}}_{=(XX^T)^{-1}}
+                    \]
+                    where $C \odot B \in \mathbb{R}^{|V||L| \times rank}$ and $C^TC * B^TB \in \mathbb{R}^{rank \times rank}$
+                </li>
+                <li>Structure of tensor factorization decreases complexity
+                    \begin{align*}
+
+                    C^TC * B^TB & = O\left((|V| \color{greenyellow}{+} |L|)rank^2\right) \\
+                    (C \odot B)^T (C \odot B) & = O(\left |V||L|rank^2 \right)
+                    \end{align*}
+                </li>
+                <li>Similar, even slightly more scalable results exist for RESCAL and Tucker decompositions</li>
+                </li>
+            </ul>
+        </section>
+        <!-- }}} -->
+
+        <!-- section data-refs="[Nickel, 2011]">
+        <h2>Scalability - RESCAL-ALS</h2>
+        <ul>
+            <li>RESCAL Model: $\mathcal{T} \approx \mathcal{R} \times_1 A \times_2 A$</li>
+            <li>Equivalent formulations in unfolded form
+            \begin{align}
+            \mathcal{T}_{(1)} & = A R_{(1)} (I \otimes A)^T \\
+            \mathcal{T}_{(2)} & = A R_{(2)} (I \otimes A)^T \\
+            \mathcal{T}_{(3)} & = R_{(3)}(A \otimes A)^T
+            \end{align}
+            </li>
+            <li>Approximation of equality constraint by stacking frontal slices $\mathcal{T}_k$ and their transpose $\mathcal{T}_k^T$ and solving only for left-hand $A$</li>
+            <li>Due to block structure of identity matrix, $\T{}
+        </ul>
+        </section -->
+
+
+        <!-- section>
+        <h2>Scalability - ALS Algorithms</h2>
+        <ul>
+            <li>Tucker Model
+            \[\mathcal{T} \approx \mathcal{G} \times_1 A \times_2 B \times_3 C\]
+            </li>
+            <li>Equivalent formulation in unfolded form
+        \begin{align*}
+            T_{(1)} & = {\color{orangered}A} G_{(1)} (C \otimes B)^T \\
+            T_{(2)} & = {\color{yellow}B} G_{(2)} (C \otimes A)^T \\
+            T_{(3)} & = {\color{turquoise}C} G_{(3)} (B \otimes A)^T
+            \end{align*}
+            </li>
+            <li>Tucker-ALS algorithm: solve alternatingly for ${\color{orangered}A}, {\color{yellow}B}, {\color{turquoise}C}$</li>
+            <li>Factor matrices can be computed with linear regression</li>
+        </ul>
+        </section -->
+
+        <!-- {{{ Synthetic Scalability Experiments -->
+        <section data-refs="[Nickel, 2012]">
+            <h2>They do scale!</h2>
+            <h4>(given suitable data & the right algorithm)</h4>
+            <div class="column" style="width:570px; margin-right: .7em;">
+                <div id="chart-scale-entities" class="scalechart nvchart"><svg></svg></div>
+                <div id="chart-scale-predicates" class="scalechart nvchart"><svg></svg></div>
+                <div id="chart-scale-facts" class="scalechart nvchart"><svg></svg></div>
+                <div id="chart-scale-rank" class="scalechart nvchart"><svg></svg></div>
+            </div>
+            <ul class="column" style="width: 300px; font-size: 0.7em; vertical-align: top;">
+                <li>RESCAL-ALS scales <em>linearly</em> with the number of entities, predicates and known facts, <em>superlinearly</em> with the number of latent components</li>
+                <li>Scalability experiments using RESCAL on synthetic data</li>
+                <li>Base tensor $\mathcal{T} \in \mathbb{R}^{|V| \times |V| \times |L|}$, with $|V| = 1000$, $|L| = 10$</li>
+                <li>In each experiment, vary one of the parameters $|V|$, $|L|$, $nnz(\mathcal{T})$ and the number of latent components</li>
+            </ul>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ Implications of ALS -->
+        <section data-refs="[Chi, 2012], [Drumond, 2012]" style="font-size: .8em;">
+            <h2>Implications of Using ALS</h2>
+            <ul>
+                <li>
+                    The objective function of linear least squares is of the form
+                    \[ \|T - FX\|^2 \]
+                    which has various implications
+                </li>
+                <li><strong>Normality Assumption:</strong> The objective is only valid under the assumption that errors on random variables are normally distributed. For relational data a better error model is binomial</li>
+                <li><strong>Open-World Assumption:</strong> By default, the objective treats unobserved triples as negative examples. Due to the open-world assumption of LD, this is not entirely justified</li>
+                <li>Both issues can be approached with using different objective functions, e.g. choosing a pairwise preference ranking objective, or an binomial error term. However, there is usually a trade-of between better modeling and scalability.</li>
+                <li>Does not account for some properties of real world graphs, such as scale free degree distribution etc.</li>
+            </ul>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ ATTRIBUTES -->
+        <section>
+            <div class="frontface">
+                <h1>Tensors & Attributes of Entities</h1>
+                <h4>Literally</h4>
+            </div>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ Tensors and Attributes -->
+        <section>
+            <h2>Tensors + Attributes of Entities</h2>
+            <ul>
+                <li>Much of the information in Linked Data is in form of <em>literals</em></li>
+                <li>In a machine learning setting, literals correspond to attributes</li>
+                <li><strong>Naive handling</strong>:
+                    <ul>
+                        <li>
+                            Discretization of continuous or textual attributes
+                            <ul>
+                                <li>$20 \rightarrow$ young, $99 \rightarrow$ old</li>
+                                <li>"Albert Einstein" $\rightarrow$ {"Albert", "Einstein"}</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Use results of discretization step as entities and fill tensor accordingly
+                            <ul>
+                                <li><span class="rdf">(Bob, inAgeGroup, old)</span></li>
+                                <li><span class="rdf">(Albert_Einstein, hasWord, Albert)</span></li>
+                            </ul>
+                        </li>
+                </li>
+            </ul>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ Coupled tensor factorization -->
+        <section data-refs="[Nickel, 2012], [Yilmaz, 2011]">
+            <h2>Handling of Attributes</h2>
+            <object data="img/rescal/model-attributes.svg" style="width: 20%;float: right;" type="image/svg+xml"></object>
+            <ul style="width: 70%;">
+                <li>Naive handling has serious scalability issues</li>
+                <li>Include attributes as additional constraint on
+                    entity representation
+                    \[
+                    D \approx AV
+                    \]
+                </li>
+                <li>Joint or "coupled" tensor factorization</li>
+                <li>For instance, with RESCAL
+                    \[
+                    \min_{A,R,V} \sum_k \|X_k - A R_k A^T \|^2 + \|D - AV\|^2
+                    \]
+                </li>
+                <li>
+                    Similar methods exist for CP and Tucker
+                </li>
+            </ul>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ TIME -->
+        <section>
+            <div class="frontface">
+                <h1>Graphs, Time & Tensors</h1>
+            </div>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ Time Dependent Analysis of graphs -->
+        <section data-refs="[Rendle, 2010], [Bader, 2007]">
+            <h2>Time-dependent Analysis of Graphs</h2>
+            <div style="float:right; width: 20%;">
+                <object data="img/time-slices.svg" style="width: 100%;"></object>
+                <object data="img/time-sequential.svg" style="width: 100%;"></object>
+            </div>
+            <ul style="display: block;">
+                <li>Common ways to model time and graphs
+                    <ul>
+                        <li><strong>Time-slices</strong>, i.e. assign points in time to bins (days, months etc.)</li>
+                        <li><strong>Sequential modeling</strong>, such as user - item - last item</li>
+                    </ul>
+                </li>
+                <li>Common assumptions made
+                    <ul>
+                        <li><strong>Smoothness:</strong> Data changed smoothly over time</li>
+                        <li><strong>Markov property:</strong> Data at time point $t_i$ depends only on $t_{(i-1)}$</li>
+                    </ul>
+                </li>
+                </li>
+                <li>Here we will only consider the time-slices approach</li>
+            </ul>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ DEDICOM -->
+        <section data-refs="[Harshman 1978], [Bader, 2007]" style="font-size: .9em;">
+            <h2>DEDICOM</h2>
+            <div id="dedicom-def-wrap">
+                <div id="dedicom-definition" style="height: 250px;">
+                    <p><strong>Basic Idea:</strong> Factorization of relational data into <em>unique</em> entity and predicate representations</p>
+                    <div class="definition">
+                        \begin{align}
+                        \mathcal{T}_k & = A D_k R D_k A^T \\
+                        \mathcal{T}_{ijk} & = a_i^T D_k R D_k a_j
+                        \end{align}
+                    </div>
+                </div>
+                <div id="dedicom-viz" class="model-viz fragment" style="text-align: center; width: 100%;" data-event="modelDefinition" data-args="dedicom">
+                    <object data="img/tensor.svg" type="image/svg+xml" style="vertical-align: top; width: 20%;"></object>
+                    <div style="vertical-align: top; display: inline-block; position:relative; top: 3em; margin: 0 .5em;">$=$</div>
+                    <object data="img/dedicom.svg" styleitalic="width: 60%" type="image/svg+xml"></object>
+                </div>
+            </div>
+            <ul>
+                <li>DEDICOM has <em>one global interaction model</em> $R$</li>
+                <li>Global patterns vary linearily over frontal slices of $\mathcal{T}$</li>
+                <li>Well suited to model time-varying graphs</li>
+                <li>Only defined for 2nd- and 3rd-order tensors</li>
+            </ul>
+        </section>
+        <!-- }}} -->
+
+        <section data-refs="[Bader, 2007]">
+            <h2>Enron Email Communication Network</h2>
+            <ul>
+                <li>Email data from ~150 users, mostly Enron senior managment</li>
+                <li>Collected and made public by FERC during its investigation</li>
+                <li>Original Data ~500,000 messages, containing
+                    <ul>
+                        <li>To: / From:</li>
+                        <li>Date</li>
+                        <li>Subject / Body</li>
+                    </ul>
+                </li>
+                <li>
+                    In the following smaller part of Data is used, consisting of
+                    184 users and 34,427 messages
+                </li>
+                <li>
+                    Modeling of data via <em>44 time-slices</em>
+                </li>
+            </ul>
+        </section>
+
+        <!-- {{{ Enron A and R -->
+        <section data-refs="[Bader, 2007]" style="font-size: .9em;">
+            <h2>Enron Network Analysis</h2>
+            <ul class="tight">
+                <li>$A$ assigns persons to roles, i.e. trade executive etc.</li>
+                <li>$R$ models global interactions of these roles</li>
+            </ul>
+            <div id="chart-enron-match" class="box subnote-container">
+                <div class="subnote">Assignment Quality</div>
+            </div>
+            <div id="chart-enron-patterns" class="subnote-container">
+                <div class="subnote">Global communication patterns</div>
+            </div>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ Enron D_k -->
+        <section data-refs="[Bader, 2007]">
+            <h2>Enron Network Analysis</h2>
+            <div id="viz-enron-time">
+                <div id="chart-enron-time"></div>
+                <div class="legend" id="legend-enron-time"></div>
+                <div id="timeline-enron-time"></div>
+            </div>
+            <span class="fragment" data-event="doClick" data-args="#timeline-enron-time > .annotation"></span>
+            <p class="subnote">$D$ expresses the variation of patterns over time</p>
+        </section>
+        <!-- }}} -->
+
+        <section data-refs="[Tresp, 2011], [Rendle, 2010]">
+            <h2>Sequence Models</h2>
+            <ul>
+                <li>Modeling with time-slices does not take temporal order into account (Predicate fibers are exchangeable)</li>
+                <li>Sequence-oriented modeling: entity $\times$ entity $\times$ last entity</li>
+                <li>For instance: user $\times$ item $\times$ last item in recommendation engines</li>
+                <li>Ternary Relation $\rightarrow$ <em>Hypergraph</em>!
+            </ul>
+        </section>
+
+        <!-- {{{ Conclusion I -->
+        <section>
+            <h2>Concluding Remarks</h2>
+            <ul>
+                <li>Tensors offer a flexible and scalable way to machine learning on multi-relational data</li>
+                <li>Tensors offer a natural way to represent multi-graphs via adjacency tensors, without losing information as in the matrix case</li>
+                <li>Tensor factorizations like CP can be used for explanatory analysis on multi-graphs, e.g. to rank nodes by their importance</li>
+                <li>Rank-reduced factorizations off all three modes of a tensor offer a way to do joint disambiguation of entities and predicates</li>
+                <li>CP provides <em>interpretable results</em> via uniqueness property</li>
+            </ul>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ Conclusion I -->
+        <section>
+            <h2>Concluding Remarks</h2>
+            <ul>
+                <li>Tensor factorization methods have applications to many important problems in the Linked Data context such as link prediction, instance matching or information retrieval
+                    <ul>
+                        <li>RESCAL shows state-of-the-art results in link prediction and entity resolution</li>
+                        <li>Embedding $A$ of RESCAL enables standard machine learning algorithms on relational data</li>
+                    </ul>
+                </li>
+                <li>Due to the sparsity of adjacency tensors, factorizations can scale up to complete knowledge bases</li>
+                <li>Time-evolving graphs and networks can be analysed by inspection of the factor matrices of appropriate decompositions like DEDICOM</li>
+            </ul>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ Code & Tools -->
+        <section>
+            <h4>Code & Tools</h4>
+            <h2>If You Want More...</h2>
+            <ul>
+                <li>Python and <span class="sc">Matlab</span> code for RESCAL available from <a href="http://www.cip.ifi.lmu.de/~nickel/" target="_blank">my website</a> and <a href="http://github.com/mnick/rescal" target="_blank">Github</a>
+				<pre><code>
+                    from rescal import rescal
+                    A, R = rescal(X, 20, init='nvecs')
+                </code></pre>
+                </li>
+                <li>Easy to use tools to convert from N-Triples or other formats to Python and <span class="sc">Matlab</span> tensors available from  <a href="http://www.cip.ifi.lmu.de/~nickel/" target="_blank">my website</a> and <a href="http://github.com/mnick/tenc" target="_blank">Github</a>
+                </li>
+
+                <li>Tensor Toolbox for <span class="sc">Matlab</span> available from <a href="http://http://www.sandia.gov/~tgkolda/TensorToolbox/" target="_blank">Tamara Kolda's site</a></li>
+            </ul>
+        </section>
+        <!-- }}} -->
+
+        <!-- {{{ Discussion -->
+        <section>
+            <div class="frontface">
+                <h1>Discussion ?!</h1>
+            </div>
+        </section>
+        <!-- }}} -->
+    </div>
+    <aside id="references" class="references"></aside>
+
+    <!-- The navigational controls UI -->
+    <aside class="controls">
+        <div class="slide-number"></div>
+        <a class="left" href="#">&#x25C4;</a>
+        <a class="right" href="#">&#x25BA;</a>
+        <a class="up" href="#">&#x25B2;</a>
+        <a class="down" href="#">&#x25BC;</a>
+    </aside>
+
+    <aside id="impressum">
+        <a href="http://www.cip.ifi.lmu.de/~nickel/impressum.html">Impressum</a></p>
+    </aside>
+
+    <!-- Presentation progress bar -->
+    <div class="progress"><span></span></div>
+</div>
+
+
+<!-- JavaScript at the bottom for fast page loading: http://developer.yahoo.com/performance/rules.html#js_bottom -->
+
+<!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>-->
+<script src="../../assets/jquery/1.8.2/jquery.min.js"></script>
+<!--<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.2.js"><\/script>')</script>-->
+
+<!-- scripts concatenated and minified via build script -->
+<script src="./js/plugins.js"></script>
+<script src="./js/main.js"></script>
+<!-- end scripts -->
+
+<script src="../../assets/head/js/head.min.js"></script>
+
+<script src="../../assets/jquery/js/jquery-ui-1.9.0.custom.min.js"></script>
+<!--<script src="../../assets/d3/js/d3.v2.min.js" charset="utf-8"></script>-->
+<script src="http://o7xh1wzra.bkt.clouddn.com/d3.v2.min.js" charset="utf-8"></script>
+<script src="../../assets/colorbrewer/js/colorbrewer.js"></script>
+<script src="../../assets/rickshaw/js/rickshaw.min.js"></script>
+<script src="../../assets/jquery/js/jquery.transit.min.js"></script>
+<script src="../../assets/nvd3/js/nv.d3.min.js"></script>
+<!--script src="js/vendor/sigma.min.js"></script>
+<script src="js/vendor/sigma.parseGexf.js"></script-->
+<script src="./js/grapher.js"></script>
+<script src="./js/viz.js"></script>
+<script src="./js/animations.js"></script>
+
+<script>
+    // Load reveal.js as well as a classList polyfill if needed
+    // Load reveal.js as well as a classList polyfill if needed
+    head.js( !document.body.classList ? 'js/vendor/classList.js' : null )
+            .js( 'js/vendor/reveal.min.js', function() {
+
+                // Parse the query string into a key/value object
+                var query = {};
+                location.search.replace( /[A-Z0-9]+?=(\w*)/gi, function(a) {
+                    query[ a.split( '=' ).shift() ] = a.split( '=' ).pop();
+                } );
+
+                // Fires when a slide with data-state=customevent is activated
+                Reveal.addEventListener( 'customevent', function() {
+                    console.log( '"customevent" has fired' );
+                } );
+
+                // Fires each time a new slide is activated
+                Reveal.addEventListener( 'slidechanged', function( event ) {
+                    // event.previousSlide, event.currentSlide, event.indexh, event.indexv
+
+                    /*$(event.currentSlide).find('.duplicate').each(function (i, e) {
+                     var elem = $(e);
+                     var dup = elem.data('duplicate');
+                     console.log(elem);
+                     console.log(elem.data('duplicate'));
+                     console.log(dup);
+                     if (typeof dup != "undefined") {
+                     elem.html($("#" + dup).html());
+                     MathJax.Hub.Rerender(e);
+                     }
+                     });*/
+                    slideReferences(event.currentSlide.getAttribute('data-refs'));
+                    $(event.currentSlide).find(".force-graph").click();
+
+                    $(".slide-number").html(event.indexh);
+                } );
+
+                Reveal.addEventListener( 'fragmentshown', function( event ) {
+                    var fn = window[event.fragment.getAttribute('data-event')];
+                    if(typeof fn === 'function') {
+                        fn(event.fragment.getAttribute('data-args'));
+                    }
+                } );
+
+                // Full list of configuration options available here:
+                // https://github.com/hakimel/reveal.js#configuration
+                Reveal.initialize({
+                    controls: true,
+                    progress: true,
+                    history: true,
+                    overview: false,
+                    rollingLinks: false,
+
+                    theme: query.theme || 'default', // default/neon/beige
+                    transition: query.transition || 'linear', // default/cube/page/concave/linear(2d)
+
+                    dependencies: [
+                        // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
+                        { src: 'js/vendor/classList.js', condition: function() { return !document.body.classList; } },
+                        // Speaker notes support
+                        { src: 'js/reveal-console.js', async: true, callback: function() { rvconsole().init(); } },
+                        { src: 'js/vendor/highlight.js', async: true, callback: function() { window.hljs.initHighlightingOnLoad(); } },
+                    ]
+                });
+
+            } );
+</script>
+
+</body>
+</html>
