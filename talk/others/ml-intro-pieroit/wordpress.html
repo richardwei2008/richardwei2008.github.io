@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Machine Learning - WordPress</title>
+
+		<meta name="description" content="Machine Learning for WordPress">
+		<meta name="author" content="Piero Savastano">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+        <link rel="icon"  type="image/x-icon" href="favicon.ico">
+        
+		<link rel="stylesheet" href="../../assets/reveal/css/reveal.css">
+		<link rel="stylesheet" href="../../assets/reveal/css/theme/moon.css" id="theme">
+        <link rel="stylesheet" href="./css/pieroit.css">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="../../assets/reveal/lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../../assets/reveal/css/print/pdf.css' : '../../assets/reveal/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="../../assets/reveal/lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<div class="slides">
+                
+                <!-- Intro -->
+				<section>
+                    <h1><a href="index.html">Machine Learning</a></h1>
+                    <div class="white">
+                        <img src="img/wordpress_logo_long.png" />
+                    </div>
+                    <br />
+					<ul>
+                        <li>What is useful for</li>
+                        <li>Available plugins</li>
+                        <li>How to integrate</li>
+                        <li>A little code</li>
+					</ul>
+				</section>
+                
+                <!-- Applications for WP -->
+                <section>
+                    <h2>Applications</h2>
+                    <div>(mostly for text)</div>
+                    <br />
+                    <ul>
+                        <li>Anti-spam</li>
+                        <li>Post recommendation</li>
+                        <li>Post classification</li>
+                        <li>Text analysis</li>
+                        <li>Speech recognition</li>
+                        <li>A/B testing</li>
+                        <li>User login?</li>
+					</ul>
+                </section>
+                
+                <!-- Available plugins -->
+                <section>
+                    <h2>Available plugins</h2>
+                    <section>
+                        <a href="https://wordpress.org/plugins/akismet/">
+                            <img src="img/akismet.png" width="100%" />
+                        </a>
+                    </section>
+                    <section>
+                        <a href="https://wordpress.org/plugins/wordlift/">
+                            <img src="img/wordlift.png" width="100%" />
+                        </a>
+                    </section>
+                    <section>
+                        <a href="https://wordpress.org/plugins/yet-another-related-posts-plugin/">
+                            <img src="img/yarpp.png" width="100%" />
+                        </a>
+                    </section>
+                </section>
+                
+                <!-- How to integrate -->
+                <section>
+                    <section class="white">
+                        <h2>Integration</h2>
+                        <ul>
+                            <li>As a <strong>native</strong> plugin</li>
+                            <li>As a wrapper for <strong>external</strong> services</li>
+                        </ul>
+                    </section>
+                    
+                    <section class="white">
+                        <h3>Native</h3>
+                        <ul>
+                            <li style="color:green">Everything inside your installation</li>
+                            <li style="color:green">Total control</li>
+                            <li style="color:darkred">No PHP machine learning libraries</li>
+                            <li style="color:darkred">Training in PHP is slow</li>
+                            <li style="color:darkred">CMS not good for training</li>
+                        </ul>
+                    </section>
+                    <section class="white">
+                        <h3>External</h3>
+                        <ul>
+                            <li style="color:green">Performance</li>
+                            <li style="color:green">No stress</li>
+                            <li style="color:darkred">Pay or maintain another system</li>
+                        </ul>
+                    </section>
+                    <section class="white">
+                        <h2>Takeaway</h2>
+                        <ul>
+                            <li>
+                                <h3 style="color:darkred">Training/Algorithm (WP KO)</h3>
+                            </li>
+                            <li>
+                                <h3 style="color:green">Model (WP OK)</h3>
+                            </li>
+                            <li>
+                                <h3>Rest API is our friend</h3>
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <img src="img/make_your_choice.jpg" width="600px">
+                    </section>
+                </section>
+                
+                <!-- Example recommendation plugin for WP-->
+                <section data-background="img/graph_viz.png" class="white">
+                    <h2>Let's write a model</h2>
+                    <ul>
+                        <li><strong>Data:</strong> blog posts</li>
+                        <li><strong>Algorithm:</strong> text similarity</li>
+                        <li><strong>Model:</strong> graph stored in <code>wp_postmeta</code></li>
+                        <li><strong>Recommend!</strong></li>
+					</ul>
+                </section>
+                
+				<section>
+                    <h2>Algorithm</h2>
+                    <section>
+                        <div>Jaccard/Tanimoto index</div>
+                        <img width="80%" src="img/tanimoto_php.png" />
+                    </section>
+                    <section>
+                        <div>Jaccard/Tanimoto index</div>
+                        <pre><code class="hljs php" data-trim>
+public static function similarity( $post_id_a, $post_id_b ) {
+
+    // Transform each post in a bag of words
+    $bow_a = self::post_2_bag_of_words( $post_id_a );
+    $bow_b = self::post_2_bag_of_words( $post_id_b );
+
+    // Compute Tanimoto
+    $intersection = array_unique( array_intersect( $bow_a, $bow_b ) );
+    $union        = array_unique( array_merge( $bow_a, $bow_b ) );
+
+    return count( $intersection ) / count( $union );
+}
+                        </code></pre>
+                    </section>
+                    <section>
+                        <div>Bag of Words</div>
+                        <pre><code class="hljs php" data-trim>
+public static function post_2_bag_of_words( $post_id ) {
+		
+    $post = get_post( $post_id );
+
+    // Take away HTML
+    $post_content  = $post->post_content;
+    $clean_content = strtolower( wp_strip_all_tags( $post_content ) );
+    
+    // Take away punctuation
+    $clean_content = str_replace( array(".", ",", ":", ";", "!", "?", "'", '"', "(", ")" ), "", $clean_content );
+    
+    // Split tokens
+    $tokens = array_unique( explode( " ", $clean_content ) );
+
+    // Take away stopwords
+    return array_diff( $tokens, self::$stopwords );
+}
+                        </code></pre>                        
+                    </section>
+				</section>
+                
+                <!-- Build similarity graph -->
+				<section>
+                    <h2>Similarity graph</h2>
+                    <section>
+                        <span>
+                            <img width="100%" src="img/similarity_graph.jpg" />
+                        </span>
+                    </section>
+                    <section>
+                        <span>
+                            <img width="100%" src="img/wp_recommendations_post_meta.png" />
+                        </span>
+                    </section>
+                    <section>
+                        <pre style="width:100%"><code class="hljs php" data-trim contenteditable>
+function dropout_update_recommendations( $post_id ) {
+	
+	// Take latest 10 posts
+	$latest_posts = wp_get_recent_posts(
+		array(
+			'numberposts' => 10,
+			'post_type'   => array( 'post', 'page' )
+		)
+	);
+	$similarities = array();
+	
+	foreach( $latest_posts as $another_post ){
+		
+		if( $another_post['ID'] !== $post_id ) {
+			
+			// Measure similarity
+			$similarity = Dropout::similarity( $post_id, $another_post['ID'] );
+			$similarities[ $another_post['ID'] ] = $similarity;
+
+			// Update similarities for the other post
+			$already_computed_similarities = get_post_meta( $another_post['ID'], 'dropout_recommendations', true );
+			$already_computed_similarities[$post_id] = $similarity;
+			update_post_meta( $another_post['ID'], 'dropout_recommendations', $already_computed_similarities );
+		}
+	}
+	
+	// Save recommendations for this post
+	update_post_meta( $post_id, 'dropout_recommendations', $similarities );
+}
+add_action( 'save_post', 'dropout_update_recommendations' );
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="hljs php" data-trim contenteditable>
+function dropout_get_recommendations( $content ) {
+	
+	$recommendations = get_post_meta( get_the_ID(), 'dropout_recommendations', true );
+	
+	arsort( $recommendations );        // Sort by similarity
+
+	$html = '<h3>See also</h3><ul>';
+	foreach( $recommendations as $recom_id => $similarity ) {
+		$recom_post = get_post( $recom_id );
+		$html .= '<li><a href="' . get_permalink($recom_post->ID) . '">' . $recom_post->post_title . '</a> (' . $similarity .')</li>';
+	}
+	$html .= '</ul>';
+	
+	return $content . $html;
+}
+add_filter( 'the_content', 'dropout_get_recommendations' );
+                        </code></pre>
+                    </section>
+				</section>
+                
+                <!-- Demo -->
+				<section>
+                    <img width="800px" src="img/demo.jpg" />
+                    <div>
+                        <a href="https://github.com/pieroit/dropout-plugin">Show me the code!</a>
+                    </div>
+    			</section>
+
+		</div>
+
+		<script src="../../assets/reveal/lib/js/head.min.js"></script>
+		<script src="../../assets/reveal/js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: '../../assets/reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../../assets/reveal/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../../assets/reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../../assets/reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../../assets/reveal/plugin/zoom-js/zoom.js', async: true },
+					{ src: '../../assets/reveal/plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

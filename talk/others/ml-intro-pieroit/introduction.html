@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Machine Learning - Introduction</title>
+
+		<meta name="description" content="Introduction to Machine Learning">
+		<meta name="author" content="Piero Savastano">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+        <link rel="icon"  type="image/x-icon" href="favicon.ico">
+        
+		<link rel="stylesheet" href="../../assets/reveal/css/reveal.css">
+		<link rel="stylesheet" href="../../assets/reveal/css/theme/moon.css" id="theme">
+        <link rel="stylesheet" href="./css/pieroit.css">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="../../assets/reveal/lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../../assets/reveal/css/print/pdf.css' : '../../assets/reveal/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="../../assets/reveal/lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+                
+                <!-- Intro -->
+				<section>
+					<h1><a href="index.html">Machine Learning</a></h1>
+                    <h2>Introduction</h2>
+				</section>
+
+                <!-- Definition -->
+				<section data-background="img/hal.svg">
+					<h2>What is machine learning?</h2>                    
+                    <section>
+                        <br/><br/><br/><br/><br/><br/><br/><br/>
+                        <blockquote>
+                            Field of study that gives computers the ability to learn without being explicitly programmed.
+                        </blockquote>
+                        Arthur Samuel
+                    </section>
+                    <section>
+                        <br/><br/><br/><br/><br/><br/><br/><br/>
+                        <blockquote>
+                            A computer program is said to learn from experience E with respect to some class of tasks T and performance measure P if its performance at tasks in T, as measured by P, improves with experience E".
+                        </blockquote>
+                        Tom M. Mitchell
+                    </section>
+                    <section>
+                        <br/><br/><br/><br/><br/><br/><br/><br/>
+                        <blockquote>
+                            The science and engineering of making intelligent machines.
+                        </blockquote>
+                        John McCarthy about A.I.
+                    </section>
+				</section>
+                
+                <!-- Teaser and known applications -->
+                <section>
+					<h2>Why so important?</h2>
+                    <section>
+                        <h3>To automate</h3>
+                        <div>ML infers rules from data<br/>
+                            (implicit programming)
+                        </div>
+                    </section>
+                    <section>
+						<h3>To make machines smart!</h3>
+                        <span>
+                            <a href="https://upload.wikimedia.org/wikipedia/commons/b/be/Deep_Blue.jpg">
+                                <img height="300px" src="img/Deep_Blue.jpg" />
+                            </a>
+                        </span>
+                        <span>
+                            <a href="https://en.wikipedia.org/wiki/Deep_Blue_versus_Garry_Kasparov">
+                                <img height="300px" src="img/kasparov.png" />
+                            </a>
+                        </span>
+                        <p>what is <i>smart</i>? What is <i>intelligent</i>?</p>
+					</section>
+					<section>
+						<h3>Computer vision</h3>
+                        <a href="https://i.ytimg.com/vi/9pl4tsqVwdc/hqdefault.jpg">
+                            <img src="img/computer_vision.jpg" />
+                        </a>
+					</section>
+                    <section>
+						<h3>Diagnostics</h3>
+						<a href="https://en.wikipedia.org/wiki/Bayesian_network">
+                            <img src="img/bayes_net.svg" />
+                        </a>
+					</section>
+                    <section>
+						<h3>Recommendation</h3>
+						<a href="http://www.amazon.com/">
+                            <img src="img/amazon_recommendations.png" />
+                        </a>
+					</section>
+                    <section>
+						<h3>Coming soon...</h3>
+                        <span>
+                            <a href="https://i.ytimg.com/vi/dOkLK_bRhxk/hqdefault.jpg">
+                                <img width="250px" src="img/asimo.jpg" />
+                            </a>
+                        </span>
+                        <span>
+                            <a href="https://c2.staticflickr.com/2/1586/24734777053_3479b886e1_b.jpg">
+                                <img width="250px" src="img/boston_dynamics.jpg" />
+                            </a>
+                        </span>
+                        <span>
+                            <a href="https://research.google.com/">
+                                <img width="250px" src="img/google_car.jpg" />
+                            </a>
+                        </span>
+					</section>
+				</section>
+                
+                <section>
+                    <h2>Robot revolution?</h2>
+                    <div class="half">
+                        <a href="http://www.amazon.com/The-Second-Machine-Age-Technologies/dp/0393239357">
+                            <img width="300px" src="img/the_second_machine_age.jpg" />
+                        </a>
+                    </div>
+                    <div class="half">
+                        <blockquote>
+                            I'm going to start worrying [...] the day my computer becomes aware of my printer."
+                        </blockquote>
+                        Andrew McAfee
+                    </div>
+                </section>
+                
+                <!-- This is something huge -->
+                <section data-background="img/scikit_learn.png">
+					<h1 style="color:black">Welcome to the jungle</h1>
+				</section>
+                
+                <!-- Basics -->
+                <section>
+                    <section>
+                        <h2>How does it work?</h2>
+                        <ul>
+                            <li>Data in --> Model out</li>
+                            <li>Model training and validation</li>
+                            <li>Supervised vs. Unsupervised</li>
+                            <li>Going live</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <b>Data</b> in --> <b>Model</b> out
+                        <img src="img/data2model.jpg" class="stretch" />    
+                    </section>
+                    <section>
+                        <b>Supervised</b> vs Unsupervised
+                        <hr>
+                        <table>
+                            <tr>
+                                <td colspan="4"><b>Features</b></td><td style="color:green;"><b>Target</b></td>
+                            </tr>
+                            <tr>
+                                <td>Sex</td>
+                                <td>Height</td>
+                                <td>Weight</td>
+                                <td>Age</td>
+                                <td style="color:green;">Sport</td>
+                            </tr>
+                            <tr>
+                                <td>M</td>
+                                <td>1.67</td>
+                                <td>60</td>
+                                <td>20</td>
+                                <td style="color:green;">soccer</td>
+                            </tr>
+                            <tr>
+                                <td>F</td>
+                                <td>1.95</td>
+                                <td>90</td>
+                                <td>28</td>
+                                <td style="color:green;">basket</td>
+                            </tr>
+                            <tr>
+                                <td>M</td>
+                                <td>1.80</td>
+                                <td>79</td>
+                                <td>23</td>
+                                <td style="color:green;">soccer</td>
+                            </tr>
+                            <tr>
+                                <td>...</td>
+                                <td>...</td>
+                                <td>...</td>
+                                <td>...</td>
+                                <td>...</td>
+                            </tr>
+                            <tr>
+                                <td>F</td>
+                                <td>1.85</td>
+                                <td>78</td>
+                                <td>25</td>
+                                <td><b style="color:red;">???</b></td>
+                            </tr>
+                        </table>
+					</section>
+                    <section>
+                        Supervised vs <b>Unsupervised</b>
+                        <hr>
+                        <table>
+                            <td colspan="5"><b>Features</b></td>
+                            <tr>
+                                <td>Sex</td>
+                                <td>Height</td>
+                                <td>Weight</td>
+                                <td>Age</td>
+                                <td>Sport</td>
+                            </tr>
+                            <tr>
+                                <td>M</td>
+                                <td>1.67</td>
+                                <td>60</td>
+                                <td>20</td>
+                                <td>soccer</td>
+                            </tr>
+                            <tr>
+                                <td>F</td>
+                                <td>1.95</td>
+                                <td>90</td>
+                                <td>28</td>
+                                <td>basket</td>
+                            </tr>
+                            <tr>
+                                <td>M</td>
+                                <td>1.80</td>
+                                <td>79</td>
+                                <td>23</td>
+                                <td>soccer</td>
+                            </tr>
+                            <tr>
+                                <td>...</td>
+                                <td>...</td>
+                                <td>...</td>
+                                <td>...</td>
+                                <td>...</td>
+                            </tr>
+                            <tr>
+                                <td><b style="color:red;">???</b></td>
+                                <td><b style="color:red;">???</b></td>
+                                <td><b style="color:red;">???</b></td>
+                                <td><b style="color:red;">???</b></td>
+                                <td><b style="color:red;">???</b></td>
+                            </tr>
+                        </table>
+					</section>
+                    <section>
+                        Training and <b>Validation</b>
+                        <img src="img/model_validation.jpg" class="stretch" />    
+                    </section>
+                    <section>
+                        Training and <b>Validation</b>
+                        <img src="img/confusion_matrix.png" class="stretch" />
+					</section>
+                    <section>
+                        <p><b>Going live</b></p>
+                        <ul>
+                            <li>You can train the model with a language...<br/>
+                                (<b>python</b> wrappers of <b>C++</b> libs, running on a cluster)</li>
+                            <li>... and use it with another!<br/>
+                                (<b>Javascript</b> on mobile)</li>
+                            <li>REST APIs, microservices</li>
+                        </ul>
+					</section>
+				</section>
+
+				<!-- Deeper knowledge -->
+                <section data-background="#fff" class="white">
+                    <section>
+                        <h1>Inside the black box...</h1>
+                        <ul>
+                            <li>Linear algebra</li>
+                            <li>Calculus</li>
+                            <li>Probability</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Linear algebra</h2>
+                        <div>Vectors and matrices</div>
+                        <div>
+                            <span>
+                                <a href="https://en.wikipedia.org/wiki/Linear_algebra">
+                                    <img height="300px" src="img/scatter_plot.svg" />
+                                </a>
+                            </span>
+                            <span>
+                                <a href="https://en.wikipedia.org/wiki/Linear_algebra">
+                                    <img height="300px" src="img/eigenvector.png" />
+                                </a>
+                            </span>
+                        </div>
+                        <small>It's all about points in space and their distance/transformation</small>
+                    </section>
+                    <section>
+                        <h2>Calculus</h2>
+                        <div>Derivatives, optimization</div>
+                        <div>
+                            <a href="https://upload.wikimedia.org/wikipedia/commons/1/1e/Extrema_example.svg">
+                                <img height="400px" src="img/optimization.png" />
+                            </a>
+                        </div>
+                        <small>It's all about changing parameters to minimize an error</small>
+                    </section>
+                    <section>
+                        <h2>Probability</h2>
+                        <div>Bayes</div>
+                        <span>
+                            <a href="https://en.wikipedia.org/wiki/Probability">
+                                <img height="200px" src="img/probability_venn.png" />
+                            </a>
+                        </span>
+                        <span>
+                            <a href="https://en.wikipedia.org/wiki/Probability">
+                                <img height="200px" src="img/bayes_rule.jpg" />
+                            </a>
+                        </span>
+                        <small>It's all about confidence</small>
+                    </section>
+                    <section>
+                        <h2>Don't be scared</h2>
+                        <ul>
+                            <li>It's just (a lot of) simple ideas</li>
+                            <li>Math is just a compact representation</li>
+                        </ul>
+                        <div class="half">
+                            <br/><br/>
+                             \[\bar{x} = \frac{\sum_\limits{i=1}^{n} x_i}{n}\]
+                        </div>
+                        <div class="half">
+                            <pre><code class="hljs" data-trim contenteditable>
+function average(x) {
+    
+    var n   = x.length;
+    var sum = 0.0;
+
+    for(var i=0; i&lt;n; i++){
+        sum += x[i];
+    }
+
+    return sum/n;
+    // TODO: don't divide by zero
+}
+                            </code></pre>
+                        </div>
+                        
+                        
+                    </section>
+                    <section>
+                        <h2>Don't be scared</h2>
+                        <div class="half">
+                            <table>
+                                <tr>
+                                    <td>EYES</td>
+                                    <td>HAIR</td>
+                                </tr>
+                                <tr>
+                                    <td>green</td> 
+                                    <td>red</td>
+                                </tr>
+                                <tr>
+                                    <td>green</td> 
+                                    <td>black</td>
+                                </tr>
+                                <tr>
+                                    <td>black</td> 
+                                    <td>black</td>
+                                </tr>
+                                <tr>
+                                    <td>green</td> 
+                                    <td>red</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="half">
+                            <br/><br/>
+                             \[P(E_g|H_r) = \frac{P(E_g, H_r)}{P(H_r)}\]
+                        </div>
+                        <br clear="all"/>
+                        <div>
+                            <pre><code class="hljs php" data-trim contenteditable>
+function conditional_probability($eyes="green", $hair="red"){
+    $prob_H =
+      sql("SELECT COUNT(*) FROM table WHERE HAIR=$hair");
+    
+    $prob_E_and_H =
+      sql("SELECT COUNT(*) FROM table WHERE EYES=$eyes AND HAIR=$hair");
+    
+    return $prob_E_and_H / $prob_H;
+}
+                            </code></pre>
+                        </div>
+                        
+                        
+                    </section>
+                </section>
+
+                <section>
+                    <h1><a href="applications.html">Applications</a></h1>
+                </section>
+			</div>
+
+		</div>
+
+		<script src="../../assets/reveal/lib/js/head.min.js"></script>
+		<script src="../../assets/reveal/js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: '../../assets/reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../../assets/reveal/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../../assets/reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../../assets/reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../../assets/reveal/plugin/zoom-js/zoom.js', async: true },
+					{ src: '../../assets/reveal/plugin/notes/notes.js', async: true },
+                    { src: '../../assets/reveal/plugin/math/math.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
