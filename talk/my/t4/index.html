@@ -212,6 +212,51 @@
         </section>
 
         <section>
+            <h5>实现</h5>
+            <pre>
+                <code data-trim data-noescape>
+                    Ext.require('Ext.Ajax');
+                    Ext.onReady( function() {
+                        Ext.Ajax.on("beforerequest", function(conn, options, eOpts){
+                        if (Ext.isDefined(TRACKER_CONFIG) && TRACKER_CONFIG.on) {
+                            try {
+                                var activeTab = window.parent.Ext.getCmp('tabPanel').getActiveTab();
+                                /**
+                                 *
+                                 * 为tab内的按钮记录访问事件到 Piwik
+                                 * activeTab.title e.g. 上转移发货
+                                 * activeTab.id e.g. (web_102001)
+                                 */
+                                if (Ext.isDefined(options.proxy)) { // 判断是否定义 proxy
+                                    // 如果是则为 store ajax proxy
+                                    // 过滤 baseinfo
+                                    PiwikTracker.record(activeTab.title + '(' + activeTab.id + ')',
+                                        options.proxy.url,
+                                        PiwikTracker.EVENT.BUTTON_CLICK);
+                                } else if (Ext.isDefined(options.url) && !Ext.isEmpty(options.url)) {
+                                    // 如果是则为 butterfly.requestJsonAjax
+                                    var action = options.url;
+                                    var index = options.url.indexOf('?');
+                                    if (index >= 0) {
+                                        action = options.url.substr(0, index);
+                                    }
+                                    PiwikTracker.record(activeTab.title + '(' + activeTab.id + ')',
+                                        action,
+                                        PiwikTracker.EVENT.BUTTON_CLICK);
+                                }
+                            } catch(e) {
+                                console.log(e);
+                            }
+
+                        }
+                    });
+                    });
+                </code>
+            </pre>
+        </section>
+
+
+        <section>
             <h1>文档</h1>
         </section>
 
