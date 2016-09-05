@@ -20,17 +20,17 @@
 
 ## 经（MBA Essay）
 
-[Ethical Leadership at Work](./essay/_00_PSS/essay01/)
+[Ethical Leadership at Work](./essay/S100PSS/essay01/)
     -（于2016年7月12日）
 
-[Whether Teams Will be the Answer](./essay/_00_PSS/essay02/)
+[Whether Teams Will be the Answer](./essay/S100PSS/essay02/)
     -（于2016年8月7日）
 
-[Outliers and Survivors: Whether Exists a Corporate Governance Mode to Escape from the Negative Impact by Financialization](./essay/_01_GBE/essay02/)
+[Outliers and Survivors: Whether Exists a Corporate Governance Mode to Escape from the Negative Impact by Financialization](./essay/S101GBE/essay02/)
     -（于2016年8月19日）
 
-[Negotiate Away the Transaction Cost and Ensure an Efficient Outcome](./essay/_02_ME/essay01/)
+[Negotiate Away the Transaction Cost and Ensure an Efficient Outcome](./essay/S102ME/essay01/)
     -（于2016年8月24日）
 
-[Understanding Financial Statement](./essay/_03_AIB/essay01/)
+[Understanding Financial Statement](./essay/S103AIB/essay01/)
     -（于2016年8月29日）
