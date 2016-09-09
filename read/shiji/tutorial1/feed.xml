@@ -3,8 +3,67 @@
   <channel>
     <title>《史記》（一）台灣大學呂世浩</title>
     <description>魏胖子的學習筆記</description>
-    <link>http://richardwei2008.github.io/read/shiji/tutorial1/</link>
-    <atom:link href="http://richardwei2008.github.io/read/shiji/tutorial1/feed.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:4000/jekyll-nehan/_site/</link>
+    <atom:link href="http://localhost:4000/jekyll-nehan/_site/feed.xml" rel="self" type="application/rss+xml" />
+    
+      <item>
+        <title>（五）漢武帝的封禪</title>
+        <description>&lt;h3 id=&quot;section&quot;&gt;漢武帝封禪是什麼情況？&lt;/h3&gt;
+
+&lt;p class=&quot;gap-after&quot;&gt;是歲天子始建漢家之封，而太史公留滞周南，不得與從事，故發憤且卒。而子遷適使反，見父於河、洛之閒。&lt;/p&gt;
+
+&lt;p class=&quot;gap-after&quot;&gt;太史公執遷手而泣曰：余先周室之太史也。自上世嘗顯功名於虞夏，典天官事。後世中衰，絕於予乎？汝復為太史，則續吾祖矣。&lt;/p&gt;
+
+&lt;p class=&quot;gap-after&quot;&gt;今天子接千歲之统，封泰山，而余不得從行，是命也夫，命也夫！余死，汝必為太史；為太史，無忘吾所欲論著矣。&lt;/p&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;什麼是封禪？&lt;/h3&gt;
+
+&lt;p class=&quot;gap-after&quot;&gt;天子不是天地的主人。&lt;/p&gt;
+
+&lt;p class=&quot;gap-after&quot;&gt;天子代天掌管天下的人，即總經理。&lt;/p&gt;
+
+&lt;p class=&quot;gap-after&quot;&gt;天，即董事長。&lt;/p&gt;
+
+&lt;p class=&quot;gap-after&quot;&gt;天子在業務做到一定程度的時候，可以決定是否向董事長報告目前的業務成果。董事長覺得業務做得好，就會施以福報，業務不好，就會降下災禍。&lt;/p&gt;
+
+&lt;p class=&quot;gap-after&quot;&gt;如果是總經理，一定會挑業績好的時候向董事長匯報。&lt;/p&gt;
+
+&lt;p class=&quot;gap-after&quot;&gt;傳統儒家觀點：封禪，即為民報德。&lt;/p&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;武帝封禪&lt;/h3&gt;
+
+&lt;p class=&quot;gap-after&quot;&gt;天子既聞公孫卿及方士之言。黃帝以上封禪，皆致怪物與神通，欲放黃帝以上接神僊人蓬萊士&lt;ruby&gt;&lt;rb&gt;...而盡罷諸儒不用。&lt;/rb&gt;&lt;rt&gt;（求仙拜神，以求靈丹妙藥，得長生）&lt;/rt&gt;&lt;/ruby&gt;&lt;/p&gt;
+
+&lt;p class=&quot;gap-after nehan-p-bottom&quot;&gt;——《史記·封禪書》&lt;/p&gt;
+
+&lt;p class=&quot;gap-after&quot;&gt;在此之前，封禪這種活動史官照慣例，一定要參加。所以史官太史公「不得與從事」是漢武帝的意思。&lt;/p&gt;
+
+&lt;p class=&quot;gap-after&quot;&gt;封廣丈二尺，高九尺，&lt;/p&gt;
+
+&lt;p class=&quot;gap-after&quot;&gt;其下則有玉牒書，書秘。&lt;/p&gt;
+
+&lt;p class=&quot;gap-after&quot;&gt;禮畢，&lt;ruby&gt;&lt;rb&gt;天子獨與侍中奉車子侯上泰山，亦有封。&lt;/rb&gt;&lt;rt&gt;（独与霍去病之子上山，有不可告人的秘密。）&lt;/rt&gt;&lt;/ruby&gt;其事皆禁。&lt;/p&gt;
+
+&lt;p class=&quot;gap-after nehan-p-bottom&quot;&gt;——《史記·封禪書》&lt;/p&gt;
+
+&lt;p class=&quot;gap-after&quot;&gt;天子既已封泰山，無風雨災，&lt;/p&gt;
+&lt;p class=&quot;gap-after&quot;&gt;而方士更言蓬莱諸神若將可得，&lt;/p&gt;
+&lt;p class=&quot;gap-after&quot;&gt;於是上欣然庶幾遇之，&lt;/p&gt;
+&lt;p class=&quot;gap-after&quot;&gt;乃復東至海上望，冀遇蓬莱焉。&lt;/p&gt;
+&lt;p class=&quot;gap-after&quot;&gt;&lt;ruby&gt;&lt;rb&gt;奉車子侯暴斃&lt;/rb&gt;&lt;rt&gt;（皇帝的寵愛）&lt;/rt&gt;，一日死。
+
+&lt;p class=&quot;gap-after nehan-p-bottom&quot;&gt;——《史記·封禪書》&lt;/p&gt;
+
+
+
+
+
+&lt;/ruby&gt;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 26 Oct 2015 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/jekyll-nehan/_site/2015/10/26/vert/</link>
+        <guid isPermaLink="true">http://localhost:4000/jekyll-nehan/_site/2015/10/26/vert/</guid>
+      </item>
     
       <item>
         <title>（四）太史公如何培養孩子？</title>
@@ -28,8 +87,8 @@
 
 </description>
         <pubDate>Sat, 24 Oct 2015 00:00:00 +0800</pubDate>
-        <link>http://richardwei2008.github.io/read/shiji/tutorial1/2015/10/24/vert/</link>
-        <guid isPermaLink="true">http://richardwei2008.github.io/read/shiji/tutorial1/2015/10/24/vert/</guid>
+        <link>http://localhost:4000/jekyll-nehan/_site/2015/10/24/vert/</link>
+        <guid isPermaLink="true">http://localhost:4000/jekyll-nehan/_site/2015/10/24/vert/</guid>
       </item>
     
       <item>
@@ -48,8 +107,8 @@
 
 </description>
         <pubDate>Fri, 23 Oct 2015 00:00:00 +0800</pubDate>
-        <link>http://richardwei2008.github.io/read/shiji/tutorial1/2015/10/23/vert/</link>
-        <guid isPermaLink="true">http://richardwei2008.github.io/read/shiji/tutorial1/2015/10/23/vert/</guid>
+        <link>http://localhost:4000/jekyll-nehan/_site/2015/10/23/vert/</link>
+        <guid isPermaLink="true">http://localhost:4000/jekyll-nehan/_site/2015/10/23/vert/</guid>
       </item>
     
       <item>
@@ -62,8 +121,8 @@
 
 </description>
         <pubDate>Thu, 22 Oct 2015 00:00:00 +0800</pubDate>
-        <link>http://richardwei2008.github.io/read/shiji/tutorial1/2015/10/22/vert/</link>
-        <guid isPermaLink="true">http://richardwei2008.github.io/read/shiji/tutorial1/2015/10/22/vert/</guid>
+        <link>http://localhost:4000/jekyll-nehan/_site/2015/10/22/vert/</link>
+        <guid isPermaLink="true">http://localhost:4000/jekyll-nehan/_site/2015/10/22/vert/</guid>
       </item>
     
       <item>
@@ -76,8 +135,8 @@
 
 </description>
         <pubDate>Wed, 21 Oct 2015 00:00:00 +0800</pubDate>
-        <link>http://richardwei2008.github.io/read/shiji/tutorial1/2015/10/21/vert/</link>
-        <guid isPermaLink="true">http://richardwei2008.github.io/read/shiji/tutorial1/2015/10/21/vert/</guid>
+        <link>http://localhost:4000/jekyll-nehan/_site/2015/10/21/vert/</link>
+        <guid isPermaLink="true">http://localhost:4000/jekyll-nehan/_site/2015/10/21/vert/</guid>
       </item>
     
       <item>
@@ -88,10 +147,10 @@
 
 &lt;div class=&quot;drop-caps&quot;&gt;表示機能をテストするために作ったエントリです。内容に特に意味はありません。表示機能をテストするために作ったエントリです。内容に特に意味はありません。表示機能をテストするために作ったエントリです。内容に特に意味はありません。&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/read/shiji/tutorial1/assets/tb-brand.png&quot; width=&quot;100&quot; height=&quot;100&quot; class=&quot;float-start disp-block gap-end&quot; /&gt;
+&lt;p&gt;&lt;img src=&quot;/jekyll-nehan/_site/assets/tb-brand.png&quot; width=&quot;100&quot; height=&quot;100&quot; class=&quot;float-start disp-block gap-end&quot; /&gt;
 日本国民は正当に選挙された国会における代表者を通じて行動し、われらとわれらの子孫のために、諸国民との協和による成果と、わが国全土にわたって自由のもたらす&lt;ruby&gt;&lt;rb&gt;恵沢&lt;/rb&gt;&lt;rt&gt;けいたく&lt;/rt&gt;&lt;/ruby&gt;を確保し、政府の行為によって再び&lt;ruby&gt;&lt;rb&gt;戦争&lt;/rb&gt;&lt;rt&gt;せんそう&lt;/rt&gt;&lt;/ruby&gt;の&lt;ruby&gt;&lt;rb&gt;惨禍&lt;/rb&gt;&lt;rt&gt;さんか&lt;/rt&gt;&lt;/ruby&gt;が起ることのないやうにすることを決意。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/read/shiji/tutorial1/assets/tb-brand.png&quot; width=&quot;100&quot; height=&quot;100&quot; class=&quot;disp-block float-end&quot; /&gt;
+&lt;p&gt;&lt;img src=&quot;/jekyll-nehan/_site/assets/tb-brand.png&quot; width=&quot;100&quot; height=&quot;100&quot; class=&quot;disp-block float-end&quot; /&gt;
 日本国民は正当に&lt;ruby&gt;選挙&lt;rt&gt;せんきょ&lt;/rt&gt;&lt;/ruby&gt;された国会における代表者を通じて行動し、&lt;span class=&quot;empha-sesame-filled&quot;&gt;われら&lt;/span&gt;と&lt;span class=&quot;empha-double-circle-filled&quot;&gt;われら&lt;/span&gt;の&lt;ruby&gt;&lt;rb&gt;子孫&lt;/rb&gt;&lt;rt&gt;しそん&lt;/rt&gt;&lt;/ruby&gt;のために、諸国民との協和による成果と、わが国全土にわたって自由のもたらす&lt;ruby&gt;&lt;rb&gt;恵沢&lt;/rb&gt;&lt;rt&gt;けいたく&lt;/rt&gt;&lt;/ruby&gt;を確保する。&lt;/p&gt;
 
 &lt;h3 class=&quot;break-before&quot;&gt;混合レイアウト&lt;/h3&gt;
@@ -167,8 +226,8 @@
 
 </description>
         <pubDate>Mon, 23 Jun 2014 00:00:00 +0800</pubDate>
-        <link>http://richardwei2008.github.io/read/shiji/tutorial1/2014/06/23/vert/</link>
-        <guid isPermaLink="true">http://richardwei2008.github.io/read/shiji/tutorial1/2014/06/23/vert/</guid>
+        <link>http://localhost:4000/jekyll-nehan/_site/2014/06/23/vert/</link>
+        <guid isPermaLink="true">http://localhost:4000/jekyll-nehan/_site/2014/06/23/vert/</guid>
       </item>
     
       <item>
@@ -177,9 +236,9 @@
 &lt;div class=&quot;drop-caps&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/div&gt;
 
 &lt;h2 id=&quot;image-float&quot;&gt;image float&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&quot;/read/shiji/tutorial1/assets/tb-brand.png&quot; width=&quot;128&quot; height=&quot;128&quot; class=&quot;disp-block float-start gap-end&quot; /&gt;
+&lt;p&gt;&lt;img src=&quot;/jekyll-nehan/_site/assets/tb-brand.png&quot; width=&quot;128&quot; height=&quot;128&quot; class=&quot;disp-block float-start gap-end&quot; /&gt;
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-&lt;img src=&quot;/read/shiji/tutorial1/assets/tb-brand.png&quot; width=&quot;128&quot; height=&quot;128&quot; class=&quot;float-end&quot; /&gt;
+&lt;img src=&quot;/jekyll-nehan/_site/assets/tb-brand.png&quot; width=&quot;128&quot; height=&quot;128&quot; class=&quot;float-end&quot; /&gt;
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;
 
 &lt;h2 id=&quot;ul-listings&quot;&gt;ul listings&lt;/h2&gt;
@@ -222,8 +281,8 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 &lt;/tr&gt;&lt;/thead&gt;&lt;/table&gt;
 </description>
         <pubDate>Mon, 23 Jun 2014 00:00:00 +0800</pubDate>
-        <link>http://richardwei2008.github.io/read/shiji/tutorial1/2014/06/23/hori/</link>
-        <guid isPermaLink="true">http://richardwei2008.github.io/read/shiji/tutorial1/2014/06/23/hori/</guid>
+        <link>http://localhost:4000/jekyll-nehan/_site/2014/06/23/hori/</link>
+        <guid isPermaLink="true">http://localhost:4000/jekyll-nehan/_site/2014/06/23/hori/</guid>
       </item>
     
   </channel>

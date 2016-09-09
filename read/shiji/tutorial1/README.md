@@ -25,13 +25,22 @@ book_type: hori
 
 <code>hori</code> means 'horizontal text style', and <code>vert</code> means 'vertical text style'.
 
-
 ## Keyboard shortcuts
 
 - <code>j</code> : goto next page
 - <code>k</code> : goto previous page
 - <code>left</code>: next(vert), previous(hori)
 - <code>right</code>: previous(vert), next(hori)
+
+## Command
+
+* Build
+
+        jekyll build -config _config-local.yml
+
+* Serve
+
+        jekyll serve --baseurl /jekyll-nehan/_site
 
 ## License
 
