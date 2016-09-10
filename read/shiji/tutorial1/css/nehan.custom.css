@@ -1,3 +1,7 @@
 .nehan-body div .nehan-p-bottom {
     padding-top: 100%;
 }
+
+.nehan-body div .nehan-p-bold {
+    font-weight: bold;
+}
