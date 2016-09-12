@@ -38,10 +38,10 @@
     <link rel="stylesheet" href="../../assets/rickshaw/css/rickshaw.min.css" type="text/css">
     <link rel="stylesheet" href="../../assets/nvd3/css/nv.d3.min.css" type="text/css">
 
-    <link rel="stylesheet" href="../../../assets/reveal/css/reveal.css">
-    <link rel="stylesheet" href="../../../assets/reveal/css/theme/black.css" id="theme">
+    <link rel="stylesheet" href="//richardwei2008.github.io/assets/reveal/css/reveal.css">
+    <link rel="stylesheet" href="//richardwei2008.github.io/assets/reveal/css/theme/black.css" id="theme">
     <!--<link rel="stylesheet" href="./css/main.css" type="text/css">-->
-    <link rel="stylesheet" href="../../../assets/reveal/lib/css/zenburn.css" type="text/css">
+    <link rel="stylesheet" href="//richardwei2008.github.io/assets/reveal/lib/css/zenburn.css" type="text/css">
 
     <!--<link rel="stylesheet" href="./css/reveal-console.css" type="text/css" media="screen,projection">-->
     <link rel="stylesheet" href="./css/viz.css" type="text/css" media="screen,projection">
@@ -50,7 +50,7 @@
     <!-- print css -->
     <!-- If the query includes 'print-pdf', use the PDF print sheet -->
     <script>
-        document.write( '<link rel="stylesheet" href="../../assets/reveal/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+        document.write( '<link rel="stylesheet" href="//richardwei2008.github.io/assets/reveal/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
     </script>
     <!-- link rel="stylesheet" href="css/viz-print.css" type="text/css" media="print">
     <link rel="stylesheet" href="css/math-print.css" type="text/css" media="print"-->
@@ -2260,7 +2260,7 @@
     // Load reveal.js as well as a classList polyfill if needed
     head.js( !document.body.classList ? 'js/vendor/classList.js' : null )
 //            .js( 'js/vendor/reveal.min.js', function() {
-            .js( '../../assets/reveal/js/reveal.js', function() {
+            .js( '//richardwei2008.github.io/assets/reveal/js/reveal.js', function() {
 
                 // Parse the query string into a key/value object
                 var query = {};
@@ -2333,12 +2333,12 @@
 
                     // Optional reveal.js plugins
                     dependencies: [
-                        { src: '../../assets/reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-                        { src: '../../assets/reveal/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-                        { src: '../../assets/reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-                        { src: '../../assets/reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-                        { src: '../../assets/reveal/plugin/zoom-js/zoom.js', async: true },
-                        { src: '../../assets/reveal/plugin/notes/notes.js', async: true }
+                        { src: '//richardwei2008.github.io/assets/reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                        { src: '//richardwei2008.github.io/assets/reveal/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                        { src: '//richardwei2008.github.io/assets/reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                        { src: '//richardwei2008.github.io/assets/reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                        { src: '//richardwei2008.github.io/assets/reveal/plugin/zoom-js/zoom.js', async: true },
+                        { src: '//richardwei2008.github.io/assets/reveal/plugin/notes/notes.js', async: true }
                     ]
                 });
 
