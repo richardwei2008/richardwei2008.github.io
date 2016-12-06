@@ -15,7 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
     <link rel="stylesheet" href="//richardwei2008.github.io/assets/reveal/css/reveal.css">
-    <link rel="stylesheet" href="//richardwei2008.github.io/assets/reveal/css/theme/league.css" id="theme">
+    <link rel="stylesheet" href="//richardwei2008.github.io/assets/reveal/css/theme/simple.css" id="theme">
 
     <!-- Code syntax highlighting -->
     <link rel="stylesheet" href="//richardwei2008.github.io/assets/reveal/lib/css/zenburn.css">
@@ -28,6 +28,16 @@
             /*background: url(images/ty-system.jpg) no-repeat;*/
             /*background-size: 100% 100%;*/
         /*}*/
+        .slides section p {
+            text-align: left;
+        }
+        .slides section .medium {
+            font-size: 12px;
+        }
+        .slides section .small {
+            padding-left: 3em;
+            font-size: 8px;
+        }
         .reveal footer {
             font-size: 8px;
         }
@@ -176,7 +186,7 @@
         history: true,
         center: true,
 
-        transition: 'zoom', // none/fade/slide/convex/concave/zoom
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
 
         // Optional reveal.js plugins
         dependencies: [
