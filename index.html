@@ -263,7 +263,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="http://o7xfeasig.bkt.clouddn.com/images/JVM-Internals-1/JVM-Internals-1_runtime_data_area.jpg" alt="image"></p>
+<p><img src="http://o7xfeasig.bkt.clouddn.com/images/JVM-Internals-1/JVM-Internals-1_runtime_data_area.png" alt="image"></p>
 <h2 id="线程独享"><a href="#线程独享" class="headerlink" title="线程独享"></a>线程独享</h2><h3 id="线程（Thread）"><a href="#线程（Thread）" class="headerlink" title="线程（Thread）"></a>线程（Thread）</h3><p>线程是程序中执行的线程。JVM 允许一个应用有多个线程并发运行。在 Hotspot JVM 中，一个 Java 线程与本地操作系统线程（native operating system）有直接映射。在准备好一个 Java 线程所需的所有状态后（比如，线程本地存储-thread-local storage，分配缓冲-allocation buffers，同步对象-synchronization objects，栈-stacks and 程序计数器-the program counter），本地线程才创建。一旦 Java 线程 中止，本地线程立即回收。操作系统负责调度所有线程并且将它们分发到可用的 CPU 。一旦系统线程初始化成功后，它就会调用 Java 线程里的 run() 方法。当 run() 方法返回时，未捕获的异常会被处理，本地系统线程确认 JVM 是否因为线程中止而需要被中止（例如，当前线程是否为最后一个非控制台线程）。当线程中止后，所有为系统线程和 Java 线程 分配的资源都会被释放。</p>
 <h3 id="JVM-系统线程（JVM-System-Threads）"><a href="#JVM-系统线程（JVM-System-Threads）" class="headerlink" title="JVM 系统线程（JVM System Threads）"></a>JVM 系统线程（JVM System Threads）</h3><p>如果用 jconsole 或其他的 debugger 工具，就会看到有很多线程在后台运行。这些后台线程与主线程一同运行，以及作为调用 <code>public static void main(String[])</code> 而创建的主线程所创建的任何线程。在 Hotspot JVM 中，后台系统主线程有：</p>
 <table>
